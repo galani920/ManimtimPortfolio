@@ -1,0 +1,799 @@
+
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Troi Manimtim — Web Developer portfolio">
+
+    <title>Troi Manimtim | Web Developer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+
+        /* Profile photo in the hero card */
+        .profile-photo {
+            position: relative;
+            z-index: 1;
+            display: block;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 24px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER / NAVBAR -->
+
+    <header class="sticky-top">
+
+        <nav class="navbar navbar-expand-lg glass-nav border-bottom">
+
+            <div class="container py-2">
+
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#home">
+                    <span class="brand-mark">TM</span>
+                    <span>
+                        Troi Manimtim
+                        <small class="d-block text-body-secondary fw-normal">Web Developer</small>
+                    </span>
+                </a>
+
+                <!-- Always-visible controls: theme toggle + menu button -->
+                <div class="d-flex align-items-center gap-2 ms-auto ms-lg-3 order-lg-2">
+
+                    <button id="themeToggle" class="btn btn-sm btn-outline-secondary rounded-pill"
+                        aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+
+                    <button class="navbar-toggler border-0 shadow-none" data-bs-toggle="collapse"
+                        data-bs-target="#mainNav" aria-label="Toggle navigation">
+                        <i class="bi bi-list fs-2"></i>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse order-lg-1" id="mainNav">
+
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+
+                        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- HOME / HERO -->
+
+        <section id="home" class="hero-section">
+
+            <div class="container py-5">
+
+                <div class="row align-items-center g-5 min-vh-75">
+
+                    <div class="col-lg-7">
+
+                        <div class="eyebrow mb-3">WEB DEVELOPER</div>
+
+                        <h1 class="display-2 fw-bold tracking-tight mb-4">
+                            Troi <span class="text-primary">Manimtim</span>
+                        </h1>
+
+                        <p class="lead fs-3 fw-semibold mb-3">
+                            Building practical digital solutions through technology and creativity.
+                        </p>
+
+                        <p class="text-body-secondary fs-5 col-xl-10 mb-4">
+                            I create clean, responsive, and useful web experiences while continuously
+                            improving my technical and problem-solving skills.
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+
+                            <a href="projects.html" class="btn btn-dark btn-lg px-4">
+                                View My Projects <i class="bi bi-arrow-up-right ms-1"></i>
+                            </a>
+
+                            <a href="cv.html" class="btn btn-outline-secondary btn-lg px-4">View CV</a>
+
+                            <a href="#contact" class="btn btn-outline-primary btn-lg px-4">Contact Me</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-5">
+
+                        
+                    <div class="profile-card mx-auto">
+                     <div class="profile-glow"></div>
+
+                     <img
+                     src="assets/images/portfolio_pic.jpg"
+                     alt="Troi Manimtim"
+                    class="profile-photo"
+                      >
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+
+        <section id="about" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-label">01 — ABOUT</div>
+
+                <div class="row g-5">
+
+                    <div class="col-lg-6">
+
+                        <h2 class="display-6 fw-bold">A portfolio built around practical work.</h2>
+
+                        <p class="fs-5 text-body-secondary mt-4">
+                            I am a Web Developer focused on building practical digital solutions,
+                            learning modern technologies, and improving the usability of the systems I create.
+                        </p>
+
+                        <p class="text-body-secondary">
+                            Replace this paragraph with your real biography. Add your background, interests,
+                            specialization, projects, and professional goals.
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="row g-3">
+
+                            <div class="col-sm-6">
+                                <div class="info-card">
+                                    <small>Location</small>
+                                    <strong>Canlubang, Calamba</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="info-card">
+                                    <small>Email</small>
+                                    <strong>tpmanimtim@ccc.edu.ph</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="info-card">
+                                    <small>Phone</small>
+                                    <strong>0991 767 4731</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="info-card">
+                                    <small>Specialization</small>
+                                    <strong>Programming</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="info-card">
+                                    <small>Education</small>
+                                    <strong>City College of Calamba</strong>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS (filled by assets/js/data.js) -->
+
+        <section id="skills" class="section-padding section-muted">
+
+            <div class="container">
+
+                <div class="section-label">02 — SKILLS</div>
+
+                <h2 class="display-6 fw-bold mb-2">Tools and skills I use.</h2>
+
+                <p class="text-body-secondary mb-4">
+                    Keep this list honest and update it as your skills improve.
+                </p>
+
+                <div id="skillsGrid" class="row g-3"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIENCE (filled by assets/js/data.js) -->
+
+        <section id="experience" class="section-padding">
+
+            <div class="container">
+
+                <div class="section-label">03 — EXPERIENCE</div>
+
+                <div id="experienceTimeline" class="timeline"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDUCATION & CERTIFICATES -->
+
+        <section id="education" class="section-padding section-muted">
+
+            <div class="container">
+
+                <div class="section-label">
+                    04 — EDUCATION & CERTIFICATES
+                </div>
+
+                <div class="row g-4 align-items-stretch">
+
+                    <!-- EDUCATION -->
+                    <div class="col-lg-6 d-flex flex-column">
+
+                        <h3 class="fw-bold mb-3">Education</h3>
+
+                        <div id="educationList"
+                             class="education-fixed-card flex-grow-1">
+
+                            <span class="education-year">
+                                Currently 3rd Year
+                            </span>
+
+                            <h4 class="education-title">
+                                Bachelor of Science in Information Technology
+                            </h4>
+
+                            <p class="education-school">
+                                City College of Calamba
+                            </p>
+
+                            
+
+                        </div>
+
+                    </div>
+
+                    <!-- CERTIFICATES -->
+                    <div class="col-lg-6 d-flex flex-column">
+
+                        <h3 class="fw-bold mb-3">CERTIFICATES</h3>
+
+                        <div id="credentialsList"
+                             class="education-fixed-card flex-grow-1">
+
+                            <span class="education-year">
+                                2024
+                            </span>
+
+                            <h4 class="education-title">
+                                National Certificate on Computer
+                                Systems Servicing NC II
+                            </h4>
+
+                            <p class="education-school">
+                                TESDA
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CONTACT - EMAILJS FIX
+             ========================================= -->
+
+        <section id="contact" class="section-padding">
+
+            <div class="container">
+
+                <div class="contact-box p-4 p-lg-5">
+
+                    <div class="row g-5">
+
+                        <!-- Contact details -->
+
+                        <div class="col-lg-5">
+
+                            <div class="section-label">05 — CONTACT</div>
+
+                            <h2 class="display-6 fw-bold">Let's connect.</h2>
+
+                            <p class="text-body-secondary">
+                                Feel free to reach out through any of the details below,
+                                or send me a message directly using the contact form.
+                            </p>
+
+                            <div class="contact-list mt-4">
+
+                                <div>
+                                    <i class="bi bi-envelope"></i>
+                                    <span>tpmanimtim@ccc.edu.ph</span>
+                                </div>
+
+                                <div>
+                                    <i class="bi bi-telephone"></i>
+                                    <span>0991 767 4731</span>
+                                </div>
+
+                                <div>
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Canlubang, Calamba</span>
+                                </div>
+
+                                <div>
+                                    <i class="bi bi-github"></i>
+                                    <a href="https://github.com/galani920" target="_blank" rel="noopener">
+                                        github.com/galani920
+                                    </a>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Contact form -->
+
+                        <div class="col-lg-7">
+
+                            <form id="contactForm">
+
+                                <div class="row g-3">
+
+                                    <!-- Name -->
+                                    <div class="col-md-6">
+                                        <label class="form-label">Name</label>
+                                        <input
+                                            name="name"
+                                            class="form-control"
+                                            maxlength="100"
+                                            autocomplete="name"
+                                            required>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email</label>
+                                        <input
+                                            name="email"
+                                            type="email"
+                                            class="form-control"
+                                            maxlength="254"
+                                            autocomplete="email"
+                                            required>
+                                    </div>
+
+                                    <!-- Subject -->
+                                    <div class="col-12">
+                                        <label class="form-label">Subject</label>
+                                        <input
+                                            name="subject"
+                                            class="form-control"
+                                            maxlength="150"
+                                            required>
+                                    </div>
+
+                                    <!-- Message -->
+                                    <div class="col-12">
+                                        <label class="form-label">Message</label>
+                                        <textarea
+                                            name="message"
+                                            class="form-control"
+                                            rows="6"
+                                            maxlength="5000"
+                                            required></textarea>
+                                    </div>
+
+                                    <!-- Submit button -->
+                                    <div class="col-12">
+
+                                        <button
+                                            id="sendMessageBtn"
+                                            type="submit"
+                                            class="btn btn-dark btn-lg px-4">
+
+                                            Send Message
+                                            <i class="bi bi-send ms-1"></i>
+
+                                        </button>
+
+                                        <!-- Status notification -->
+                                        <div
+                                            id="contactStatus"
+                                            class="mt-3 small"
+                                            role="status"
+                                            aria-live="polite">
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="border-top py-4">
+
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-body-secondary">
+
+            <span>© <span id="year"></span> Troi Manimtim.</span>
+
+            <span>HTML · Bootstrap · Tailwind CSS · JavaScript</span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ORIGINAL JAVASCRIPT -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/app.js"></script>
+
+
+    <!-- EXISTING EDUCATION FIX -->
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const education =
+            document.getElementById("educationList");
+
+        const certificates =
+            document.getElementById("credentialsList");
+
+        if (education) {
+            education.className =
+                "education-fixed-card flex-grow-1";
+
+            education.innerHTML = `
+                <span class="education-year">
+                    Currently 3rd Year
+                </span>
+                <h4 class="education-title">BSIT</h4>
+                <p class="education-school">
+                    City College of Calamba
+                </p>
+                <p class="education-description">
+                    Bachelor of Science in Information Technology
+                </p>
+            `;
+        }
+
+        if (certificates) {
+            certificates.className =
+                "education-fixed-card flex-grow-1";
+
+            certificates.innerHTML = `
+                <span class="education-year">2024</span>
+                <h4 class="education-title">
+                    National Certificate on Computer Systems
+                    Servicing NC II
+                </h4>
+                <p class="education-school">TESDA</p>
+            `;
+        }
+
+    });
+    </script>
+
+
+    <!-- =========================================
+         EMAILJS LIBRARY
+         ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+
+    <!-- =========================================
+         CONTACT FORM EMAILJS FUNCTION
+         ========================================= -->
+
+    <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        /*
+        ===========================================
+        EMAILJS CONFIGURATION
+
+        Replace these values with the actual
+        credentials from your EmailJS account.
+        ===========================================
+        */
+
+        const EMAILJS_PUBLIC_KEY = "Bl_pSuoHVtteKMVEK";
+        const EMAILJS_SERVICE_ID = "service_mi9m8lg";
+        const EMAILJS_TEMPLATE_ID = "template_r1q26zl";
+
+
+        /*
+        ===========================================
+        ELEMENTS
+        ===========================================
+        */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        const sendButton =
+            document.getElementById("sendMessageBtn");
+
+        const contactStatus =
+            document.getElementById("contactStatus");
+
+
+        if (!contactForm || !sendButton || !contactStatus) {
+            return;
+        }
+
+
+        /*
+        ===========================================
+        PREVENT DUPLICATE SUBMISSIONS
+        ===========================================
+        */
+
+        let isSending = false;
+
+
+        /*
+        ===========================================
+        CONTACT FORM SUBMISSION
+        ===========================================
+        */
+
+        contactForm.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+            // Prevent any existing bubble-phase
+            // mailto submission handler from running.
+            event.stopImmediatePropagation();
+
+            if (isSending) {
+                return;
+            }
+
+            if (!contactForm.reportValidity()) {
+                return;
+            }
+
+
+            /*
+            =======================================
+            CHECK EMAILJS SETTINGS
+            =======================================
+            */
+
+           
+           
+            const configurationMissing = [
+                EMAILJS_PUBLIC_KEY,
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID
+            ].some(value =>
+                !value ||
+                value.trim() === "" ||
+                value.startsWith("YOUR_")
+            );
+
+
+
+            /*
+            =======================================
+            CHECK EMAILJS LIBRARY
+            =======================================
+            */
+
+            if (typeof emailjs === "undefined") {
+
+                contactStatus.className =
+                    "mt-3 small text-danger";
+
+                contactStatus.textContent =
+                    "The email service could not be loaded. Please check your internet connection.";
+
+                return;
+            }
+
+
+            /*
+            =======================================
+            PREPARE EMAIL DATA
+            =======================================
+            */
+
+            const formData = new FormData(contactForm);
+
+            const templateParams = {
+
+                from_name:
+                    String(formData.get("name") || "").trim(),
+
+                from_email:
+                    String(formData.get("email") || "").trim(),
+
+                subject:
+                    String(formData.get("subject") || "").trim(),
+
+                message:
+                    String(formData.get("message") || "").trim()
+
+            };
+
+
+            /*
+            =======================================
+            SENDING STATE
+            =======================================
+            */
+
+            isSending = true;
+
+            sendButton.disabled = true;
+
+            const originalButtonContent =
+                sendButton.innerHTML;
+
+            sendButton.innerHTML = `
+                <span
+                    class="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true">
+                </span>
+                Sending...
+            `;
+
+            contactStatus.className = "mt-3 small";
+
+            contactStatus.textContent = "";
+
+
+            /*
+            =======================================
+            SEND EMAIL
+            =======================================
+            */
+
+            try {
+
+                emailjs.init({
+                    publicKey: EMAILJS_PUBLIC_KEY
+                });
+
+                await emailjs.send(
+                    EMAILJS_SERVICE_ID,
+                    EMAILJS_TEMPLATE_ID,
+                    templateParams
+                );
+
+
+                /*
+                ===================================
+                SUCCESS
+                ===================================
+                */
+
+                contactStatus.className =
+                    "mt-3 small text-success";
+
+                contactStatus.textContent =
+                    "Your message has been sent successfully!";
+
+                contactForm.reset();
+
+            
+} catch (error) {
+
+    console.error("EmailJS Error:", error);
+
+    const errorCode = error?.status || "Unknown";
+
+    const errorMessage =
+        error?.text ||
+        error?.message ||
+        "Unknown EmailJS error";
+
+    contactStatus.className = "mt-3 small text-danger";
+
+    contactStatus.textContent =
+        "Email failed (" + errorCode + "): " + errorMessage;
+
+}
+finally {
+
+                /*
+                ===================================
+                RESTORE BUTTON
+                ===================================
+                */
+
+                isSending = false;
+
+                sendButton.disabled = false;
+
+                sendButton.innerHTML =
+                    originalButtonContent;
+
+            }
+
+        }, true);
+
+    });
+
+    </script>
+
+</body>
+</html>

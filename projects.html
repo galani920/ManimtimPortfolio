@@ -1,0 +1,1752 @@
+
+<html lang="en" data-bs-theme="light">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Projects | Troi Manimtim</title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         BOOTSTRAP ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="assets/css/style.css"
+    >
+
+
+    <!-- =====================================================
+         PROJECT PAGE CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .projects-header {
+
+            padding:
+                7rem
+                0
+                5rem;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(37, 99, 235, 0.08),
+                    transparent 35%
+                );
+
+        }
+
+
+        .projects-header::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+                linear-gradient(
+                    rgba(15, 23, 42, 0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(15, 23, 42, 0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            pointer-events: none;
+
+        }
+
+
+        .projects-header .container {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .projects-header-title {
+
+            font-size:
+                clamp(
+                    3rem,
+                    7vw,
+                    5.5rem
+                );
+
+            font-weight: 800;
+
+            letter-spacing:
+                -0.06em;
+
+            line-height: .95;
+
+            margin-top: 1rem;
+
+            margin-bottom: 1.25rem;
+
+        }
+
+
+        .projects-header-description {
+
+            max-width: 650px;
+
+            color:
+                var(--bs-secondary-color);
+
+            font-size: 1.05rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           PROJECT CONTENT
+        ===================================================== */
+
+        .projects-content {
+
+            padding:
+                5rem
+                0
+                7rem;
+
+        }
+
+
+        /* =====================================================
+           SEMESTER SECTION
+        ===================================================== */
+
+        .semester-section {
+
+            margin-bottom: 7rem;
+
+        }
+
+
+        .semester-section:last-child {
+
+            margin-bottom: 0;
+
+        }
+
+
+        /* =====================================================
+           SEMESTER HEADER
+        ===================================================== */
+
+        .semester-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1.25rem;
+
+            margin-bottom: 2.5rem;
+
+            padding-bottom: 1.25rem;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .semester-number {
+
+            width: 52px;
+
+            height: 52px;
+
+            flex-shrink: 0;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 12px;
+
+            background:
+                rgba(
+                    37,
+                    99,
+                    235,
+                    .08
+                );
+
+            border:
+                1px solid
+                rgba(
+                    37,
+                    99,
+                    235,
+                    .25
+                );
+
+            color:
+                #2563eb;
+
+            font-size: .75rem;
+
+            font-weight: 800;
+
+            letter-spacing: .08em;
+
+        }
+
+
+        .semester-label {
+
+            display: block;
+
+            margin-bottom: .25rem;
+
+            color:
+                #2563eb;
+
+            font-size: .7rem;
+
+            font-weight: 800;
+
+            letter-spacing: .15em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .semester-title {
+
+            margin: 0;
+
+            color:
+                var(--bs-body-color);
+
+            font-size:
+                clamp(
+                    2rem,
+                    4vw,
+                    3rem
+                );
+
+            font-weight: 800;
+
+            letter-spacing:
+                -.055em;
+
+            line-height: 1;
+
+        }
+
+
+        /* =====================================================
+           PROJECT CARD
+        ===================================================== */
+
+        .academic-project-card {
+
+            height: 100%;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 16px;
+
+            background:
+                var(--card);
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    15,
+                    23,
+                    42,
+                    .045
+                );
+
+            transition:
+                transform .25s ease,
+                border-color .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .academic-project-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(
+                    37,
+                    99,
+                    235,
+                    .28
+                );
+
+            box-shadow:
+                0 20px 45px
+                rgba(
+                    15,
+                    23,
+                    42,
+                    .10
+                );
+
+        }
+
+
+        /* =====================================================
+           PROJECT IMAGE
+        ===================================================== */
+
+        .academic-project-image {
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            object-fit: cover;
+
+            display: block;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e8eef7,
+                    #dce5f1
+                );
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        /* =====================================================
+           PROJECT IMAGE PLACEHOLDER
+        ===================================================== */
+
+        .project-image-placeholder {
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-direction: column;
+
+            gap: .5rem;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef3f9,
+                    #dfe8f3
+                );
+
+            color:
+                #64748b;
+
+            border-bottom:
+                1px solid
+                var(--border);
+
+        }
+
+
+        .project-image-placeholder i {
+
+            font-size: 2rem;
+
+            color:
+                #94a3b8;
+
+        }
+
+
+        .project-image-placeholder span {
+
+            font-size: .75rem;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .academic-project-content {
+
+            display: flex;
+
+            flex-direction: column;
+
+            flex: 1;
+
+            padding: 1.5rem;
+
+        }
+
+
+        .project-meta {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: .75rem;
+
+            margin-bottom: 1rem;
+
+        }
+
+
+        .project-category {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding:
+                .35rem
+                .65rem;
+
+            border-radius: 6px;
+
+            background:
+                rgba(
+                    37,
+                    99,
+                    235,
+                    .08
+                );
+
+            border:
+                1px solid
+                rgba(
+                    37,
+                    99,
+                    235,
+                    .18
+                );
+
+            color:
+                #2563eb;
+
+            font-size: .67rem;
+
+            font-weight: 700;
+
+            letter-spacing: .04em;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .project-year {
+
+            color:
+                var(--bs-secondary-color);
+
+            font-size: .75rem;
+
+            white-space: nowrap;
+
+        }
+
+
+        .project-title {
+
+            margin-bottom: .75rem;
+
+            color:
+                var(--bs-body-color);
+
+            font-size: 1.1rem;
+
+            font-weight: 750;
+
+            line-height: 1.3;
+
+        }
+
+
+        .project-description {
+
+            margin-bottom: 1.25rem;
+
+            color:
+                var(--bs-secondary-color);
+
+            font-size: .85rem;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           TECHNOLOGY TAGS
+        ===================================================== */
+
+        .project-technologies {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: .4rem;
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+        .technology-tag {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            padding:
+                .35rem
+                .6rem;
+
+            border-radius: 999px;
+
+            background:
+                var(--bs-body-bg);
+
+            border:
+                1px solid
+                var(--border);
+
+            color:
+                var(--bs-secondary-color);
+
+            font-size: .68rem;
+
+            font-weight: 600;
+
+        }
+
+
+        /* =====================================================
+           PROJECT BUTTON
+        ===================================================== */
+
+        .project-button {
+
+            margin-top: auto;
+
+            border-radius: 8px;
+
+            font-size: .78rem;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .projects-footer {
+
+            border-top:
+                1px solid
+                var(--border);
+
+            padding:
+                2rem
+                0;
+
+        }
+
+
+        /* =====================================================
+           DARK MODE
+        ===================================================== */
+
+        [data-bs-theme="dark"]
+        .projects-header::before {
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.025) 1px,
+                    transparent 1px
+                );
+
+        }
+
+
+        [data-bs-theme="dark"]
+        .project-image-placeholder {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d1726,
+                    #142338
+                );
+
+            color:
+                #94a3b8;
+
+        }
+
+
+        [data-bs-theme="dark"]
+        .academic-project-image {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0d1726,
+                    #142338
+                );
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 767px) {
+
+            .projects-header {
+
+                padding:
+                    5rem
+                    0
+                    3.5rem;
+
+            }
+
+
+            .projects-content {
+
+                padding:
+                    4rem
+                    0
+                    5rem;
+
+            }
+
+
+            .semester-section {
+
+                margin-bottom: 5rem;
+
+            }
+
+
+            .semester-header {
+
+                gap: .9rem;
+
+            }
+
+
+            .semester-number {
+
+                width: 45px;
+
+                height: 45px;
+
+            }
+
+
+            .semester-title {
+
+                font-size: 2rem;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+====================================================== -->
+
+<nav class="navbar navbar-expand-lg sticky-top glass-nav border-bottom">
+
+    <div class="container py-2">
+
+
+        <!-- BRAND -->
+
+        <a
+            href="index.html"
+            class="navbar-brand d-flex align-items-center gap-2"
+        >
+
+            <div>
+
+                <div
+                    class="fw-bold"
+                    style="
+                        font-size: 1.15rem;
+                        line-height: 1.1;
+                    "
+                >
+                    Troi Manimtim
+                </div>
+
+                <small
+                    class="text-secondary"
+                    style="font-size: .72rem;"
+                >
+                    Web Developer
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavigation"
+            aria-controls="mainNavigation"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- NAVIGATION -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="mainNavigation"
+        >
+
+            <ul
+                class="
+                    navbar-nav
+                    ms-auto
+                    align-items-lg-center
+                    gap-lg-2
+                "
+            >
+
+                <li class="nav-item">
+
+                    <a
+                        href="index.html"
+                        class="nav-link"
+                    >
+                        Home
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <button
+                        type="button"
+                        id="themeToggle"
+                        class="
+                            btn
+                            btn-outline-secondary
+                            rounded-circle
+                            d-flex
+                            align-items-center
+                            justify-content-center
+                        "
+                        style="
+                            width: 50px;
+                            height: 50px;
+                        "
+                        aria-label="Toggle theme"
+                    >
+
+                        <i class="bi bi-moon-stars"></i>
+
+                    </button>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     PAGE HEADER
+====================================================== -->
+
+<header class="projects-header">
+
+    <div class="container">
+
+        <span class="eyebrow">
+            ACADEMIC PROJECTS
+        </span>
+
+
+        <h1 class="projects-header-title">
+            My Projects
+        </h1>
+
+
+        <p class="projects-header-description">
+
+            A collection of academic projects completed throughout
+            my Information Technology studies, organized by
+            academic period.
+
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     PROJECTS
+====================================================== -->
+
+<main class="projects-content">
+
+    <div class="container">
+
+
+
+        <!-- =================================================
+             PRELIM
+        ================================================== -->
+
+        <section
+            class="semester-section"
+            id="prelim"
+        >
+
+            <div class="semester-header">
+
+                <div class="semester-number">
+                    01
+                </div>
+
+
+                <div>
+
+                    <span class="semester-label">
+                        Academic Projects
+                    </span>
+
+                    <h2 class="semester-title">
+                        PRELIM
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row g-4">
+
+
+                <!-- PRELIM PROJECT 1 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-image"></i>
+
+                            <span>
+                                Prelim Project Image
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Academic
+                                </span>
+
+                                <span class="project-year">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+                                PRELIM PROJECT 1
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                Add the description of your first
+                                Prelim project here.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    HTML
+                                </span>
+
+                                <span class="technology-tag">
+                                    CSS
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- PRELIM PROJECT 2 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-image"></i>
+
+                            <span>
+                                Prelim Project Image
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Academic
+                                </span>
+
+                                <span class="project-year">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+                                PRELIM PROJECT 2
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                Add the description of your second
+                                Prelim project here.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    Design
+                                </span>
+
+                                <span class="technology-tag">
+                                    Graphics
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MIDTERM
+        ================================================== -->
+
+        <section
+            class="semester-section"
+            id="midterm"
+        >
+
+            <div class="semester-header">
+
+                <div class="semester-number">
+                    02
+                </div>
+
+
+                <div>
+
+                    <span class="semester-label">
+                        Academic Projects
+                    </span>
+
+                    <h2 class="semester-title">
+                        MIDTERM
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row g-4">
+
+
+                <!-- MIDTERM PROJECT 1 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-image"></i>
+
+                            <span>
+                                Midterm Project Image
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Academic
+                                </span>
+
+                                <span class="project-year">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+                                MIDTERM PROJECT 1
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                Add the description of your first
+                                Midterm project here.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    HTML
+                                </span>
+
+                                <span class="technology-tag">
+                                    CSS
+                                </span>
+
+                                <span class="technology-tag">
+                                    JavaScript
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- MIDTERM PROJECT 2 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-image"></i>
+
+                            <span>
+                                Midterm Project Image
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Academic
+                                </span>
+
+                                <span class="project-year">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+                                MIDTERM PROJECT 2
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                Add the description of your second
+                                Midterm project here.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    PHP
+                                </span>
+
+                                <span class="technology-tag">
+                                    MySQL
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FINALS
+        ================================================== -->
+
+        <section
+            class="semester-section"
+            id="finals"
+        >
+
+            <div class="semester-header">
+
+                <div class="semester-number">
+                    03
+                </div>
+
+
+                <div>
+
+                    <span class="semester-label">
+                        Academic Projects
+                    </span>
+
+                    <h2 class="semester-title">
+                        FINALS
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="row g-4">
+
+
+                <!-- FINAL PROJECT 1 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-hospital"></i>
+
+                            <span>
+                                Web System Project
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Web Development
+                                </span>
+
+                                <span class="project-year">
+                                    2025
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+
+                                WEB-BASED APPOINTMENT
+                                AND PAYMENT SYSTEM
+
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                A web-based system designed to manage
+                                appointments and payment-related
+                                records through a centralized platform.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    HTML
+                                </span>
+
+                                <span class="technology-tag">
+                                    CSS
+                                </span>
+
+                                <span class="technology-tag">
+                                    JavaScript
+                                </span>
+
+                                <span class="technology-tag">
+                                    PHP
+                                </span>
+
+                                <span class="technology-tag">
+                                    MySQL
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+
+                <!-- FINAL PROJECT 2 -->
+
+                <div class="col-md-6 col-xl-4">
+
+                    <article class="academic-project-card">
+
+
+                        <div class="project-image-placeholder">
+
+                            <i class="bi bi-image"></i>
+
+                            <span>
+                                Final Project Image
+                            </span>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+
+                            <div class="project-meta">
+
+                                <span class="project-category">
+                                    Academic
+                                </span>
+
+                                <span class="project-year">
+                                    2026
+                                </span>
+
+                            </div>
+
+
+                            <h3 class="project-title">
+                                FINAL PROJECT 2
+                            </h3>
+
+
+                            <p class="project-description">
+
+                                Add the description of your second
+                                Final project here.
+
+                            </p>
+
+
+                            <div class="project-technologies">
+
+                                <span class="technology-tag">
+                                    PHP
+                                </span>
+
+                                <span class="technology-tag">
+                                    MySQL
+                                </span>
+
+                            </div>
+
+
+                            <a
+                                href="#"
+                                class="
+                                    btn
+                                    btn-outline-primary
+                                    btn-sm
+                                    project-button
+                                "
+                            >
+
+                                View Project
+
+                                <i
+                                    class="
+                                        bi
+                                        bi-arrow-right
+                                        ms-1
+                                    "
+                                ></i>
+
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="projects-footer">
+
+    <div class="container">
+
+        <div
+            class="
+                d-flex
+                flex-column
+                flex-md-row
+                justify-content-between
+                gap-2
+            "
+        >
+
+            <span class="small text-secondary">
+                © 2026 Troi Manimtim.
+            </span>
+
+            <span class="small text-secondary">
+                Information Technology Portfolio
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     BOOTSTRAP JS
+====================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+
+<!-- =====================================================
+     THEME TOGGLE
+====================================================== -->
+
+<script>
+
+    const themeToggle =
+        document.getElementById(
+            "themeToggle"
+        );
+
+    const themeIcon =
+        themeToggle.querySelector(
+            "i"
+        );
+
+    const html =
+        document.documentElement;
+
+
+    /* Load saved theme */
+
+    const savedTheme =
+        localStorage.getItem(
+            "portfolio-theme"
+        );
+
+
+    if (savedTheme) {
+
+        html.setAttribute(
+            "data-bs-theme",
+            savedTheme
+        );
+
+    }
+
+
+    /* Update icon */
+
+    function updateThemeIcon() {
+
+        const currentTheme =
+            html.getAttribute(
+                "data-bs-theme"
+            );
+
+
+        if (
+            currentTheme === "dark"
+        ) {
+
+            themeIcon.className =
+                "bi bi-sun";
+
+        } else {
+
+            themeIcon.className =
+                "bi bi-moon-stars";
+
+        }
+
+    }
+
+
+    updateThemeIcon();
+
+
+    /* Toggle theme */
+
+    themeToggle.addEventListener(
+        "click",
+        function () {
+
+            const currentTheme =
+                html.getAttribute(
+                    "data-bs-theme"
+                );
+
+
+            const newTheme =
+                currentTheme === "dark"
+                    ? "light"
+                    : "dark";
+
+
+            html.setAttribute(
+                "data-bs-theme",
+                newTheme
+            );
+
+
+            localStorage.setItem(
+                "portfolio-theme",
+                newTheme
+            );
+
+
+            updateThemeIcon();
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>
