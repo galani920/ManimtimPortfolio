@@ -4,36 +4,139 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Projects | Troi Manimtim</title>
 
-    <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
-    <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
-
-    <!-- Main Portfolio CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* =========================
-           PAGE HEADER
-        ========================= */
+        /* NAVIGATION */
+        .portfolio-navbar {
+            position: relative;
+            z-index: 1030;
+        }
+
+        .portfolio-navbar .navbar-brand {
+            min-width: 0;
+            margin-right: 10px;
+            color: var(--bs-body-color);
+        }
+
+        .portfolio-navbar .brand-mark {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #2563eb;
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .brand-name small {
+            margin-top: 3px;
+            font-size: 12px;
+        }
+
+        .portfolio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        #themeToggle {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-menu-button {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 5px;
+            background: #343a40;
+            color: white;
+            cursor: pointer;
+        }
+
+        .portfolio-menu-button i {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .portfolio-menu-button:hover,
+        .portfolio-menu-button:focus-visible,
+        .portfolio-menu-button[aria-expanded="true"] {
+            background: #212529;
+            color: white;
+        }
+
+        /* DROPDOWN: NO DIVIDERS */
+        .portfolio-dropdown {
+            min-width: 220px;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 8px 0;
+            margin-top: 12px !important;
+            border-radius: 12px;
+            background: var(--bs-body-bg);
+            border: 1px solid var(--bs-border-color);
+        }
+
+        .portfolio-dropdown .dropdown-item {
+            padding: 11px 18px;
+            color: var(--bs-body-color);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .4px;
+        }
+
+        .portfolio-dropdown .dropdown-item:hover {
+            background: rgba(37, 99, 235, .1);
+            color: #2563eb;
+        }
+
+        [data-bs-theme="dark"] .portfolio-dropdown {
+            background: #212529;
+        }
+
+        [data-bs-theme="dark"] .portfolio-dropdown .dropdown-item:hover {
+            background: #343a40;
+            color: white;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        /* PROJECT HEADER */
         .projects-header {
             padding: 7rem 0 5rem;
             position: relative;
             overflow: hidden;
             background: radial-gradient(
                 circle at 80% 20%,
-                rgba(37, 99, 235, 0.08),
+                rgba(37, 99, 235, .08),
                 transparent 35%
             );
         }
@@ -44,12 +147,12 @@
             inset: 0;
             background-image:
                 linear-gradient(
-                    rgba(15, 23, 42, 0.025) 1px,
+                    rgba(15, 23, 42, .025) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(15, 23, 42, 0.025) 1px,
+                    rgba(15, 23, 42, .025) 1px,
                     transparent 1px
                 );
             background-size: 45px 45px;
@@ -65,8 +168,8 @@
             margin: 1rem 0 1.25rem;
             font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 800;
-            letter-spacing: -0.06em;
-            line-height: 0.95;
+            letter-spacing: -.06em;
+            line-height: .95;
         }
 
         .projects-header-description {
@@ -76,9 +179,7 @@
             line-height: 1.7;
         }
 
-        /* =========================
-           PROJECT CONTENT
-        ========================= */
+        /* PROJECT SECTIONS */
         .projects-content {
             padding: 5rem 0 7rem;
         }
@@ -91,16 +192,13 @@
             margin-bottom: 0;
         }
 
-        /* =========================
-           SEMESTER HEADER
-        ========================= */
         .semester-header {
             display: flex;
             align-items: center;
             gap: 1.25rem;
             margin-bottom: 2.5rem;
             padding-bottom: 1.25rem;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--border, var(--bs-border-color));
         }
 
         .semester-number {
@@ -110,21 +208,20 @@
             display: grid;
             place-items: center;
             border-radius: 12px;
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid rgba(37, 99, 235, 0.25);
+            background: rgba(37, 99, 235, .08);
+            border: 1px solid rgba(37, 99, 235, .25);
             color: #2563eb;
-            font-size: 0.75rem;
+            font-size: .75rem;
             font-weight: 800;
-            letter-spacing: 0.08em;
         }
 
         .semester-label {
             display: block;
-            margin-bottom: 0.25rem;
+            margin-bottom: .25rem;
             color: #2563eb;
-            font-size: 0.7rem;
+            font-size: .7rem;
             font-weight: 800;
-            letter-spacing: 0.15em;
+            letter-spacing: .15em;
             text-transform: uppercase;
         }
 
@@ -133,44 +230,34 @@
             color: var(--bs-body-color);
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            letter-spacing: -0.055em;
-            line-height: 1;
+            letter-spacing: -.055em;
         }
 
-        /* =========================
-           PROJECT CARDS
-        ========================= */
+        /* PROJECT CARDS */
         .academic-project-card {
             height: 100%;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--border);
+            border: 1px solid var(--border, var(--bs-border-color));
             border-radius: 16px;
-            background: var(--card);
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.045);
-            transition:
-                transform 0.25s ease,
-                border-color 0.25s ease,
-                box-shadow 0.25s ease;
+            background: var(--card, var(--bs-body-bg));
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .045);
+            transition: transform .25s ease, box-shadow .25s ease;
         }
 
         .academic-project-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(37, 99, 235, 0.28);
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.10);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, .1);
         }
 
-        /* =========================
-           PROJECT IMAGES
-        ========================= */
         .academic-project-image {
             display: block;
             width: 100%;
             height: 240px;
             object-fit: contain;
             background: #171717;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--bs-border-color);
         }
 
         .academic-project-image.logo-image {
@@ -181,35 +268,22 @@
             background: #242424;
         }
 
-        .academic-project-image.screenshot-image {
-            background: #171717;
-        }
-
         .project-image-placeholder {
             width: 100%;
             height: 240px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: .5rem;
             background: #171717;
             color: #94a3b8;
-            border-bottom: 1px solid var(--border);
         }
 
         .project-image-placeholder i {
             font-size: 2rem;
         }
 
-        .project-image-placeholder span {
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        /* =========================
-           CARD CONTENT
-        ========================= */
         .academic-project-content {
             display: flex;
             flex-direction: column;
@@ -221,104 +295,76 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 0.75rem;
+            gap: .75rem;
             margin-bottom: 1rem;
         }
 
         .project-category {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.35rem 0.65rem;
+            padding: .35rem .65rem;
             border-radius: 6px;
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid rgba(37, 99, 235, 0.18);
+            background: rgba(37, 99, 235, .08);
+            border: 1px solid rgba(37, 99, 235, .18);
             color: #2563eb;
-            font-size: 0.67rem;
+            font-size: .67rem;
             font-weight: 700;
-            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         .project-year {
             color: var(--bs-secondary-color);
-            font-size: 0.75rem;
-            white-space: nowrap;
+            font-size: .75rem;
         }
 
         .project-title {
-            margin-bottom: 0.75rem;
+            margin-bottom: .75rem;
             color: var(--bs-body-color);
             font-size: 1.1rem;
             font-weight: 750;
-            line-height: 1.4;
         }
 
         .project-description {
             margin-bottom: 1.25rem;
             color: var(--bs-secondary-color);
-            font-size: 0.85rem;
+            font-size: .85rem;
             line-height: 1.7;
         }
 
-        /* =========================
-           TECHNOLOGY TAGS
-        ========================= */
         .project-technologies {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: .4rem;
             margin-bottom: 1.5rem;
         }
 
         .technology-tag {
             display: inline-flex;
-            align-items: center;
-            padding: 0.35rem 0.6rem;
+            padding: .35rem .6rem;
             border-radius: 999px;
             background: var(--bs-body-bg);
-            border: 1px solid var(--border);
+            border: 1px solid var(--bs-border-color);
             color: var(--bs-secondary-color);
-            font-size: 0.68rem;
+            font-size: .68rem;
             font-weight: 600;
         }
 
-        /* =========================
-           PROJECT BUTTON
-        ========================= */
-        .project-button {
-            margin-top: auto;
-            border-radius: 8px;
-            font-size: 0.78rem;
-            font-weight: 700;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
         .projects-footer {
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--bs-border-color);
             padding: 2rem 0;
         }
 
-        /* =========================
-           DARK MODE
-        ========================= */
         [data-bs-theme="dark"] .projects-header::before {
             background-image:
                 linear-gradient(
-                    rgba(255, 255, 255, 0.025) 1px,
+                    rgba(255, 255, 255, .025) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(255, 255, 255, 0.025) 1px,
+                    rgba(255, 255, 255, .025) 1px,
                     transparent 1px
                 );
         }
 
-        /* =========================
-           MOBILE RESPONSIVENESS
-        ========================= */
         @media (max-width: 767px) {
             .projects-header {
                 padding: 5rem 0 3.5rem;
@@ -333,7 +379,7 @@
             }
 
             .semester-header {
-                gap: 0.9rem;
+                gap: .9rem;
             }
 
             .semester-number {
@@ -354,498 +400,469 @@
                 height: 220px;
             }
         }
+
+        @media (max-width: 480px) {
+            .portfolio-navbar .brand-mark {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            .brand-name {
+                font-size: 13px;
+            }
+
+            .brand-name small {
+                font-size: 10px;
+            }
+
+            .portfolio-controls {
+                gap: 6px;
+            }
+
+            #themeToggle,
+            .portfolio-menu-button {
+                width: 35px;
+                height: 35px;
+            }
+
+            .portfolio-dropdown {
+                min-width: 190px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-<nav class="navbar navbar-expand-lg sticky-top glass-nav border-bottom">
-    <div class="container py-2">
+    <!-- NAVIGATION -->
+    <header class="sticky-top">
 
-        <a
-            href="index.html"
-            class="navbar-brand d-flex align-items-center gap-2"
-        >
-            <div>
-                <div
-                    class="fw-bold"
-                    style="font-size: 1.15rem; line-height: 1.1;"
-                >
-                    Troi Manimtim
-                </div>
+        <nav class="navbar glass-nav border-bottom portfolio-navbar">
 
-                <small class="text-secondary" style="font-size: 0.72rem;">
-                    Web Developer
-                </small>
-            </div>
-        </a>
+            <div class="container py-2 d-flex flex-nowrap align-items-center">
 
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavigation"
-            aria-controls="mainNavigation"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+                   href="index.html#home">
 
-        <div class="collapse navbar-collapse" id="mainNavigation">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+                    <span class="brand-mark">TM</span>
 
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">
-                        Home
-                    </a>
-                </li>
+                    <span class="brand-name">
+                        Troi Manimtim
+                        <small class="d-block text-body-secondary fw-normal">
+                            Web Developer
+                        </small>
+                    </span>
 
-                <li class="nav-item">
+                </a>
+
+                <div class="portfolio-controls">
+
                     <button
-                        type="button"
                         id="themeToggle"
-                        class="btn btn-outline-secondary rounded-circle d-flex align-items-center justify-content-center"
-                        style="width: 50px; height: 50px;"
-                        aria-label="Toggle theme"
-                    >
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary rounded-pill"
+                        aria-label="Toggle dark mode">
                         <i class="bi bi-moon-stars"></i>
                     </button>
-                </li>
 
-            </ul>
+                    <div class="dropdown">
+
+                        <button
+                            type="button"
+                            class="portfolio-menu-button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Open navigation menu">
+                            <i class="bi bi-list"></i>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end portfolio-dropdown shadow">
+
+                            <li><a class="dropdown-item" href="index.html#home">HOME</a></li>
+                            <li><a class="dropdown-item" href="project.html">PROJECTS</a></li>
+                            <li><a class="dropdown-item" href="cv.html">CV</a></li>
+                            <li><a class="dropdown-item" href="index.html#about">ABOUT</a></li>
+                            <li><a class="dropdown-item" href="index.html#skills">SKILLS</a></li>
+                            <li><a class="dropdown-item" href="index.html#education">EDUCATION</a></li>
+                            <li><a class="dropdown-item" href="index.html#contact">CONTACT</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- PROJECT PAGE HEADER -->
+    <section class="projects-header">
+
+        <div class="container">
+
+            <span class="eyebrow">ACADEMIC PROJECTS</span>
+
+            <h1 class="projects-header-title">
+                My Projects
+            </h1>
+
+            <p class="projects-header-description">
+                A collection of academic projects completed throughout
+                my Information Technology studies, organized by
+                academic period.
+            </p>
+
         </div>
-    </div>
-</nav>
+    </section>
 
-<!-- =========================
-     PAGE HEADER
-========================= -->
-<header class="projects-header">
-    <div class="container">
+    <!-- PROJECTS -->
+    <main class="projects-content">
 
-        <span class="eyebrow">ACADEMIC PROJECTS</span>
+        <div class="container">
 
-        <h1 class="projects-header-title">
-            My Projects
-        </h1>
+            <!-- PRELIM -->
+            <section class="semester-section" id="prelim">
 
-        <p class="projects-header-description">
-            A collection of academic projects completed throughout
-            my Information Technology studies, organized by
-            academic period.
-        </p>
+                <div class="semester-header">
 
-    </div>
-</header>
+                    <div class="semester-number">01</div>
 
-<!-- =========================
-     PROJECTS
-========================= -->
-<main class="projects-content">
-    <div class="container">
+                    <div>
+                        <span class="semester-label">Academic Projects</span>
+                        <h2 class="semester-title">PRELIM</h2>
+                    </div>
 
-        <!-- =========================
-             PRELIM
-        ========================= -->
-        <section class="semester-section" id="prelim">
-
-            <div class="semester-header">
-                <div class="semester-number">01</div>
-
-                <div>
-                    <span class="semester-label">
-                        Academic Projects
-                    </span>
-
-                    <h2 class="semester-title">
-                        PRELIM
-                    </h2>
-                </div>
-            </div>
-
-            <div class="row g-4">
-
-                <!-- PRELIM PROJECT 1 -->
-                <div class="col-md-6 col-xl-4">
-                    <article class="academic-project-card">
-
-                        <img
-                            src="assets/images/PRELIMACT1.jpg"
-                            alt="Prelim Project 1 - Kiwi fruit illustration"
-                            class="academic-project-image"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
-
-                        <div class="project-image-placeholder" style="display:none;">
-                            <i class="bi bi-image"></i>
-                            <span>PRELIMACT1.jpg could not be loaded</span>
-                        </div>
-
-                        <div class="academic-project-content">
-
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    Academic
-                                </span>
-
-                                <span class="project-year">2026</span>
-                            </div>
-
-                            <h3 class="project-title">
-                                Fruitful Design
-                            </h3>
-
-                            <p class="project-description">
-                                A kiwi fruit illustration featuring
-                                a sliced kiwi and its green interior,
-                                created as an academic design activity.
-                            </p>
-
-                            <div class="project-technologies">
-                                <span class="technology-tag">Illustration</span>
-                                <span class="technology-tag">Digital Art</span>
-                            </div>
-
-                           
-
-                        </div>
-                    </article>
                 </div>
 
-                <!-- PRELIM PROJECT 2 -->
-                <div class="col-md-6 col-xl-4">
-                    <article class="academic-project-card">
+                <div class="row g-4">
 
-                        <img
-                            src="assets/images/PRELIMACT2.jpg"
-                            alt="Prelim Project 2 - iSTILO coffee logo"
-                            class="academic-project-image logo-image"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
+                    <!-- PRELIM ACTIVITY 1 -->
+                    <div class="col-md-6 col-xl-4">
 
-                        <div class="project-image-placeholder" style="display:none;">
-                            <i class="bi bi-image"></i>
-                            <span>PRELIMACT2.jpg could not be loaded</span>
-                        </div>
+                        <article class="academic-project-card">
 
-                        <div class="academic-project-content">
+                            <img
+                                src="assets/images/PRELIMACT1.jpg"
+                                alt="Kiwi fruit illustration"
+                                class="academic-project-image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    Academic
-                                </span>
-
-                                <span class="project-year">2026</span>
+                            <div class="project-image-placeholder">
+                                <i class="bi bi-image"></i>
+                                <span>PRELIMACT1.jpg could not be loaded</span>
                             </div>
 
-                            <h3 class="project-title">
-                                Brand Design
-                            </h3>
+                            <div class="academic-project-content">
 
-                            <p class="project-description">
-                                A coffee-inspired logo design featuring
-                                a steaming cup and scattered coffee beans.
-                            </p>
+                                <div class="project-meta">
+                                    <span class="project-category">Academic</span>
+                                    <span class="project-year">2026</span>
+                                </div>
 
-                            <div class="project-technologies">
-                                <span class="technology-tag">Logo Design</span>
-                                <span class="technology-tag">Graphics</span>
+                                <h3 class="project-title">
+                                    Fruitful Design
+                                </h3>
+
+                                <p class="project-description">
+                                    A kiwi fruit illustration featuring
+                                    a sliced kiwi and its green interior,
+                                    created as an academic design activity.
+                                </p>
+
+                                <div class="project-technologies">
+                                    <span class="technology-tag">Illustration</span>
+                                    <span class="technology-tag">Digital Art</span>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- PRELIM ACTIVITY 2 -->
+                    <div class="col-md-6 col-xl-4">
+
+                        <article class="academic-project-card">
+
+                            <img
+                                src="assets/images/PRELIMACT2.jpg"
+                                alt="iSTILO coffee logo"
+                                class="academic-project-image logo-image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+                            <div class="project-image-placeholder">
+                                <i class="bi bi-image"></i>
+                                <span>PRELIMACT2.jpg could not be loaded</span>
                             </div>
 
-                            
+                            <div class="academic-project-content">
 
-                        </div>
-                    </article>
+                                <div class="project-meta">
+                                    <span class="project-category">Academic</span>
+                                    <span class="project-year">2026</span>
+                                </div>
+
+                                <h3 class="project-title">
+                                    Brand Design
+                                </h3>
+
+                                <p class="project-description">
+                                    A coffee-inspired logo design featuring
+                                    a steaming cup and scattered coffee beans.
+                                </p>
+
+                                <div class="project-technologies">
+                                    <span class="technology-tag">Logo Design</span>
+                                    <span class="technology-tag">Graphics</span>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- MIDTERM -->
+            <section class="semester-section" id="midterm">
+
+                <div class="semester-header">
+
+                    <div class="semester-number">02</div>
+
+                    <div>
+                        <span class="semester-label">Academic Projects</span>
+                        <h2 class="semester-title">MIDTERM</h2>
+                    </div>
+
                 </div>
 
-            </div>
-        </section>
+                <div class="row g-4">
 
-        <!-- =========================
-             MIDTERM
-        ========================= -->
-        <section class="semester-section" id="midterm">
+                    <!-- MIDTERM ACTIVITY 1 -->
+                    <div class="col-md-6 col-xl-4">
 
-            <div class="semester-header">
-                <div class="semester-number">02</div>
+                        <article class="academic-project-card">
 
-                <div>
-                    <span class="semester-label">
-                        Academic Projects
-                    </span>
+                            <img
+                                src="assets/images/MIDTERMACT1.jpg"
+                                alt="Brew Haven coffee shop logo"
+                                class="academic-project-image logo-image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
-                    <h2 class="semester-title">
-                        MIDTERM
-                    </h2>
+                            <div class="project-image-placeholder">
+                                <i class="bi bi-image"></i>
+                                <span>MIDTERMACT1.jpg could not be loaded</span>
+                            </div>
+
+                            <div class="academic-project-content">
+
+                                <div class="project-meta">
+                                    <span class="project-category">Branding</span>
+                                    <span class="project-year">2026</span>
+                                </div>
+
+                                <h3 class="project-title">
+                                    Brew Haven Coffee Shop
+                                </h3>
+
+                                <p class="project-description">
+                                    A coffee shop logo concept for Brew Haven,
+                                    featuring a Pumpkin Spice Latte theme
+                                    inspired by the rainy season.
+                                </p>
+
+                                <div class="project-technologies">
+                                    <span class="technology-tag">Logo Design</span>
+                                    <span class="technology-tag">Branding</span>
+                                    <span class="technology-tag">Graphics</span>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- MIDTERM ACTIVITY 2 -->
+                    <div class="col-md-6 col-xl-4">
+
+                        <article class="academic-project-card">
+
+                            <img
+                                src="assets/images/MIDTERMACT2.jpg"
+                                alt="Gabi ng Lagim poster"
+                                class="academic-project-image poster-image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+
+                            <div class="project-image-placeholder">
+                                <i class="bi bi-image"></i>
+                                <span>MIDTERMACT2.jpg could not be loaded</span>
+                            </div>
+
+                            <div class="academic-project-content">
+
+                                <div class="project-meta">
+                                    <span class="project-category">Poster Design</span>
+                                    <span class="project-year">2026</span>
+                                </div>
+
+                                <h3 class="project-title">
+                                    Typography
+                                </h3>
+
+                                <p class="project-description">
+                                    A Filipino horror movie poster concept
+                                    using bold red typography and a dark
+                                    background to create a suspenseful mood.
+                                </p>
+
+                                <div class="project-technologies">
+                                    <span class="technology-tag">Typography</span>
+                                    <span class="technology-tag">Poster Design</span>
+                                    <span class="technology-tag">Graphics</span>
+                                </div>
+
+                            </div>
+                        </article>
+                    </div>
+
                 </div>
-            </div>
+            </section>
 
-            <div class="row g-4">
+            <!-- FINALS -->
+            <section class="semester-section" id="finals">
 
-                <!-- MIDTERM PROJECT 1 -->
-                <div class="col-md-6 col-xl-4">
-                    <article class="academic-project-card">
+                <div class="semester-header">
 
-                        <img
-                            src="assets/images/MIDTERMACT1.jpg"
-                            alt="Midterm Project 1 - Brew Haven Pumpkin Spice Latte logo"
-                            class="academic-project-image logo-image"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
+                    <div class="semester-number">03</div>
 
-                        <div class="project-image-placeholder" style="display:none;">
-                            <i class="bi bi-image"></i>
-                            <span>MIDTERMACT1.jpg could not be loaded</span>
-                        </div>
+                    <div>
+                        <span class="semester-label">Academic Projects</span>
+                        <h2 class="semester-title">FINALS</h2>
+                    </div>
 
-                        <div class="academic-project-content">
-
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    Branding
-                                </span>
-
-                                <span class="project-year">2026</span>
-                            </div>
-
-                            <h3 class="project-title">
-                                Brew Haven Coffee Shop
-                            </h3>
-
-                            <p class="project-description">
-                                A coffee shop logo concept for Brew Haven,
-                                featuring a Pumpkin Spice Latte theme
-                                inspired by the rainy season.
-                            </p>
-
-                            <div class="project-technologies">
-                                <span class="technology-tag">Logo Design</span>
-                                <span class="technology-tag">Branding</span>
-                                <span class="technology-tag">Graphics</span>
-                            </div>
-
-                            
-
-                        </div>
-                    </article>
-                </div>
-
-                <!-- MIDTERM PROJECT 2 -->
-                <div class="col-md-6 col-xl-4">
-                    <article class="academic-project-card">
-
-                        <img
-                            src="assets/images/MIDTERMACT2.jpg"
-                            alt="Midterm Project 2 - Gabi ng Lagim poster"
-                            class="academic-project-image poster-image"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
-
-                        <div class="project-image-placeholder" style="display:none;">
-                            <i class="bi bi-image"></i>
-                            <span>MIDTERMACT2.jpg could not be loaded</span>
-                        </div>
-
-                        <div class="academic-project-content">
-
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    Poster Design
-                                </span>
-
-                                <span class="project-year">2026</span>
-                            </div>
-
-                            <h3 class="project-title">
-                                Typography
-                            </h3>
-
-                            <p class="project-description">
-                                A Filipino horror movie poster concept
-                                using bold red typography and a dark
-                                background to create a suspenseful mood.
-                            </p>
-
-                            <div class="project-technologies">
-                                <span class="technology-tag">Typography</span>
-                                <span class="technology-tag">Poster Design</span>
-                                <span class="technology-tag">Graphics</span>
-                            </div>
-
-                            
-
-                        </div>
-                    </article>
                 </div>
 
-            </div>
-        </section>
+                <div class="row g-4">
 
-        <!-- =========================
-             FINALS
-        ========================= -->
-        <section class="semester-section" id="finals">
+                    <!-- FINAL ACTIVITY -->
+                    <div class="col-md-6 col-xl-4">
 
-            <div class="semester-header">
-                <div class="semester-number">03</div>
+                        <article class="academic-project-card">
 
-                <div>
-                    <span class="semester-label">
-                        Academic Projects
-                    </span>
+                            <img
+                                src="assets/images/FINALACT1.jpg"
+                                alt="Portfolio wireframe project"
+                                class="academic-project-image"
+                                loading="lazy"
+                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
-                    <h2 class="semester-title">
-                        FINALS
-                    </h2>
-                </div>
-            </div>
-
-            <div class="row g-4">
-
-                <!-- FINAL PROJECT 1 -->
-                <div class="col-md-6 col-xl-4">
-                    <article class="academic-project-card">
-
-                        <img
-                            src="assets/images/FINALACT1.jpg"
-                            alt="Final Project 1 - Portfolio website screenshots"
-                            class="academic-project-image screenshot-image"
-                            loading="lazy"
-                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-                        >
-
-                        <div class="project-image-placeholder" style="display:none;">
-                            <i class="bi bi-image"></i>
-                            <span>FINALACT1.jpg could not be loaded</span>
-                        </div>
-
-                        <div class="academic-project-content">
-
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    Web Development
-                                </span>
-
-                                <span class="project-year">2026</span>
+                            <div class="project-image-placeholder">
+                                <i class="bi bi-image"></i>
+                                <span>FINALACT1.jpg could not be loaded</span>
                             </div>
 
-                            <h3 class="project-title">
-                                Wireframe
-                            </h3>
+                            <div class="academic-project-content">
 
-                            <p class="project-description">
-                                A personal portfolio website showcasing
-                                academic projects, technical skills,
-                                education, experience, and contact details.
-                            </p>
+                                <div class="project-meta">
+                                    <span class="project-category">Web Development</span>
+                                    <span class="project-year">2026</span>
+                                </div>
 
-                            <div class="project-technologies">
-                                <span class="technology-tag">HTML</span>
-                                <span class="technology-tag">CSS</span>
-                                <span class="technology-tag">JavaScript</span>
-                                <span class="technology-tag">Bootstrap</span>
+                                <h3 class="project-title">
+                                    Wireframe
+                                </h3>
+
+                                <p class="project-description">
+                                    A personal portfolio website showcasing
+                                    academic projects, technical skills,
+                                    education, experience, and contact details.
+                                </p>
+
+                                <div class="project-technologies">
+                                    <span class="technology-tag">HTML</span>
+                                    <span class="technology-tag">CSS</span>
+                                    <span class="technology-tag">JavaScript</span>
+                                    <span class="technology-tag">Bootstrap</span>
+                                </div>
+
                             </div>
+                        </article>
+                    </div>
 
-                           
-
-                        </div>
-                    </article>
                 </div>
+            </section>
 
-                <!-- FINAL PROJECT 2 -->
-                
+        </div>
+    </main>
 
-            </div>
-        </section>
+    <!-- FOOTER -->
+    <footer class="projects-footer">
 
-    </div>
-</main>
+        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-secondary">
 
-<!-- =========================
-     FOOTER
-========================= -->
-<footer class="projects-footer">
-    <div class="container">
-
-        <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
-
-            <span class="small text-secondary">
-                &copy; 2026 Troi Manimtim.
+            <span>
+                &copy; <span id="year"></span> Troi Manimtim.
             </span>
 
-            <span class="small text-secondary">
+            <span>
                 Information Technology Portfolio
             </span>
 
         </div>
+    </footer>
 
-    </div>
-</footer>
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Bootstrap JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- THEME SWITCH -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
 
-<!-- Theme Toggle -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const html = document.documentElement;
-        const themeToggle = document.getElementById("themeToggle");
-        const themeIcon = themeToggle
-            ? themeToggle.querySelector("i")
-            : null;
+            const html = document.documentElement;
+            const toggle = document.getElementById("themeToggle");
+            const icon = toggle.querySelector("i");
 
-        function updateThemeIcon() {
-            if (!themeIcon) return;
+            function updateIcon() {
+                const dark = html.getAttribute("data-bs-theme") === "dark";
 
-            const currentTheme = html.getAttribute("data-bs-theme");
+                icon.className = dark
+                    ? "bi bi-sun"
+                    : "bi bi-moon-stars";
 
-            if (currentTheme === "dark") {
-                themeIcon.className = "bi bi-sun";
-                themeToggle.setAttribute(
+                toggle.setAttribute(
                     "aria-label",
-                    "Switch to light mode"
-                );
-            } else {
-                themeIcon.className = "bi bi-moon-stars";
-                themeToggle.setAttribute(
-                    "aria-label",
-                    "Switch to dark mode"
+                    dark ? "Switch to light mode" : "Switch to dark mode"
                 );
             }
-        }
 
-        const savedTheme = localStorage.getItem("portfolio-theme");
+            const storedTheme = localStorage.getItem("portfolio-theme");
 
-        if (savedTheme === "dark" || savedTheme === "light") {
-            html.setAttribute("data-bs-theme", savedTheme);
-        }
+            if (storedTheme === "dark" || storedTheme === "light") {
+                html.setAttribute("data-bs-theme", storedTheme);
+            }
 
-        updateThemeIcon();
+            updateIcon();
 
-        if (themeToggle) {
-            themeToggle.addEventListener("click", function () {
-                const currentTheme =
-                    html.getAttribute("data-bs-theme");
+            toggle.addEventListener("click", function () {
 
-                const newTheme =
-                    currentTheme === "dark" ? "light" : "dark";
+                const dark = html.getAttribute("data-bs-theme") === "dark";
+                const newTheme = dark ? "light" : "dark";
 
                 html.setAttribute("data-bs-theme", newTheme);
                 localStorage.setItem("portfolio-theme", newTheme);
 
-                updateThemeIcon();
+                updateIcon();
             });
-        }
-    });
-</script>
+
+            const year = document.getElementById("year");
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
 
 </body>
 </html>
