@@ -1249,3 +1249,70 @@ footer {
         min-height: 0;
     }
 }
+/* FORCE MOBILE HERO ORDER */
+@media screen and (max-width: 991.98px) {
+
+    #home .hero-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    #home .hero-row > .hero-photo-column {
+        order: 1 !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    #home .hero-row > .hero-text-column {
+        order: 2 !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+
+    #home .profile-card {
+        width: min(100%, 280px) !important;
+        margin: 0 auto !important;
+    }
+
+    #home .hero-description {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    #home .hero-actions {
+        justify-content: center !important;
+    }
+}
+
+/* DESKTOP: TEXT LEFT, PHOTO RIGHT */
+@media screen and (min-width: 992px) {
+
+    #home .hero-row {
+        flex-direction: row !important;
+    }
+
+    #home .hero-photo-column {
+        order: 2 !important;
+    }
+
+    #home .hero-text-column {
+        order: 1 !important;
+        text-align: left;
+    }
+}
+
+/* EXTRA SMALL PHONES */
+@media screen and (max-width: 480px) {
+
+    #home .profile-card {
+        width: min(100%, 240px) !important;
+    }
+
+    #home .hero-actions .btn {
+        width: 100%;
+    }
+}
