@@ -1316,3 +1316,126 @@ footer {
         width: 100%;
     }
 }
+
+/* HEADER NAVIGATION */
+.portfolio-navbar .container {
+    gap: 1rem;
+}
+
+.portfolio-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+}
+
+.portfolio-nav-links a,
+.mobile-nav-links a {
+    text-decoration: none;
+    color: var(--bs-body-color);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    transition: color .2s ease;
+}
+
+.portfolio-nav-links a:hover,
+.mobile-nav-links a:hover {
+    color: #2563eb;
+}
+
+/* CONTROLS */
+.portfolio-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 1.25rem;
+    flex-shrink: 0;
+}
+
+.portfolio-menu-button {
+    display: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 6px;
+    background: #343a40;
+    color: white;
+    cursor: pointer;
+}
+
+.portfolio-menu-button i {
+    font-size: 24px;
+}
+
+/* MOBILE NAVIGATION */
+.mobile-nav-links {
+    display: none;
+    flex-direction: column;
+    padding: 10px 20px 18px;
+    border-top: 1px solid var(--bs-border-color);
+    background: var(--bs-body-bg);
+}
+
+.mobile-nav-links a {
+    padding: 12px 5px;
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+.mobile-nav-links a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-links.show {
+    display: flex;
+}
+
+/* RESPONSIVE */
+@media (max-width: 991px) {
+    .portfolio-nav-links {
+        display: none;
+    }
+
+    .portfolio-menu-button {
+        display: inline-flex;
+    }
+
+    .portfolio-controls {
+        margin-left: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .mobile-nav-links {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-navbar .brand-mark {
+        width: 36px;
+        height: 36px;
+        font-size: 12px;
+    }
+
+    .brand-name {
+        font-size: 13px;
+    }
+
+    .brand-name small {
+        font-size: 10px;
+    }
+
+    .portfolio-controls {
+        gap: 6px;
+    }
+
+    .portfolio-menu-button,
+    #themeToggle {
+        width: 35px;
+        height: 35px;
+    }
+}
+
