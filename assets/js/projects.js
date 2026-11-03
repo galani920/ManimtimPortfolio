@@ -1,4 +1,4 @@
-
+```javascript
 document.addEventListener("DOMContentLoaded", function () {
     "use strict";
 
@@ -10,14 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("themeToggle");
     const themeIcon = themeToggle?.querySelector("i");
 
-    try {
-        const savedTheme = localStorage.getItem("portfolio-theme");
+    let savedTheme = null;
 
-        if (savedTheme === "dark" || savedTheme === "light") {
-            html.setAttribute("data-bs-theme", savedTheme);
-        }
+    try {
+        savedTheme = localStorage.getItem("portfolio-theme");
     } catch (error) {
-        // Continue using the current theme if storage is unavailable.
+        // Continue using the page's default theme if storage is unavailable.
+    }
+
+    if (savedTheme === "dark" || savedTheme === "light") {
+        html.setAttribute("data-bs-theme", savedTheme);
     }
 
     function updateThemeIcon() {
@@ -28,6 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
         themeIcon.className = isDark
             ? "bi bi-sun"
             : "bi bi-moon-stars";
+
+        themeToggle.setAttribute(
+            "aria-label",
+            isDark ? "Switch to light mode" : "Switch to dark mode"
+        );
+
+        themeToggle.setAttribute("aria-pressed", String(isDark));
     }
 
     updateThemeIcon();
@@ -41,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             localStorage.setItem("portfolio-theme", newTheme);
         } catch (error) {
-            // The theme still changes for the current page.
+            // The theme still works for the current page session.
         }
 
         updateThemeIcon();
@@ -71,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const currentHash = window.location.hash || "#home";
 
-        navLinks.forEach(link => {
+        navLinks.forEach(function (link) {
             let linkURL;
 
             try {
@@ -92,7 +101,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentPage === "cv.html"
             ) {
                 link.classList.add("active");
-            } else if (linkURL.hash === currentHash) {
+                return;
+            }
+
+            if (linkURL.hash === currentHash) {
                 link.classList.add("active");
             }
         });
@@ -105,18 +117,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       PROJECT SEARCH AND SEMESTER FILTER
+       PROJECT SEARCH AND SEMESTER FILTERS
     ========================================= */
 
     const searchInput = document.getElementById("projectSearch");
     const clearButton = document.getElementById("clearSearch");
+    const resetButton = document.getElementById("resetProjects");
+    const noProjectsReset = document.getElementById("noProjectsReset");
+
     const filterButtons = document.querySelectorAll(".filter-btn");
-
-    // Supports both project-item and the original project card markup.
-    const projectItems = document.querySelectorAll(
-        ".project-item, .academic-project-card"
+    const projectItems = Array.from(
+        document.querySelectorAll(".project-item")
     );
-
     const semesterSections = document.querySelectorAll(".semester-section");
 
     const resultCount = document.getElementById("projectResultCount");
@@ -124,94 +136,103 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let activeFilter = "all";
 
-    function getProjectSemester(project) {
-        const item = project.closest(".project-item") || project;
+    function normalizeText(value) {
+        return String(value || "")
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, " ");
+    }
 
-        return (
-            item.dataset.semester ||
-            project.dataset.semester ||
-            project.closest(".semester-section")?.id ||
-            ""
-        ).toLowerCase();
+    function updateFilterButtons() {
+        filterButtons.forEach(function (button) {
+            const isActive = (button.dataset.filter || "all") === activeFilter;
+
+            button.classList.toggle("active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
     }
 
     function filterProjects() {
-        const searchValue = (searchInput?.value || "")
-            .toLowerCase()
-            .trim();
-
+        const searchValue = normalizeText(searchInput?.value);
         let visibleCount = 0;
 
-        projectItems.forEach(project => {
-            const semester = getProjectSemester(project);
+        projectItems.forEach(function (project) {
+            const semester = project.dataset.semester || "all";
 
-            const searchableText = (
+            const searchableText = normalizeText(
                 (project.dataset.search || "") + " " +
-                (project.dataset.title || "") + " " +
-                (project.dataset.description || "") + " " +
                 project.textContent
-            ).toLowerCase();
+            );
 
-            const matchesSearch = searchableText.includes(searchValue);
+            const matchesSearch =
+                searchValue === "" || searchableText.includes(searchValue);
 
             const matchesFilter =
-                activeFilter === "all" ||
-                semester === activeFilter ||
-                semester.includes(activeFilter);
+                activeFilter === "all" || semester === activeFilter;
 
             const shouldDisplay = matchesSearch && matchesFilter;
 
             project.style.display = shouldDisplay ? "" : "none";
+            project.setAttribute("aria-hidden", String(!shouldDisplay));
 
             if (shouldDisplay) {
                 visibleCount++;
             }
         });
 
-        // Hide semester sections with no visible projects.
-        semesterSections.forEach(section => {
+        /* Hide semester headings when no cards match. */
+
+        semesterSections.forEach(function (section) {
             const visibleProjects = Array.from(
-                section.querySelectorAll(
-                    ".project-item, .academic-project-card"
-                )
-            ).filter(project => {
-                return project.style.display !== "none" &&
-                    getComputedStyle(project).display !== "none";
+                section.querySelectorAll(".project-item")
+            ).some(function (project) {
+                return project.style.display !== "none";
             });
 
-            section.style.display =
-                visibleProjects.length > 0 ? "" : "none";
+            section.style.display = visibleProjects ? "" : "none";
         });
+
+        /* Update the results counter. */
 
         if (resultCount) {
             resultCount.textContent =
                 `Showing ${visibleCount} of ${projectItems.length} projects`;
         }
 
+        /* Display the empty-results message. */
+
         if (noProjects) {
             noProjects.hidden = visibleCount !== 0;
         }
+
+        updateFilterButtons();
     }
+
+    /* Search as the user types. */
 
     searchInput?.addEventListener("input", filterProjects);
 
-    filterButtons.forEach(button => {
+    /* Filter by semester. */
+
+    filterButtons.forEach(function (button) {
         button.addEventListener("click", function () {
-            filterButtons.forEach(btn => {
-                btn.classList.remove("active");
-                btn.setAttribute("aria-pressed", "false");
-            });
-
-            this.classList.add("active");
-            this.setAttribute("aria-pressed", "true");
-
-            activeFilter = (
-                this.dataset.filter || "all"
-            ).toLowerCase();
-
+            activeFilter = button.dataset.filter || "all";
             filterProjects();
         });
     });
+
+    /* Clear the search field and show projects for the active filter. */
+
+    clearButton?.addEventListener("click", function () {
+        if (searchInput) {
+            searchInput.value = "";
+        }
+
+        filterProjects();
+        searchInput?.focus();
+    });
+
+    /* Reset both the search and semester filter. */
 
     function resetProjectFilters() {
         if (searchInput) {
@@ -220,21 +241,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         activeFilter = "all";
 
-        filterButtons.forEach(button => {
-            const isAll = button.dataset.filter === "all";
-
-            button.classList.toggle("active", isAll);
-            button.setAttribute("aria-pressed", String(isAll));
-        });
-
         filterProjects();
-        searchInput?.focus();
     }
 
-    clearButton?.addEventListener("click", resetProjectFilters);
-
-    document.getElementById("resetProjects")
-        ?.addEventListener("click", resetProjectFilters);
+    resetButton?.addEventListener("click", resetProjectFilters);
+    noProjectsReset?.addEventListener("click", resetProjectFilters);
 
 
     /* =========================================
@@ -313,20 +324,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Brew Haven is a seasonal coffee shop branding concept " +
                 "centered on Pumpkin Spice Latte and the cozy atmosphere " +
                 "of the rainy season. The project develops a consistent " +
-                "visual identity across promotional materials and digital " +
-                "marketing assets.",
+                "visual identity across different promotional materials " +
+                "and digital marketing assets.",
 
             objectives: [
                 "Develop a cohesive coffee shop brand identity.",
                 "Create a recognizable logo for Brew Haven.",
                 "Promote the Pumpkin Spice Latte concept through visual advertising.",
-                "Maintain consistent branding across marketing materials.",
+                "Maintain consistent branding across different marketing materials.",
                 "Create promotional designs that communicate the rainy-season theme."
             ],
 
             features: [
                 "Original Brew Haven coffee shop logo.",
-                "Pumpkin Spice Latte promotional poster.",
+                "Pumpkin Spice Latte promotional banner.",
                 "Landing page visual design.",
                 "Newsletter header design.",
                 "Social media promotional post.",
@@ -426,36 +437,67 @@ document.addEventListener("DOMContentLoaded", function () {
        PROJECT DETAILS MODAL
     ========================================= */
 
-    const modalElement = document.getElementById("projectModal");
+    const projectModalElement = document.getElementById("projectModal");
 
     const projectModal =
-        modalElement && window.bootstrap?.Modal
-            ? bootstrap.Modal.getOrCreateInstance(modalElement)
+        projectModalElement &&
+        typeof bootstrap !== "undefined" &&
+        bootstrap.Modal
+            ? bootstrap.Modal.getOrCreateInstance(projectModalElement)
             : null;
 
     const modalTitle = document.getElementById("projectModalTitle");
     const modalCategory = document.getElementById("modalCategory");
     const modalDescription = document.getElementById("modalDescription");
-
     const modalObjectives = document.getElementById("modalObjectives");
     const modalFeatures = document.getElementById("modalFeatures");
     const modalTechnologies = document.getElementById("modalTechnologies");
     const modalImages = document.getElementById("modalProjectImages");
 
-    function populateList(container, items, className = "") {
+    function createListItems(container, items) {
         if (!container) return;
 
         container.replaceChildren();
 
-        items.forEach(item => {
-            const element = document.createElement("li");
-            element.textContent = item;
+        items.forEach(function (itemText) {
+            const listItem = document.createElement("li");
+            listItem.textContent = itemText;
+            container.appendChild(listItem);
+        });
+    }
 
-            if (className) {
-                element.className = className;
-            }
+    function createTechnologyTags(container, technologies) {
+        if (!container) return;
 
-            container.appendChild(element);
+        container.replaceChildren();
+
+        technologies.forEach(function (technology) {
+            const tag = document.createElement("span");
+
+            tag.className = "technology-tag";
+            tag.textContent = technology;
+
+            container.appendChild(tag);
+        });
+    }
+
+    function createProjectGallery(container, project) {
+        if (!container) return;
+
+        container.replaceChildren();
+
+        project.images.forEach(function (imagePath, index) {
+            const image = document.createElement("img");
+
+            image.src = imagePath;
+            image.alt = `${project.title} project image ${index + 1}`;
+            image.loading = "lazy";
+
+            image.addEventListener("error", function () {
+                image.remove();
+            }, { once: true });
+
+            container.appendChild(image);
         });
     }
 
@@ -463,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const project = projectData[projectID];
 
         if (!project) {
-            console.warn("Project details not found:", projectID);
+            console.warn(`No project details found for "${projectID}".`);
             return;
         }
 
@@ -479,150 +521,77 @@ document.addEventListener("DOMContentLoaded", function () {
             modalDescription.textContent = project.description;
         }
 
-        populateList(modalObjectives, project.objectives);
-        populateList(modalFeatures, project.features);
-
-        if (modalTechnologies) {
-            modalTechnologies.replaceChildren();
-
-            project.technologies.forEach(technology => {
-                const tag = document.createElement("span");
-
-                tag.className = "technology-tag";
-                tag.textContent = technology;
-
-                modalTechnologies.appendChild(tag);
-            });
-        }
-
-        if (modalImages) {
-            modalImages.replaceChildren();
-
-            project.images.forEach((imagePath, index) => {
-                const imageWrapper = document.createElement("div");
-                imageWrapper.className = "modal-project-image-wrapper";
-
-                const image = document.createElement("img");
-                image.src = imagePath;
-                image.alt = `${project.title} — image ${index + 1}`;
-                image.loading = "lazy";
-
-                image.onerror = function () {
-                    imageWrapper.remove();
-                };
-
-                imageWrapper.appendChild(image);
-                modalImages.appendChild(imageWrapper);
-            });
-        }
+        createListItems(modalObjectives, project.objectives);
+        createListItems(modalFeatures, project.features);
+        createTechnologyTags(modalTechnologies, project.technologies);
+        createProjectGallery(modalImages, project);
 
         if (projectModal) {
             projectModal.show();
         } else {
-            // Fallback if Bootstrap's modal markup or script is missing.
-            console.warn(
-                "Project modal is unavailable. Check the modal HTML and Bootstrap script."
+            console.error(
+                "The project modal could not open. Check that Bootstrap's JavaScript bundle is loaded."
             );
         }
     }
 
-    // Buttons can use data-project="brew-haven", for example.
-    document.querySelectorAll(".view-project-btn").forEach(button => {
+    document.querySelectorAll(".view-project-btn").forEach(function (button) {
         button.addEventListener("click", function () {
-            openProjectDetails(this.dataset.project);
+            openProjectDetails(button.dataset.project);
         });
-    });
-
-    // Also supports cards with a data-project attribute.
-    document.querySelectorAll(".project-item[data-project], " +
-        ".academic-project-card[data-project]").forEach(card => {
-
-        card.querySelectorAll(".view-project-btn").forEach(() => {
-            // The button handler above takes priority.
-        });
-
-        if (card.querySelector(".view-project-btn")) return;
-
-        card.querySelectorAll(".view-project, .project-view-button")
-            .forEach(button => {
-                button.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    openProjectDetails(card.dataset.project);
-                });
-            });
     });
 
 
     /* =========================================
-       BREW HAVEN CAROUSEL
+       BREW HAVEN IMAGE CAROUSEL
     ========================================= */
 
     const brewCarousel = document.getElementById("brewHavenCarousel");
 
-    if (brewCarousel && window.bootstrap?.Carousel) {
-        const carousel = bootstrap.Carousel.getOrCreateInstance(
-            brewCarousel,
-            {
-                interval: false,
-                ride: false,
-                wrap: true,
-                touch: true,
-                keyboard: true
-            }
-        );
-
-        // Explicit controls support custom previous/next buttons too.
-        document.querySelectorAll("[data-brew-prev]").forEach(button => {
-            button.addEventListener("click", () => carousel.prev());
-        });
-
-        document.querySelectorAll("[data-brew-next]").forEach(button => {
-            button.addEventListener("click", () => carousel.next());
-        });
-
-        // Update optional slide counter and accessible slide labels.
-        const slideCounter = document.getElementById("brewHavenSlideCounter");
-        const slides = brewCarousel.querySelectorAll(".carousel-item");
-
-        function updateCarouselCounter() {
-            const activeSlide = brewCarousel.querySelector(".carousel-item.active");
-            const activeIndex = Array.from(slides).indexOf(activeSlide);
-
-            if (slideCounter) {
-                slideCounter.textContent =
-                    `${Math.max(activeIndex + 1, 1)} / ${slides.length}`;
-            }
-        }
-
-        brewCarousel.addEventListener(
-            "slid.bs.carousel",
-            updateCarouselCounter
-        );
-
-        updateCarouselCounter();
-
-        // Clicking an image opens it larger in a new browser tab.
-        brewCarousel.querySelectorAll(".carousel-item img").forEach(image => {
-            image.style.cursor = "zoom-in";
-            image.title = "Open full-size image in a new tab";
-
-            image.addEventListener("click", function () {
-                if (!this.src) return;
-
-                const imageWindow = window.open(this.src, "_blank", "noopener");
-
-                if (imageWindow) {
-                    imageWindow.opener = null;
-                }
-            });
+    if (
+        brewCarousel &&
+        typeof bootstrap !== "undefined" &&
+        bootstrap.Carousel
+    ) {
+        bootstrap.Carousel.getOrCreateInstance(brewCarousel, {
+            interval: false,
+            ride: false,
+            wrap: true,
+            touch: true,
+            keyboard: true
         });
     }
 
 
     /* =========================================
-       INITIALIZE
+       PROJECT IMAGE FALLBACKS
     ========================================= */
 
-    filterProjects();
+    document.querySelectorAll(".academic-project-image").forEach(function (image) {
+        function showImageFallback() {
+            image.style.display = "none";
 
+            const placeholder = image.nextElementSibling;
+
+            if (placeholder?.classList.contains("project-image-placeholder")) {
+                placeholder.style.display = "flex";
+            }
+        }
+
+        image.addEventListener("error", showImageFallback);
+
+        // Also handle images that failed before this script initialized.
+        if (image.complete && image.naturalWidth === 0) {
+            showImageFallback();
+        }
+    });
+
+
+    /* =========================================
+       INITIALIZE PAGE
+    ========================================= */
+
+    updateActiveNavigation();
+    filterProjects();
 });
+```
