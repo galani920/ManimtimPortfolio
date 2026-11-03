@@ -8,12 +8,21 @@
 
     <title>Projects | Troi Manimtim</title>
 
+    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICONS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* NAVIGATION */
+
+        /* ==========================================
+           NAVIGATION
+        ========================================== */
+
         .portfolio-navbar {
             position: relative;
             z-index: 1030;
@@ -90,7 +99,8 @@
             color: white;
         }
 
-        /* DROPDOWN: NO DIVIDERS */
+        /* NAVIGATION DROPDOWN */
+
         .portfolio-dropdown {
             min-width: 220px;
             max-height: 75vh;
@@ -129,7 +139,11 @@
             scroll-padding-top: 90px;
         }
 
-        /* PROJECT HEADER */
+
+        /* ==========================================
+           PROJECT HEADER
+        ========================================== */
+
         .projects-header {
             padding: 7rem 0 5rem;
             position: relative;
@@ -179,7 +193,11 @@
             line-height: 1.7;
         }
 
-        /* PROJECT SECTIONS */
+
+        /* ==========================================
+           PROJECT CONTENT
+        ========================================== */
+
         .projects-content {
             padding: 5rem 0 7rem;
         }
@@ -192,13 +210,17 @@
             margin-bottom: 0;
         }
 
+        .semester-section[hidden] {
+            display: none !important;
+        }
+
         .semester-header {
             display: flex;
             align-items: center;
             gap: 1.25rem;
             margin-bottom: 2.5rem;
             padding-bottom: 1.25rem;
-            border-bottom: 1px solid var(--border, var(--bs-border-color));
+            border-bottom: 1px solid var(--bs-border-color);
         }
 
         .semester-number {
@@ -233,15 +255,121 @@
             letter-spacing: -.055em;
         }
 
-        /* PROJECT CARDS */
+
+        /* ==========================================
+           SEARCH AND FILTER
+        ========================================== */
+
+        .project-toolbar {
+            padding: 2rem;
+            margin-bottom: 5rem !important;
+            border: 1px solid var(--bs-border-color);
+            border-radius: 16px;
+            background: var(--bs-body-bg);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .045);
+        }
+
+        .project-toolbar-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -.04em;
+        }
+
+        .project-search-wrapper {
+            position: relative;
+        }
+
+        .project-search-wrapper > i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--bs-secondary-color);
+            z-index: 2;
+        }
+
+        .project-search-wrapper input {
+            min-height: 46px;
+            padding-left: 43px;
+            padding-right: 40px;
+            border-radius: 9px;
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+        }
+
+        .project-toolbar .form-select {
+            min-height: 46px;
+            border-radius: 9px;
+            background-color: var(--bs-body-bg);
+            color: var(--bs-body-color);
+        }
+
+        .project-toolbar .btn {
+            min-height: 46px;
+            border-radius: 9px;
+            font-weight: 600;
+        }
+
+        .project-count {
+            font-size: .8rem;
+            color: var(--bs-secondary-color);
+        }
+
+        .project-count strong {
+            color: var(--bs-body-color);
+        }
+
+        .search-clear-button {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: var(--bs-secondary-color);
+            display: none;
+            padding: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .search-clear-button.show {
+            display: block;
+        }
+
+        /* NO RESULTS */
+
+        .no-projects {
+            padding: 4rem 1rem;
+            text-align: center;
+            border: 1px dashed var(--bs-border-color);
+            border-radius: 14px;
+            background: var(--bs-body-bg);
+        }
+
+        .no-projects i {
+            font-size: 3rem;
+            color: var(--bs-secondary-color);
+        }
+
+        .no-projects h4 {
+            margin-top: 1rem;
+            font-weight: 800;
+        }
+
+
+        /* ==========================================
+           PROJECT CARDS
+        ========================================== */
+
         .academic-project-card {
             height: 100%;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--border, var(--bs-border-color));
+            border: 1px solid var(--bs-border-color);
             border-radius: 16px;
-            background: var(--card, var(--bs-body-bg));
+            background: var(--bs-body-bg);
             box-shadow: 0 10px 30px rgba(15, 23, 42, .045);
             transition: transform .25s ease, box-shadow .25s ease;
         }
@@ -249,6 +377,10 @@
         .academic-project-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 45px rgba(15, 23, 42, .1);
+        }
+
+        .academic-project-card[hidden] {
+            display: none !important;
         }
 
         .academic-project-image {
@@ -300,6 +432,7 @@
         }
 
         .project-category {
+            display: inline-flex;
             padding: .35rem .65rem;
             border-radius: 6px;
             background: rgba(37, 99, 235, .08);
@@ -340,17 +473,99 @@
             display: inline-flex;
             padding: .35rem .6rem;
             border-radius: 999px;
-            background: var(--bs-body-bg);
+            background: var(--bs-tertiary-bg);
             border: 1px solid var(--bs-border-color);
             color: var(--bs-secondary-color);
             font-size: .68rem;
             font-weight: 600;
         }
 
+        .view-project-btn {
+            width: 100%;
+            padding: .7rem 1rem;
+            border-radius: 8px;
+            font-size: .85rem;
+            font-weight: 600;
+        }
+
+
+        /* ==========================================
+           PROJECT DETAILS MODAL
+        ========================================== */
+
+        .project-details-modal {
+            background: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .project-details-modal .modal-header,
+        .project-details-modal .modal-footer {
+            border-color: var(--bs-border-color) !important;
+        }
+
+        .project-details-image {
+            width: 100%;
+            max-height: 380px;
+            object-fit: contain;
+            display: block;
+            background: #171717;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-details-modal .modal-body section {
+            padding-bottom: 1.25rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+
+        .project-details-modal .modal-body section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .project-details-modal h6 {
+            color: var(--bs-body-color);
+            margin-bottom: .85rem;
+            font-weight: 750;
+        }
+
+        .project-details-modal p,
+        .project-details-modal li {
+            font-size: .88rem;
+            line-height: 1.8;
+        }
+
+        .project-details-modal ul {
+            padding-left: 1.25rem;
+        }
+
+        .project-details-modal li {
+            margin-bottom: .4rem;
+            color: var(--bs-secondary-color);
+        }
+
+        .project-details-modal .technology-tag {
+            margin-bottom: .25rem;
+        }
+
+
+        /* ==========================================
+           FOOTER
+        ========================================== */
+
         .projects-footer {
             border-top: 1px solid var(--bs-border-color);
             padding: 2rem 0;
         }
+
+
+        /* ==========================================
+           DARK MODE
+        ========================================== */
 
         [data-bs-theme="dark"] .projects-header::before {
             background-image:
@@ -365,7 +580,17 @@
                 );
         }
 
+        [data-bs-theme="dark"] .project-toolbar {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .15);
+        }
+
+
+        /* ==========================================
+           RESPONSIVE
+        ========================================== */
+
         @media (max-width: 767px) {
+
             .projects-header {
                 padding: 5rem 0 3.5rem;
             }
@@ -399,9 +624,11 @@
             .project-image-placeholder {
                 height: 220px;
             }
+
         }
 
         @media (max-width: 480px) {
+
             .portfolio-navbar .brand-mark {
                 width: 36px;
                 height: 36px;
@@ -429,13 +656,28 @@
             .portfolio-dropdown {
                 min-width: 190px;
             }
+
+            .project-toolbar {
+                padding: 1.25rem;
+            }
+
+            .project-details-modal .modal-body {
+                padding: 1.25rem !important;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+
+    <!-- ==========================================
+         NAVIGATION
+    ========================================== -->
+
     <header class="sticky-top">
 
         <nav class="navbar glass-nav border-bottom portfolio-navbar">
@@ -463,7 +705,9 @@
                         type="button"
                         class="btn btn-sm btn-outline-secondary rounded-pill"
                         aria-label="Toggle dark mode">
+
                         <i class="bi bi-moon-stars"></i>
+
                     </button>
 
                     <div class="dropdown">
@@ -474,27 +718,58 @@
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                             aria-label="Open navigation menu">
+
                             <i class="bi bi-list"></i>
+
                         </button>
 
                         <ul class="dropdown-menu dropdown-menu-end portfolio-dropdown shadow">
 
-                            <li><a class="dropdown-item" href="index.html#home">HOME</a></li>
-                            <li><a class="dropdown-item" href="project.html">PROJECTS</a></li>
-                            <li><a class="dropdown-item" href="cv.html">CV</a></li>
-                            <li><a class="dropdown-item" href="index.html#about">ABOUT</a></li>
-                            <li><a class="dropdown-item" href="index.html#skills">SKILLS</a></li>
-                            <li><a class="dropdown-item" href="index.html#education">EDUCATION</a></li>
-                            <li><a class="dropdown-item" href="index.html#contact">CONTACT</a></li>
+                            <li>
+                                <a class="dropdown-item" href="index.html#home">HOME</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="project.html">PROJECTS</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="cv.html">CV</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="index.html#about">ABOUT</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="index.html#skills">SKILLS</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="index.html#education">EDUCATION</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="index.html#contact">CONTACT</a>
+                            </li>
 
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
         </nav>
+
     </header>
 
-    <!-- PROJECT PAGE HEADER -->
+
+    <!-- ==========================================
+         PROJECT HEADER
+    ========================================== -->
+
     <section class="projects-header">
 
         <div class="container">
@@ -506,20 +781,199 @@
             </h1>
 
             <p class="projects-header-description">
+
                 A collection of academic projects completed throughout
                 my Information Technology studies, organized by
-                academic period.
+                academic period. Explore my creative work, design
+                concepts, and technical activities.
+
             </p>
 
         </div>
+
     </section>
 
-    <!-- PROJECTS -->
+
+    <!-- ==========================================
+         MAIN PROJECT CONTENT
+    ========================================== -->
+
     <main class="projects-content">
 
         <div class="container">
 
-            <!-- PRELIM -->
+
+            <!-- ==========================================
+                 SEARCH AND FILTER
+            ========================================== -->
+
+            <section class="project-toolbar">
+
+                <div class="mb-4">
+
+                    <span class="semester-label">
+                        EXPLORE MY WORK
+                    </span>
+
+                    <h2 class="project-toolbar-title mb-2">
+                        Find a Project
+                    </h2>
+
+                    <p class="text-secondary small mb-0">
+                        Search and filter projects by title, technology,
+                        category, or academic period.
+                    </p>
+
+                </div>
+
+
+                <div class="row g-3 align-items-center">
+
+
+                    <!-- SEARCH INPUT -->
+
+                    <div class="col-lg-5">
+
+                        <div class="project-search-wrapper">
+
+                            <i class="bi bi-search"></i>
+
+                            <input
+                                type="search"
+                                id="projectSearch"
+                                class="form-control"
+                                placeholder="Search projects, technologies, or keywords..."
+                                autocomplete="off"
+                                aria-label="Search projects">
+
+                            <button
+                                type="button"
+                                id="searchClear"
+                                class="search-clear-button"
+                                aria-label="Clear search">
+
+                                <i class="bi bi-x-circle-fill"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SEMESTER FILTER -->
+
+                    <div class="col-md-4 col-lg-3">
+
+                        <select
+                            id="semesterFilter"
+                            class="form-select"
+                            aria-label="Filter by semester">
+
+                            <option value="all">All Semesters</option>
+                            <option value="prelim">Prelim</option>
+                            <option value="midterm">Midterm</option>
+                            <option value="finals">Finals</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- CATEGORY FILTER -->
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <select
+                            id="categoryFilter"
+                            class="form-select"
+                            aria-label="Filter by category">
+
+                            <option value="all">All Categories</option>
+                            <option value="academic">Academic</option>
+                            <option value="branding">Branding</option>
+                            <option value="poster design">Poster Design</option>
+                            <option value="web development">Web Development</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- CLEAR BUTTON -->
+
+                    <div class="col-md-4 col-lg-2">
+
+                        <button
+                            type="button"
+                            id="clearFilters"
+                            class="btn btn-outline-secondary w-100">
+
+                            <i class="bi bi-arrow-counterclockwise me-1"></i>
+                            Clear
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SEARCH RESULTS -->
+
+                <div class="d-flex justify-content-between align-items-center mt-4">
+
+                    <span class="project-count" id="projectCount"
+                          aria-live="polite">
+
+                        Showing all projects
+
+                    </span>
+
+                    <span class="project-count">
+
+                        <i class="bi bi-grid me-1"></i>
+                        Project Gallery
+
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- NO RESULTS -->
+
+            <div id="noProjectsFound" class="no-projects mb-5" hidden>
+
+                <i class="bi bi-search"></i>
+
+                <h4>No Projects Found</h4>
+
+                <p class="text-secondary small">
+                    We couldn't find any projects matching your search.
+                    Try another keyword or adjust your filters.
+                </p>
+
+                <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    id="emptyClearFilters">
+
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>
+                    Clear All Filters
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ==========================================
+                 PRELIM
+            ========================================== -->
+
             <section class="semester-section" id="prelim">
 
                 <div class="semester-header">
@@ -527,103 +981,189 @@
                     <div class="semester-number">01</div>
 
                     <div>
-                        <span class="semester-label">Academic Projects</span>
-                        <h2 class="semester-title">PRELIM</h2>
+
+                        <span class="semester-label">
+                            Academic Projects
+                        </span>
+
+                        <h2 class="semester-title">
+                            PRELIM
+                        </h2>
+
                     </div>
 
                 </div>
 
+
                 <div class="row g-4">
 
+
                     <!-- PRELIM ACTIVITY 1 -->
+
                     <div class="col-md-6 col-xl-4">
 
                         <article class="academic-project-card">
 
                             <img
                                 src="assets/images/PRELIMACT1.jpg"
-                                alt="Kiwi fruit illustration"
+                                alt="Kiwi fruit digital illustration"
                                 class="academic-project-image"
                                 loading="lazy"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
                             <div class="project-image-placeholder">
+
                                 <i class="bi bi-image"></i>
-                                <span>PRELIMACT1.jpg could not be loaded</span>
+                                <span>Image unavailable</span>
+
                             </div>
+
 
                             <div class="academic-project-content">
 
                                 <div class="project-meta">
-                                    <span class="project-category">Academic</span>
-                                    <span class="project-year">2026</span>
+
+                                    <span class="project-category">
+                                        Academic
+                                    </span>
+
+                                    <span class="project-year">
+                                        2026
+                                    </span>
+
                                 </div>
+
 
                                 <h3 class="project-title">
                                     Fruitful Design
                                 </h3>
 
                                 <p class="project-description">
+
                                     A kiwi fruit illustration featuring
                                     a sliced kiwi and its green interior,
                                     created as an academic design activity.
+
                                 </p>
 
+
                                 <div class="project-technologies">
+
                                     <span class="technology-tag">Illustration</span>
                                     <span class="technology-tag">Digital Art</span>
+
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary view-project-btn"
+                                        data-project="fruitful-design">
+
+                                        <i class="bi bi-eye me-2"></i>
+                                        View Full Project
+
+                                    </button>
+
                                 </div>
 
                             </div>
+
                         </article>
+
                     </div>
 
+
+
                     <!-- PRELIM ACTIVITY 2 -->
+
                     <div class="col-md-6 col-xl-4">
 
                         <article class="academic-project-card">
 
                             <img
                                 src="assets/images/PRELIMACT2.jpg"
-                                alt="iSTILO coffee logo"
+                                alt="iSTILO coffee logo design"
                                 class="academic-project-image logo-image"
                                 loading="lazy"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
                             <div class="project-image-placeholder">
+
                                 <i class="bi bi-image"></i>
-                                <span>PRELIMACT2.jpg could not be loaded</span>
+                                <span>Image unavailable</span>
+
                             </div>
+
 
                             <div class="academic-project-content">
 
                                 <div class="project-meta">
-                                    <span class="project-category">Academic</span>
-                                    <span class="project-year">2026</span>
+
+                                    <span class="project-category">
+                                        Academic
+                                    </span>
+
+                                    <span class="project-year">
+                                        2026
+                                    </span>
+
                                 </div>
+
 
                                 <h3 class="project-title">
                                     Brand Design
                                 </h3>
 
                                 <p class="project-description">
+
                                     A coffee-inspired logo design featuring
                                     a steaming cup and scattered coffee beans.
+
                                 </p>
 
+
                                 <div class="project-technologies">
+
                                     <span class="technology-tag">Logo Design</span>
                                     <span class="technology-tag">Graphics</span>
+
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary view-project-btn"
+                                        data-project="brand-design">
+
+                                        <i class="bi bi-eye me-2"></i>
+                                        View Full Project
+
+                                    </button>
+
                                 </div>
 
                             </div>
+
                         </article>
+
                     </div>
 
+
                 </div>
+
             </section>
 
-            <!-- MIDTERM -->
+
+
+            <!-- ==========================================
+                 MIDTERM
+            ========================================== -->
+
             <section class="semester-section" id="midterm">
 
                 <div class="semester-header">
@@ -631,15 +1171,25 @@
                     <div class="semester-number">02</div>
 
                     <div>
-                        <span class="semester-label">Academic Projects</span>
-                        <h2 class="semester-title">MIDTERM</h2>
+
+                        <span class="semester-label">
+                            Academic Projects
+                        </span>
+
+                        <h2 class="semester-title">
+                            MIDTERM
+                        </h2>
+
                     </div>
 
                 </div>
 
+
                 <div class="row g-4">
 
+
                     <!-- MIDTERM ACTIVITY 1 -->
+
                     <div class="col-md-6 col-xl-4">
 
                         <article class="academic-project-card">
@@ -652,85 +1202,161 @@
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
                             <div class="project-image-placeholder">
+
                                 <i class="bi bi-image"></i>
-                                <span>MIDTERMACT1.jpg could not be loaded</span>
+                                <span>Image unavailable</span>
+
                             </div>
+
 
                             <div class="academic-project-content">
 
                                 <div class="project-meta">
-                                    <span class="project-category">Branding</span>
-                                    <span class="project-year">2026</span>
+
+                                    <span class="project-category">
+                                        Branding
+                                    </span>
+
+                                    <span class="project-year">
+                                        2026
+                                    </span>
+
                                 </div>
+
 
                                 <h3 class="project-title">
                                     Brew Haven Coffee Shop
                                 </h3>
 
                                 <p class="project-description">
+
                                     A coffee shop logo concept for Brew Haven,
                                     featuring a Pumpkin Spice Latte theme
                                     inspired by the rainy season.
+
                                 </p>
 
+
                                 <div class="project-technologies">
+
                                     <span class="technology-tag">Logo Design</span>
                                     <span class="technology-tag">Branding</span>
                                     <span class="technology-tag">Graphics</span>
+
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary view-project-btn"
+                                        data-project="brew-haven">
+
+                                        <i class="bi bi-eye me-2"></i>
+                                        View Full Project
+
+                                    </button>
+
                                 </div>
 
                             </div>
+
                         </article>
+
                     </div>
 
+
+
                     <!-- MIDTERM ACTIVITY 2 -->
+
                     <div class="col-md-6 col-xl-4">
 
                         <article class="academic-project-card">
 
                             <img
                                 src="assets/images/MIDTERMACT2.jpg"
-                                alt="Gabi ng Lagim poster"
+                                alt="Gabi ng Lagim horror poster"
                                 class="academic-project-image poster-image"
                                 loading="lazy"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
                             <div class="project-image-placeholder">
+
                                 <i class="bi bi-image"></i>
-                                <span>MIDTERMACT2.jpg could not be loaded</span>
+                                <span>Image unavailable</span>
+
                             </div>
+
 
                             <div class="academic-project-content">
 
                                 <div class="project-meta">
-                                    <span class="project-category">Poster Design</span>
-                                    <span class="project-year">2026</span>
+
+                                    <span class="project-category">
+                                        Poster Design
+                                    </span>
+
+                                    <span class="project-year">
+                                        2026
+                                    </span>
+
                                 </div>
+
 
                                 <h3 class="project-title">
                                     Typography
                                 </h3>
 
                                 <p class="project-description">
+
                                     A Filipino horror movie poster concept
                                     using bold red typography and a dark
                                     background to create a suspenseful mood.
+
                                 </p>
 
+
                                 <div class="project-technologies">
+
                                     <span class="technology-tag">Typography</span>
                                     <span class="technology-tag">Poster Design</span>
                                     <span class="technology-tag">Graphics</span>
+
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary view-project-btn"
+                                        data-project="typography">
+
+                                        <i class="bi bi-eye me-2"></i>
+                                        View Full Project
+
+                                    </button>
+
                                 </div>
 
                             </div>
+
                         </article>
+
                     </div>
 
+
                 </div>
+
             </section>
 
-            <!-- FINALS -->
+
+
+            <!-- ==========================================
+                 FINALS
+            ========================================== -->
+
             <section class="semester-section" id="finals">
 
                 <div class="semester-header">
@@ -738,63 +1364,299 @@
                     <div class="semester-number">03</div>
 
                     <div>
-                        <span class="semester-label">Academic Projects</span>
-                        <h2 class="semester-title">FINALS</h2>
+
+                        <span class="semester-label">
+                            Academic Projects
+                        </span>
+
+                        <h2 class="semester-title">
+                            FINALS
+                        </h2>
+
                     </div>
 
                 </div>
 
+
                 <div class="row g-4">
 
-                    <!-- FINAL ACTIVITY -->
+
+                    <!-- FINAL ACTIVITY 1 -->
+
                     <div class="col-md-6 col-xl-4">
 
                         <article class="academic-project-card">
 
                             <img
                                 src="assets/images/FINALACT1.jpg"
-                                alt="Portfolio wireframe project"
+                                alt="Personal portfolio website wireframe"
                                 class="academic-project-image"
                                 loading="lazy"
                                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
 
                             <div class="project-image-placeholder">
+
                                 <i class="bi bi-image"></i>
-                                <span>FINALACT1.jpg could not be loaded</span>
+                                <span>Image unavailable</span>
+
                             </div>
+
 
                             <div class="academic-project-content">
 
                                 <div class="project-meta">
-                                    <span class="project-category">Web Development</span>
-                                    <span class="project-year">2026</span>
+
+                                    <span class="project-category">
+                                        Web Development
+                                    </span>
+
+                                    <span class="project-year">
+                                        2026
+                                    </span>
+
                                 </div>
+
 
                                 <h3 class="project-title">
                                     Wireframe
                                 </h3>
 
                                 <p class="project-description">
-                                    A personal portfolio website showcasing
-                                    academic projects, technical skills,
-                                    education, experience, and contact details.
+
+                                    A personal portfolio website wireframe
+                                    showcasing academic projects, technical
+                                    skills, education, experience, and contact details.
+
                                 </p>
 
+
                                 <div class="project-technologies">
+
                                     <span class="technology-tag">Figma</span>
+
+                                </div>
+
+
+                                <div class="mt-auto">
+
+                                    <button
+                                        type="button"
+                                        class="btn btn-primary view-project-btn"
+                                        data-project="wireframe">
+
+                                        <i class="bi bi-eye me-2"></i>
+                                        View Full Project
+
+                                    </button>
+
                                 </div>
 
                             </div>
+
                         </article>
+
                     </div>
 
+
                 </div>
+
             </section>
 
+
         </div>
+
     </main>
 
-    <!-- FOOTER -->
+
+
+    <!-- ==========================================
+         PROJECT DETAILS MODAL
+    ========================================== -->
+
+    <div
+        class="modal fade"
+        id="projectDetailsModal"
+        tabindex="-1"
+        aria-labelledby="modalTitle"
+        aria-hidden="true">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+            <div class="modal-content project-details-modal">
+
+
+                <!-- MODAL HEADER -->
+
+                <div class="modal-header border-bottom">
+
+                    <div>
+
+                        <span class="semester-label" id="modalSemester">
+                            ACADEMIC PROJECT
+                        </span>
+
+                        <h4 class="modal-title fw-bold" id="modalTitle">
+                            Project Title
+                        </h4>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close">
+                    </button>
+
+                </div>
+
+
+
+                <!-- MODAL BODY -->
+
+                <div class="modal-body p-4">
+
+
+                    <!-- PROJECT IMAGE -->
+
+                    <img
+                        src=""
+                        alt=""
+                        id="modalImage"
+                        class="project-details-image"
+                        hidden>
+
+
+                    <!-- PROJECT META -->
+
+                    <div class="d-flex flex-wrap gap-2 mb-4">
+
+                        <span class="project-category" id="modalCategory">
+                            Category
+                        </span>
+
+                        <span class="project-year" id="modalYear">
+                            2026
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- OVERVIEW -->
+
+                    <section>
+
+                        <h6>
+                            <i class="bi bi-info-circle me-2 text-primary"></i>
+                            Project Overview
+                        </h6>
+
+                        <p class="text-secondary mb-0" id="modalOverview">
+                        </p>
+
+                    </section>
+
+
+
+                    <!-- OBJECTIVES -->
+
+                    <section>
+
+                        <h6>
+                            <i class="bi bi-bullseye me-2 text-primary"></i>
+                            Project Objectives
+                        </h6>
+
+                        <ul id="modalObjectives">
+                        </ul>
+
+                    </section>
+
+
+
+                    <!-- DESIGN APPROACH -->
+
+                    <section>
+
+                        <h6>
+                            <i class="bi bi-palette me-2 text-primary"></i>
+                            Design Approach
+                        </h6>
+
+                        <p class="text-secondary mb-0" id="modalApproach">
+                        </p>
+
+                    </section>
+
+
+
+                    <!-- TECHNOLOGIES -->
+
+                    <section>
+
+                        <h6>
+                            <i class="bi bi-tools me-2 text-primary"></i>
+                            Tools and Skills
+                        </h6>
+
+                        <div
+                            class="project-technologies mb-0"
+                            id="modalTechnologies">
+                        </div>
+
+                    </section>
+
+
+
+                    <!-- PROJECT OUTPUT -->
+
+                    <section>
+
+                        <h6>
+                            <i class="bi bi-check-circle me-2 text-primary"></i>
+                            Project Output
+                        </h6>
+
+                        <p class="text-secondary mb-0" id="modalOutput">
+                        </p>
+
+                    </section>
+
+
+                </div>
+
+
+
+                <!-- MODAL FOOTER -->
+
+                <div class="modal-footer border-top">
+
+                    <button
+                        type="button"
+                        class="btn btn-outline-secondary"
+                        data-bs-dismiss="modal">
+
+                        <i class="bi bi-x-lg me-1"></i>
+                        Close Project Details
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         FOOTER
+    ========================================== -->
+
     <footer class="projects-footer">
 
         <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-secondary">
@@ -808,58 +1670,763 @@
             </span>
 
         </div>
+
     </footer>
 
-    <!-- BOOTSTRAP -->
+
+
+    <!-- ==========================================
+         BOOTSTRAP JAVASCRIPT
+    ========================================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- THEME SWITCH -->
+
+
+    <!-- ==========================================
+         MAIN JAVASCRIPT
+    ========================================== -->
+
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
 
+
+            /* ======================================
+               THEME SWITCH
+            ====================================== */
+
             const html = document.documentElement;
-            const toggle = document.getElementById("themeToggle");
-            const icon = toggle.querySelector("i");
 
-            function updateIcon() {
-                const dark = html.getAttribute("data-bs-theme") === "dark";
+            const themeToggle = document.getElementById("themeToggle");
 
-                icon.className = dark
+            const themeIcon = themeToggle.querySelector("i");
+
+
+            function updateThemeIcon() {
+
+                const isDark =
+                    html.getAttribute("data-bs-theme") === "dark";
+
+                themeIcon.className = isDark
                     ? "bi bi-sun"
                     : "bi bi-moon-stars";
 
-                toggle.setAttribute(
+                themeToggle.setAttribute(
                     "aria-label",
-                    dark ? "Switch to light mode" : "Switch to dark mode"
+                    isDark ? "Switch to light mode" : "Switch to dark mode"
                 );
+
             }
 
-            const storedTheme = localStorage.getItem("portfolio-theme");
 
-            if (storedTheme === "dark" || storedTheme === "light") {
-                html.setAttribute("data-bs-theme", storedTheme);
+            const savedTheme = localStorage.getItem("portfolio-theme");
+
+            if (savedTheme === "dark" || savedTheme === "light") {
+
+                html.setAttribute("data-bs-theme", savedTheme);
+
             }
 
-            updateIcon();
+            updateThemeIcon();
 
-            toggle.addEventListener("click", function () {
 
-                const dark = html.getAttribute("data-bs-theme") === "dark";
-                const newTheme = dark ? "light" : "dark";
+            themeToggle.addEventListener("click", function () {
+
+                const isDark =
+                    html.getAttribute("data-bs-theme") === "dark";
+
+                const newTheme = isDark ? "light" : "dark";
 
                 html.setAttribute("data-bs-theme", newTheme);
+
                 localStorage.setItem("portfolio-theme", newTheme);
 
-                updateIcon();
+                updateThemeIcon();
+
             });
 
-            const year = document.getElementById("year");
 
-            if (year) {
-                year.textContent = new Date().getFullYear();
+
+            /* ======================================
+               FOOTER YEAR
+            ====================================== */
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+
+
+            /* ======================================
+               PROJECT DATA
+            ====================================== */
+
+            const projects = {
+
+                "fruitful-design": {
+
+                    title: "Fruitful Design",
+
+                    semester: "PRELIM",
+
+                    category: "Academic",
+
+                    year: "2026",
+
+                    image: "assets/images/PRELIMACT1.jpg",
+
+                    overview:
+                        "Fruitful Design is a digital illustration activity featuring a kiwi fruit. The composition highlights both a whole kiwi and a sliced kiwi, emphasizing its distinctive green interior, seeds, and natural texture. The project focuses on presenting a fruit through a visually appealing digital composition.",
+
+                    objectives: [
+
+                        "Create an appealing fruit-inspired digital illustration.",
+
+                        "Explore the visual characteristics and details of kiwi fruit.",
+
+                        "Apply basic illustration and composition principles.",
+
+                        "Develop visual creativity through digital artwork."
+
+                    ],
+
+                    approach:
+                        "The design focuses on the natural appearance of kiwi fruit. The composition uses contrasting green and brown tones to distinguish the outer skin from the inner fruit. The sliced portion emphasizes the fruit's texture, seeds, and circular structure.",
+
+                    technologies: [
+
+                        "Illustration",
+                        "Digital Art",
+                        "Color Composition",
+                        "Visual Design"
+
+                    ],
+
+                    output:
+                        "A completed kiwi fruit illustration demonstrating creativity, color coordination, and basic digital illustration skills."
+
+                },
+
+
+                "brand-design": {
+
+                    title: "Brand Design",
+
+                    semester: "PRELIM",
+
+                    category: "Academic",
+
+                    year: "2026",
+
+                    image: "assets/images/PRELIMACT2.jpg",
+
+                    overview:
+                        "Brand Design is a coffee-inspired logo activity featuring the iSTILO coffee concept. The design incorporates a steaming coffee cup and scattered coffee beans to communicate a recognizable coffee-related identity.",
+
+                    objectives: [
+
+                        "Develop a recognizable coffee-inspired logo.",
+
+                        "Use visual elements associated with coffee products.",
+
+                        "Apply basic logo design and branding principles.",
+
+                        "Create a cohesive and memorable visual identity."
+
+                    ],
+
+                    approach:
+                        "The design uses a coffee cup as its primary visual element, supported by coffee beans and steam details. The composition aims to communicate the coffee theme through recognizable symbols and a coordinated visual appearance.",
+
+                    technologies: [
+
+                        "Logo Design",
+                        "Graphic Design",
+                        "Branding",
+                        "Visual Composition"
+
+                    ],
+
+                    output:
+                        "A coffee-inspired logo concept for iSTILO, showcasing the application of basic branding and graphic design principles."
+
+                },
+
+
+                "brew-haven": {
+
+                    title: "Brew Haven Coffee Shop",
+
+                    semester: "MIDTERM",
+
+                    category: "Branding",
+
+                    year: "2026",
+
+                    image: "assets/images/MIDTERMACT1.jpg",
+
+                    overview:
+                        "Brew Haven Coffee Shop is a branding activity centered on a coffee shop logo concept. The design features a Pumpkin Spice Latte theme inspired by the rainy season, combining coffee-related visual elements with a seasonal concept.",
+
+                    objectives: [
+
+                        "Develop a visual identity for a conceptual coffee shop.",
+
+                        "Create a logo that communicates the coffee shop's theme.",
+
+                        "Explore seasonal inspiration in brand design.",
+
+                        "Apply typography, colors, and graphic elements consistently."
+
+                    ],
+
+                    approach:
+                        "The concept revolves around the Pumpkin Spice Latte theme. The visual direction connects coffee culture with the atmosphere of the rainy season, creating a warm and seasonal branding concept.",
+
+                    technologies: [
+
+                        "Logo Design",
+                        "Branding",
+                        "Graphics",
+                        "Visual Identity",
+                        "Color Theory"
+
+                    ],
+
+                    output:
+                        "A coffee shop logo concept for Brew Haven that demonstrates seasonal branding, visual identity development, and graphic design."
+
+                },
+
+
+                "typography": {
+
+                    title: "Typography - Gabi ng Lagim",
+
+                    semester: "MIDTERM",
+
+                    category: "Poster Design",
+
+                    year: "2026",
+
+                    image: "assets/images/MIDTERMACT2.jpg",
+
+                    overview:
+                        "Gabi ng Lagim is a Filipino horror movie poster concept created as a typography activity. It uses bold red typography and a dark visual background to establish a suspenseful and horror-inspired atmosphere.",
+
+                    objectives: [
+
+                        "Explore typography as a major visual design element.",
+
+                        "Create a horror-themed movie poster concept.",
+
+                        "Use contrast to emphasize important text.",
+
+                        "Communicate a specific mood through visual composition."
+
+                    ],
+
+                    approach:
+                        "The poster uses bold red typography against a dark background to establish contrast and visual emphasis. The design direction focuses on suspense and horror through its color choices, text treatment, and overall composition.",
+
+                    technologies: [
+
+                        "Typography",
+                        "Poster Design",
+                        "Graphic Design",
+                        "Color Contrast",
+                        "Visual Composition"
+
+                    ],
+
+                    output:
+                        "A Filipino horror movie poster concept demonstrating the use of typography, contrast, and visual storytelling."
+
+                },
+
+
+                "wireframe": {
+
+                    title: "Personal Portfolio Wireframe",
+
+                    semester: "FINALS",
+
+                    category: "Web Development",
+
+                    year: "2026",
+
+                    image: "assets/images/FINALACT1.jpg",
+
+                    overview:
+                        "The Personal Portfolio Wireframe is a website planning activity designed to organize the structure and presentation of a personal portfolio. It focuses on showcasing academic projects, technical skills, educational background, experience, and contact information.",
+
+                    objectives: [
+
+                        "Plan the structure of a personal portfolio website.",
+
+                        "Organize website content into clear sections.",
+
+                        "Create a user-friendly navigation structure.",
+
+                        "Establish a visual foundation for future website development."
+
+                    ],
+
+                    approach:
+                        "The wireframe organizes portfolio content into separate sections, allowing visitors to navigate through personal information, projects, skills, education, and contact details. The focus is on content hierarchy, layout organization, and usability.",
+
+                    technologies: [
+
+                        "Figma",
+                        "Wireframing",
+                        "UI/UX Design",
+                        "Layout Planning"
+
+                    ],
+
+                    output:
+                        "A personal portfolio website wireframe that serves as a structural guide for organizing portfolio content and planning the website interface."
+
+                }
+
+            };
+
+
+
+            /* ======================================
+               GET PROJECT ELEMENTS
+            ====================================== */
+
+            const searchInput =
+                document.getElementById("projectSearch");
+
+            const semesterFilter =
+                document.getElementById("semesterFilter");
+
+            const categoryFilter =
+                document.getElementById("categoryFilter");
+
+            const clearButton =
+                document.getElementById("clearFilters");
+
+            const searchClear =
+                document.getElementById("searchClear");
+
+            const emptyClearButton =
+                document.getElementById("emptyClearFilters");
+
+            const projectCount =
+                document.getElementById("projectCount");
+
+            const noProjectsFound =
+                document.getElementById("noProjectsFound");
+
+            const projectCards =
+                document.querySelectorAll(".academic-project-card");
+
+            const semesterSections =
+                document.querySelectorAll(".semester-section");
+
+
+
+            /* ======================================
+               REAL-TIME SEARCH AND FILTER
+            ====================================== */
+
+            function filterProjects() {
+
+                const searchValue =
+                    searchInput.value.toLowerCase().trim();
+
+                const selectedSemester =
+                    semesterFilter.value.toLowerCase();
+
+                const selectedCategory =
+                    categoryFilter.value.toLowerCase();
+
+                let visibleProjects = 0;
+
+
+                // Search every project card
+
+                projectCards.forEach(card => {
+
+                    const section =
+                        card.closest(".semester-section");
+
+                    const semester =
+                        section.id.toLowerCase();
+
+                    const category =
+                        card.querySelector(".project-category")
+                            .textContent.toLowerCase().trim();
+
+                    const technologies = Array.from(
+                        card.querySelectorAll(".technology-tag")
+                    ).map(tag => tag.textContent.toLowerCase());
+
+                    const imageAlt =
+                        card.querySelector("img").alt.toLowerCase();
+
+                    const searchableText = [
+
+                        card.textContent.toLowerCase(),
+
+                        category,
+
+                        semester,
+
+                        imageAlt,
+
+                        technologies.join(" ")
+
+                    ].join(" ");
+
+
+                    // Search condition
+
+                    const matchesSearch =
+                        searchableText.includes(searchValue);
+
+
+                    // Semester condition
+
+                    const matchesSemester =
+                        selectedSemester === "all" ||
+                        semester === selectedSemester;
+
+
+                    // Category condition
+
+                    const matchesCategory =
+                        selectedCategory === "all" ||
+                        category === selectedCategory;
+
+
+                    // Combined conditions
+
+                    const isVisible =
+                        matchesSearch &&
+                        matchesSemester &&
+                        matchesCategory;
+
+
+                    card.hidden = !isVisible;
+
+
+                    if (isVisible) {
+
+                        visibleProjects++;
+
+                    }
+
+                });
+
+
+
+                /* ==================================
+                   HIDE EMPTY SEMESTER SECTIONS
+                ================================== */
+
+                semesterSections.forEach(section => {
+
+                    const visibleCards = section.querySelectorAll(
+                        ".academic-project-card:not([hidden])"
+                    );
+
+                    section.hidden =
+                        visibleCards.length === 0;
+
+                });
+
+
+
+                /* ==================================
+                   UPDATE PROJECT COUNTER
+                ================================== */
+
+                projectCount.innerHTML =
+                    `Showing <strong>${visibleProjects}</strong> of <strong>${projectCards.length}</strong> projects`;
+
+
+
+                /* ==================================
+                   NO RESULTS MESSAGE
+                ================================== */
+
+                noProjectsFound.hidden =
+                    visibleProjects !== 0;
+
+
+
+                /* ==================================
+                   SEARCH CLEAR ICON
+                ================================== */
+
+                searchClear.classList.toggle(
+                    "show",
+                    searchValue.length > 0
+                );
+
             }
+
+
+
+            /* ======================================
+               SEARCH EVENTS
+            ====================================== */
+
+            searchInput.addEventListener(
+                "input",
+                filterProjects
+            );
+
+            semesterFilter.addEventListener(
+                "change",
+                filterProjects
+            );
+
+            categoryFilter.addEventListener(
+                "change",
+                filterProjects
+            );
+
+
+
+            /* ======================================
+               CLEAR FILTERS
+            ====================================== */
+
+            function clearFilters() {
+
+                searchInput.value = "";
+
+                semesterFilter.value = "all";
+
+                categoryFilter.value = "all";
+
+                filterProjects();
+
+                searchInput.focus();
+
+            }
+
+
+            clearButton.addEventListener(
+                "click",
+                clearFilters
+            );
+
+            emptyClearButton.addEventListener(
+                "click",
+                clearFilters
+            );
+
+            searchClear.addEventListener(
+                "click",
+                function () {
+
+                    searchInput.value = "";
+
+                    filterProjects();
+
+                    searchInput.focus();
+
+                }
+            );
+
+
+
+            /* ======================================
+               PROJECT DETAILS MODAL
+            ====================================== */
+
+            const modalElement =
+                document.getElementById("projectDetailsModal");
+
+            const projectModal =
+                bootstrap.Modal.getOrCreateInstance(modalElement);
+
+
+            // Get modal elements
+
+            const modalTitle =
+                document.getElementById("modalTitle");
+
+            const modalSemester =
+                document.getElementById("modalSemester");
+
+            const modalCategory =
+                document.getElementById("modalCategory");
+
+            const modalYear =
+                document.getElementById("modalYear");
+
+            const modalImage =
+                document.getElementById("modalImage");
+
+            const modalOverview =
+                document.getElementById("modalOverview");
+
+            const modalObjectives =
+                document.getElementById("modalObjectives");
+
+            const modalApproach =
+                document.getElementById("modalApproach");
+
+            const modalTechnologies =
+                document.getElementById("modalTechnologies");
+
+            const modalOutput =
+                document.getElementById("modalOutput");
+
+
+
+            /* ======================================
+               DISPLAY PROJECT DETAILS
+            ====================================== */
+
+            function showProjectDetails(projectId) {
+
+                const project = projects[projectId];
+
+                if (!project) {
+
+                    console.error(
+                        "Project not found:",
+                        projectId
+                    );
+
+                    return;
+
+                }
+
+
+                // Title and project information
+
+                modalTitle.textContent =
+                    project.title;
+
+                modalSemester.textContent =
+                    project.semester + " PROJECT";
+
+                modalCategory.textContent =
+                    project.category;
+
+                modalYear.textContent =
+                    project.year;
+
+
+
+                // Project image
+
+                modalImage.src = project.image;
+
+                modalImage.alt = project.title;
+
+                modalImage.hidden = false;
+
+                modalImage.onerror = function () {
+
+                    this.hidden = true;
+
+                };
+
+
+
+                // Project overview
+
+                modalOverview.textContent =
+                    project.overview;
+
+
+
+                // Project objectives
+
+                modalObjectives.replaceChildren();
+
+                project.objectives.forEach(objective => {
+
+                    const li = document.createElement("li");
+
+                    li.textContent = objective;
+
+                    modalObjectives.appendChild(li);
+
+                });
+
+
+
+                // Design approach
+
+                modalApproach.textContent =
+                    project.approach;
+
+
+
+                // Technologies and skills
+
+                modalTechnologies.replaceChildren();
+
+                project.technologies.forEach(technology => {
+
+                    const tag = document.createElement("span");
+
+                    tag.className = "technology-tag";
+
+                    tag.textContent = technology;
+
+                    modalTechnologies.appendChild(tag);
+
+                });
+
+
+
+                // Project output
+
+                modalOutput.textContent =
+                    project.output;
+
+
+
+                // Open modal
+
+                projectModal.show();
+
+            }
+
+
+
+            /* ======================================
+               VIEW FULL PROJECT BUTTONS
+            ====================================== */
+
+            document.querySelectorAll(".view-project-btn")
+                .forEach(button => {
+
+                    button.addEventListener("click", function () {
+
+                        const projectId =
+                            this.dataset.project;
+
+                        showProjectDetails(projectId);
+
+                    });
+
+                });
+
+
+
+            /* ======================================
+               INITIALIZE PROJECT PAGE
+            ====================================== */
+
+            filterProjects();
+
         });
+
     </script>
 
 </body>
+
 </html>
