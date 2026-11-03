@@ -1,105 +1,136 @@
 
 /* =========================================
    PORTFOLIO WEBSITE
-   APP.JS
+   APP.JS — HOMEPAGE ONLY
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
-
     const root = document.documentElement;
-
-    const themeToggle =
-        document.getElementById("themeToggle");
-
+    const themeToggle = document.getElementById("themeToggle");
 
     /* =========================================
        THEME TOGGLE
        ========================================= */
 
-    function theme(value) {
-
-        root.dataset.bsTheme = value;
-
-        localStorage.setItem(
-            "portfolio-theme",
-            value
-        );
+    function setTheme(value) {
+        root.setAttribute("data-bs-theme", value);
+        localStorage.setItem("portfolio-theme", value);
 
         if (themeToggle) {
-
-            themeToggle.innerHTML =
-                value === "dark"
-                    ? '<i class="bi bi-sun"></i>'
-                    : '<i class="bi bi-moon-stars"></i>';
-
+            themeToggle.innerHTML = value === "dark"
+                ? '<i class="bi bi-sun"></i>'
+                : '<i class="bi bi-moon-stars"></i>';
         }
-
     }
 
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    setTheme(savedTheme === "dark" ? "dark" : "light");
 
-    // Load saved theme
-    theme(
-        localStorage.getItem("portfolio-theme") || "light"
-    );
-
-
-    // Switch between light and dark mode
     themeToggle?.addEventListener("click", () => {
-
-        const currentTheme = root.dataset.bsTheme;
-
-        theme(
-            currentTheme === "dark"
-                ? "light"
-                : "dark"
-        );
-
+        const currentTheme = root.getAttribute("data-bs-theme");
+        setTheme(currentTheme === "dark" ? "light" : "dark");
     });
-
 
     /* =========================================
        FOOTER YEAR
        ========================================= */
 
-    const yearElement =
-        document.getElementById("year");
+    const yearElement = document.getElementById("year");
 
     if (yearElement) {
-
-        yearElement.textContent =
-            new Date().getFullYear();
-
+        yearElement.textContent = new Date().getFullYear();
     }
 
-
     /* =========================================
-       RENDER PORTFOLIO DATA
+       HOMEPAGE CONTENT
        ========================================= */
 
-    renderSkills();
-
-    renderExperience();
-
-    renderEducation();
-
-    renderCredentials();
-
+    if (typeof portfolioData !== "undefined") {
+        renderSkills();
+        renderExperience();
+        renderEducation();
+        renderCredentials();
+    } else {
+        console.error(
+            "Portfolio data was not loaded. Check that data.js is included before app.js."
+        );
+    }
 
     /* =========================================
-       CONTACT FORM
-       =========================================
-
-       The previous mailto handler has been
-       removed.
-
-       EmailJS now handles contact submissions
-       through the script in index.html.
-
-       This prevents the old mailto function
-       from interfering with EmailJS.
-
+       ACTIVE NAVIGATION
        ========================================= */
 
+    const navLinks = document.querySelectorAll(
+        ".portfolio-dropdown .dropdown-item"
+    );
+
+    const sections = document.querySelectorAll(
+        "#home, #about, #skills, #experience, #education, #contact"
+    );
+
+    function updateActiveNavigation(hash) {
+        const currentPage =
+            window.location.pathname.split("/").pop() || "index.html";
+
+        const currentHash = hash || window.location.hash || "#home";
+
+        navLinks.forEach(link => {
+            const linkURL = new URL(link.href, window.location.href);
+            const linkPage =
+                linkURL.pathname.split("/").pop() || "index.html";
+
+            link.classList.remove("active");
+
+            if (linkPage !== currentPage) return;
+
+            if (currentPage === "project.html" || currentPage === "cv.html") {
+                link.classList.add("active");
+            } else if (
+                linkPage === "index.html" &&
+                linkURL.hash === currentHash
+            ) {
+                link.classList.add("active");
+            }
+        });
+    }
+
+    updateActiveNavigation();
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            const linkURL = new URL(link.href, window.location.href);
+
+            if (
+                linkURL.pathname === window.location.pathname &&
+                linkURL.hash
+            ) {
+                updateActiveNavigation(linkURL.hash);
+            }
+        });
+    });
+
+    window.addEventListener("hashchange", () => {
+        updateActiveNavigation();
+    });
+
+    window.addEventListener("popstate", () => {
+        updateActiveNavigation();
+    });
+
+    /* Highlight the section currently in view */
+    if ("IntersectionObserver" in window && sections.length) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateActiveNavigation("#" + entry.target.id);
+                }
+            });
+        }, {
+            rootMargin: "-25% 0px -65% 0px"
+        });
+
+        sections.forEach(section => observer.observe(section));
+    }
 });
 
 
@@ -108,50 +139,31 @@ document.addEventListener("DOMContentLoaded", () => {
    ========================================= */
 
 function renderSkills() {
+    const container = document.getElementById("skillsGrid");
 
-    const container =
-        document.getElementById("skillsGrid");
-
-    if (!container) {
-        return;
-    }
+    if (!container || typeof portfolioData === "undefined") return;
 
     container.innerHTML = portfolioData.skills.map(group => `
-
         <div class="col-md-6">
-
             <div class="skill-panel h-100 p-4">
-
                 <div class="d-flex align-items-center gap-2 mb-3">
-
                     <span class="icon-box">
-                        <i class="bi ${group.icon}"></i>
+                        <i class="bi ${x(group.icon)}"></i>
                     </span>
 
                     <h3 class="h5 fw-bold mb-0">
                         ${x(group.category)}
                     </h3>
-
                 </div>
 
                 <div class="d-flex flex-wrap gap-2">
-
                     ${group.items.map(skill => `
-
-                        <span class="skill-pill">
-                            ${x(skill)}
-                        </span>
-
+                        <span class="skill-pill">${x(skill)}</span>
                     `).join("")}
-
                 </div>
-
             </div>
-
         </div>
-
     `).join("");
-
 }
 
 
@@ -160,22 +172,15 @@ function renderSkills() {
    ========================================= */
 
 function renderExperience() {
+    const container = document.getElementById("experienceTimeline");
 
-    const container =
-        document.getElementById("experienceTimeline");
-
-    if (!container) {
-        return;
-    }
+    if (!container || typeof portfolioData === "undefined") return;
 
     container.innerHTML = portfolioData.experience.map(item => `
-
         <article class="timeline-item">
-
             <div class="timeline-dot"></div>
 
             <div class="timeline-card">
-
                 <div class="small text-primary fw-bold mb-2">
                     ${x(item.date)}
                 </div>
@@ -185,23 +190,15 @@ function renderExperience() {
                 </h3>
 
                 <div class="text-body-secondary small mb-3">
-
-                    ${x(item.organization)}
-                    ·
-                    ${x(item.location)}
-
+                    ${x(item.organization)} · ${x(item.location)}
                 </div>
 
                 <p class="text-body-secondary mb-0">
                     ${x(item.description)}
                 </p>
-
             </div>
-
         </article>
-
     `).join("");
-
 }
 
 
@@ -210,38 +207,27 @@ function renderExperience() {
    ========================================= */
 
 function renderEducation() {
+    const container = document.getElementById("educationList");
 
-    const container =
-        document.getElementById("educationList");
-
-    if (!container) {
-        return;
-    }
+    if (!container || typeof portfolioData === "undefined") return;
 
     container.innerHTML = portfolioData.education.map(item => `
+        <article class="education-entry">
+            <span class="education-year">${x(item.year)}</span>
 
-        <article class="stack-card">
-
-            <span class="badge text-bg-primary-subtle text-primary">
-                ${x(item.year)}
-            </span>
-
-            <h4 class="h5 fw-bold mt-3 mb-1">
+            <h4 class="education-title">
                 ${x(item.degree)}
             </h4>
 
-            <p class="mb-1 text-body-secondary">
+            <p class="education-school">
                 ${x(item.school)}
             </p>
 
-            <small class="text-body-secondary">
+            <p class="education-description mb-0">
                 ${x(item.detail)}
-            </small>
-
+            </p>
         </article>
-
     `).join("");
-
 }
 
 
@@ -250,34 +236,23 @@ function renderEducation() {
    ========================================= */
 
 function renderCredentials() {
+    const container = document.getElementById("credentialsList");
 
-    const container =
-        document.getElementById("credentialsList");
-
-    if (!container) {
-        return;
-    }
+    if (!container || typeof portfolioData === "undefined") return;
 
     container.innerHTML = portfolioData.credentials.map(item => `
+        <article class="education-entry">
+            <span class="education-year">${x(item.year)}</span>
 
-        <article class="stack-card">
-
-            <span class="badge text-bg-primary-subtle text-primary">
-                ${x(item.year)}
-            </span>
-
-            <h4 class="h5 fw-bold mt-3 mb-1">
+            <h4 class="education-title">
                 ${x(item.name)}
             </h4>
 
-            <p class="mb-0 text-body-secondary">
+            <p class="education-school mb-0">
                 ${x(item.issuer)}
             </p>
-
         </article>
-
     `).join("");
-
 }
 
 
@@ -286,70 +261,10 @@ function renderCredentials() {
    ========================================= */
 
 function x(value) {
-
-    return String(value)
+    return String(value ?? "")
         .replaceAll("&", "&amp;")
         .replaceAll("<", "&lt;")
         .replaceAll(">", "&gt;")
         .replaceAll('"', "&quot;")
         .replaceAll("'", "&#039;");
-
 }
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const links = document.querySelectorAll(
-        ".nav-link-custom"
-    );
-
-    const sections = document.querySelectorAll(
-        "#home, #about, #skills, #education, #contact"
-    );
-
-    function updateActiveLink(hash) {
-        links.forEach(link => {
-            const url = new URL(link.href, window.location.href);
-
-            const isActive =
-                url.pathname === window.location.pathname &&
-                url.hash === hash;
-
-            link.classList.toggle("active", isActive);
-        });
-    }
-
-    // Highlight current page on load
-    updateActiveLink(window.location.hash || "#home");
-
-    // Update when clicking navigation links
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            const url = new URL(link.href, window.location.href);
-
-            if (url.pathname === window.location.pathname) {
-                updateActiveLink(url.hash || "#home");
-            }
-        });
-    });
-
-    // Detect active section while scrolling
-    if (sections.length) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    updateActiveLink("#" + entry.target.id);
-                }
-            });
-        }, {
-            rootMargin: "-25% 0px -65% 0px"
-        });
-
-        sections.forEach(section => observer.observe(section));
-    }
-
-    // Browser back/forward navigation
-    window.addEventListener("hashchange", () => {
-        updateActiveLink(window.location.hash || "#home");
-    });
-});
-
