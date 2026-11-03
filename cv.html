@@ -5,643 +5,741 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Troi Manimtim's CV and professional experience as a Web Developer.">
 
     <title>CV | Troi Manimtim</title>
 
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
-
-    <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
-
-    <!-- Your existing portfolio stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-</head>
 
-<body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top border-bottom">
-        <div class="container">
-
-            <a class="navbar-brand fw-bold" href="index.html">
-                Troi Manimtim
-            </a>
-
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavigation"
-                aria-controls="mainNavigation"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="mainNavigation">
-
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#home">Home</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#about">About</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="project.html">Projects</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link active" href="cv.html" aria-current="page">
-                            CV
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#contact">Contact</a>
-                    </li>
-
-                    <li class="nav-item ms-lg-2">
-                        <button
-                            type="button"
-                            class="btn btn-outline-secondary btn-sm"
-                            id="themeToggle"
-                            aria-label="Toggle dark mode"
-                        >
-                            <i class="bi bi-moon-stars" id="themeIcon"></i>
-                            <span id="themeText">Dark Mode</span>
-                        </button>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- CV Header -->
-    <header class="py-5">
-        <div class="container">
-            <div class="row align-items-center g-4">
-
-                <div class="col-lg-8">
-                    <p class="text-uppercase fw-semibold text-secondary mb-2">
-                        Curriculum Vitae
-                    </p>
-
-                    <h1 class="display-4 fw-bold mb-3">
-                        Troi Manimtim
-                    </h1>
-
-                    <h2 class="h4 fw-normal mb-3">
-                        Web Developer
-                    </h2>
-
-                    <p class="lead mb-4">
-                        An aspiring web developer focused on building functional,
-                        user-friendly, and responsive web applications using modern
-                        web technologies.
-                    </p>
-
-                    <div class="d-flex flex-wrap gap-2">
-
-                        <a
-                            href="documents/CV.pdf"
-                            download="Troi-Manimtim-CV.pdf"
-                            class="btn btn-dark"
-                        >
-                            <i class="bi bi-download me-2"></i>
-                            Download CV PDF
-                        </a>
-
-                        <button
-                            type="button"
-                            class="btn btn-outline-secondary"
-                            id="printCv"
-                        >
-                            <i class="bi bi-printer me-2"></i>
-                            Print CV
-                        </button>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-
-                            <h3 class="h5 fw-bold mb-3">
-                                <i class="bi bi-person-lines-fill me-2"></i>
-                                Contact Information
-                            </h3>
-
-                            <p class="mb-3">
-                                <i class="bi bi-envelope me-2"></i>
-                                <a href="mailto:tpmanimtim@ccc.edu.ph">
-                                    tpmanimtim@ccc.edu.ph
-                                </a>
-                            </p>
-
-                            <p class="mb-3">
-                                <i class="bi bi-telephone me-2"></i>
-                                <a href="tel:09917674731">
-                                    0991 767 4731
-                                </a>
-                            </p>
-
-                            <p class="mb-0">
-                                <i class="bi bi-geo-alt me-2"></i>
-                                Canlubang, Calamba
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <div class="container pb-5">
-
-            <div class="row g-4">
-
-                <!-- Main CV Content -->
-                <div class="col-lg-8">
-
-                    <!-- Objective -->
-                    <section class="card shadow-sm mb-4" id="objective">
-                        <div class="card-body p-4">
-
-                            <h2 class="h4 fw-bold mb-3">
-                                <i class="bi bi-bullseye me-2"></i>
-                                Career Objective
-                            </h2>
-
-                            <p class="mb-0">
-                                To apply my knowledge of web development and database
-                                management in creating reliable, responsive, and
-                                user-friendly applications. I aim to continuously
-                                improve my technical skills while contributing to
-                                meaningful projects and gaining practical experience
-                                in the technology industry.
-                            </p>
-
-                        </div>
-                    </section>
-
-                    <!-- Projects -->
-                    <section class="card shadow-sm mb-4" id="experience">
-                        <div class="card-body p-4">
-
-                            <h2 class="h4 fw-bold mb-4">
-                                <i class="bi bi-code-slash me-2"></i>
-                                Project Experience
-                            </h2>
-
-                            <!-- Project 1 -->
-                            <article class="mb-4">
-
-                                <div class="d-flex flex-wrap justify-content-between gap-2 mb-2">
-                                    <h3 class="h5 fw-bold mb-0">
-                                        Hollie-Gab Dental Clinic Management System
-                                    </h3>
-
-                                    <span class="badge text-bg-secondary align-self-start">
-                                        2026
-                                    </span>
-                                </div>
-
-                                <p class="text-secondary fw-semibold mb-2">
-                                    Full Stack Web Development
-                                </p>
-
-                                <p>
-                                    Developed a dental clinic management system
-                                    designed to organize patient records, appointment
-                                    scheduling, dental services, and related clinic
-                                    transactions. The project focuses on improving
-                                    record management and making clinic operations
-                                    easier to manage.
-                                </p>
-
-                                <p class="fw-semibold mb-2">Technologies Used</p>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">PHP</span>
-                                    <span class="badge rounded-pill text-bg-light border">MySQL</span>
-                                    <span class="badge rounded-pill text-bg-light border">JavaScript</span>
-                                    <span class="badge rounded-pill text-bg-light border">Chart.js</span>
-                                    <span class="badge rounded-pill text-bg-light border">HTML</span>
-                                    <span class="badge rounded-pill text-bg-light border">CSS</span>
-                                </div>
-
-                            </article>
-
-                            <hr class="my-4">
-
-                            <!-- Project 2 -->
-                            <article>
-
-                                <div class="d-flex flex-wrap justify-content-between gap-2 mb-2">
-                                    <h3 class="h5 fw-bold mb-0">
-                                        iSkolar Hub
-                                    </h3>
-
-                                    <span class="badge text-bg-secondary align-self-start">
-                                        2025
-                                    </span>
-                                </div>
-
-                                <p class="text-secondary fw-semibold mb-2">
-                                    Web Development and Data Analysis
-                                </p>
-
-                                <p>
-                                    Worked on an academic project called iSkolar Hub,
-                                    applying web development and database concepts
-                                    to organize information and support the system's
-                                    intended users. The project provided experience
-                                    in developing web-based features and working
-                                    with structured data.
-                                </p>
-
-                                <p class="fw-semibold mb-2">Technologies Used</p>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">PHP</span>
-                                    <span class="badge rounded-pill text-bg-light border">MySQL</span>
-                                    <span class="badge rounded-pill text-bg-light border">JavaScript</span>
-                                    <span class="badge rounded-pill text-bg-light border">HTML</span>
-                                    <span class="badge rounded-pill text-bg-light border">CSS</span>
-                                </div>
-
-                            </article>
-
-                        </div>
-                    </section>
-
-                    <!-- Technical Skills -->
-                    <section class="card shadow-sm mb-4" id="technical-skills">
-                        <div class="card-body p-4">
-
-                            <h2 class="h4 fw-bold mb-4">
-                                <i class="bi bi-laptop me-2"></i>
-                                Technical Skills
-                            </h2>
-
-                            <div class="mb-4">
-                                <h3 class="h6 fw-bold">Front-End Development</h3>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">HTML5</span>
-                                    <span class="badge rounded-pill text-bg-light border">CSS3</span>
-                                    <span class="badge rounded-pill text-bg-light border">JavaScript</span>
-                                    <span class="badge rounded-pill text-bg-light border">Bootstrap</span>
-                                    <span class="badge rounded-pill text-bg-light border">Responsive Design</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <h3 class="h6 fw-bold">Back-End Development</h3>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">PHP</span>
-                                    <span class="badge rounded-pill text-bg-light border">CRUD Operations</span>
-                                    <span class="badge rounded-pill text-bg-light border">Form Handling</span>
-                                </div>
-                            </div>
-
-                            <div class="mb-4">
-                                <h3 class="h6 fw-bold">Database Management</h3>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">MySQL</span>
-                                    <span class="badge rounded-pill text-bg-light border">Database Design</span>
-                                    <span class="badge rounded-pill text-bg-light border">SQL Queries</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h3 class="h6 fw-bold">Libraries and Tools</h3>
-
-                                <div class="d-flex flex-wrap gap-2">
-                                    <span class="badge rounded-pill text-bg-light border">Chart.js</span>
-                                    <span class="badge rounded-pill text-bg-light border">Git</span>
-                                    <span class="badge rounded-pill text-bg-light border">GitHub</span>
-                                    <span class="badge rounded-pill text-bg-light border">VS Code</span>
-                                    <span class="badge rounded-pill text-bg-light border">Figma</span>
-                                    <span class="badge rounded-pill text-bg-light border">XAMPP</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </section>
-
-                    <!-- Soft Skills -->
-                    <section class="card shadow-sm mb-4" id="soft-skills">
-                        <div class="card-body p-4">
-
-                            <h2 class="h4 fw-bold mb-3">
-                                <i class="bi bi-people me-2"></i>
-                                Soft Skills
-                            </h2>
-
-                            <div class="row g-3">
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Problem-solving
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Communication
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Teamwork and collaboration
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Adaptability
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Time management
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-6">
-                                    <p class="mb-0">
-                                        <i class="bi bi-check-circle me-2"></i>
-                                        Attention to detail
-                                    </p>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </section>
-
-                </div>
-
-                <!-- Sidebar -->
-                <aside class="col-lg-4">
-
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-body p-4">
-
-                            <h2 class="h5 fw-bold mb-3">
-                                <i class="bi bi-file-earmark-pdf me-2"></i>
-                                Download My CV
-                            </h2>
-
-                            <p>
-                                Download my curriculum vitae as a PDF file for
-                                offline viewing or printing.
-                            </p>
-
-                            <a
-                                href="documents/CV.pdf"
-                                download="Troi-Manimtim-CV.pdf"
-                                class="btn btn-dark w-100"
-                            >
-                                <i class="bi bi-download me-2"></i>
-                                Download PDF
-                            </a>
-
-                            <p class="small text-secondary mt-3 mb-0">
-                                PDF document
-                            </p>
-
-                        </div>
-                    </div>
-
-                    <div class="card shadow-sm mb-4">
-                        <div class="card-body p-4">
-
-                            <h2 class="h5 fw-bold mb-3">
-                                <i class="bi bi-envelope-paper me-2"></i>
-                                Get in Touch
-                            </h2>
-
-                            <p>
-                                Have a project or opportunity in mind? Feel free
-                                to contact me.
-                            </p>
-
-                            <a
-                                href="mailto:tpmanimtim@ccc.edu.ph?subject=Portfolio%20Inquiry"
-                                class="btn btn-outline-secondary w-100"
-                            >
-                                <i class="bi bi-envelope me-2"></i>
-                                Email Me
-                            </a>
-
-                            <a
-                                href="index.html#contact"
-                                class="btn btn-outline-secondary w-100 mt-2"
-                            >
-                                <i class="bi bi-chat-dots me-2"></i>
-                                Contact Form
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="card shadow-sm">
-                        <div class="card-body p-4">
-
-                            <h2 class="h5 fw-bold mb-3">
-                                <i class="bi bi-folder2-open me-2"></i>
-                                Explore My Work
-                            </h2>
-
-                            <p>
-                                Visit my projects page to explore my web development
-                                work and projects.
-                            </p>
-
-                            <a href="project.html" class="btn btn-outline-secondary w-100">
-                                <i class="bi bi-arrow-right-circle me-2"></i>
-                                View Projects
-                            </a>
-
-                        </div>
-                    </div>
-
-                </aside>
-
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="border-top py-4">
-        <div class="container">
-            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
-
-                <p class="mb-0 text-secondary">
-                    &copy; <span id="currentYear"></span> Troi Manimtim.
-                    All rights reserved.
-                </p>
-
-                <a href="index.html" class="text-decoration-none">
-                    Back to Home
-                    <i class="bi bi-arrow-up-right ms-1"></i>
-                </a>
-
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // Automatically update the footer year
-            const currentYear = document.getElementById("currentYear");
-
-            if (currentYear) {
-                currentYear.textContent = new Date().getFullYear();
-            }
-
-            // Print CV
-            const printButton = document.getElementById("printCv");
-
-            if (printButton) {
-                printButton.addEventListener("click", function () {
-                    window.print();
-                });
-            }
-
-            // Light/dark theme toggle
-            const themeToggle = document.getElementById("themeToggle");
-            const themeIcon = document.getElementById("themeIcon");
-            const themeText = document.getElementById("themeText");
-            const htmlElement = document.documentElement;
-
-            function updateThemeButton(theme) {
-                if (!themeIcon || !themeText) {
-                    return;
-                }
-
-                if (theme === "dark") {
-                    themeIcon.className = "bi bi-sun";
-                    themeText.textContent = "Light Mode";
-                } else {
-                    themeIcon.className = "bi bi-moon-stars";
-                    themeText.textContent = "Dark Mode";
-                }
-            }
-
-            if (themeToggle) {
-                themeToggle.addEventListener("click", function () {
-                    const currentTheme =
-                        htmlElement.getAttribute("data-bs-theme") || "light";
-
-                    const nextTheme =
-                        currentTheme === "dark" ? "light" : "dark";
-
-                    htmlElement.setAttribute("data-bs-theme", nextTheme);
-
-                    try {
-                        localStorage.setItem("portfolio-theme", nextTheme);
-                    } catch (error) {
-                        // The theme still works if browser storage is unavailable.
-                    }
-
-                    updateThemeButton(nextTheme);
-                });
-            }
-
-            // Restore the previously selected theme
-            try {
-                const savedTheme = localStorage.getItem("portfolio-theme");
-
-                if (savedTheme === "dark" || savedTheme === "light") {
-                    htmlElement.setAttribute("data-bs-theme", savedTheme);
-                }
-            } catch (error) {
-                // Use the default theme if browser storage is unavailable.
-            }
-
-            updateThemeButton(
-                htmlElement.getAttribute("data-bs-theme") || "light"
-            );
-
-        });
-    </script>
-
-    <!-- Print styling -->
     <style>
-        @media print {
-            nav,
-            footer,
-            .btn,
+        /* ===================================
+           NAVIGATION
+        =================================== */
+        .portfolio-navbar {
+            position: relative;
+            z-index: 1030;
+        }
+
+        .portfolio-navbar .navbar-brand {
+            min-width: 0;
+            margin-right: 10px;
+            color: var(--bs-body-color);
+        }
+
+        .portfolio-navbar .brand-mark {
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: #2563eb;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .brand-name {
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        .brand-name small {
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .portfolio-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        #themeToggle {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .portfolio-menu-button {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 5px;
+            background: #343a40;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .portfolio-menu-button i {
+            font-size: 24px;
+            line-height: 1;
+        }
+
+        .portfolio-menu-button:hover,
+        .portfolio-menu-button:focus-visible,
+        .portfolio-menu-button[aria-expanded="true"] {
+            background: #212529;
+            color: #fff;
+        }
+
+        /* DROPDOWN - NO SEPARATORS */
+        .portfolio-dropdown {
+            min-width: 220px;
+            max-height: 75vh;
+            overflow-y: auto;
+            padding: 8px 0;
+            margin-top: 12px !important;
+            border: 1px solid var(--bs-border-color);
+            border-radius: 12px;
+            background: var(--bs-body-bg);
+        }
+
+        .portfolio-dropdown .dropdown-item {
+            padding: 11px 18px;
+            color: var(--bs-body-color);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .4px;
+        }
+
+        .portfolio-dropdown .dropdown-item:hover {
+            background: rgba(37, 99, 235, .1);
+            color: #2563eb;
+        }
+
+        [data-bs-theme="dark"] .portfolio-dropdown {
+            background: #212529;
+        }
+
+        [data-bs-theme="dark"] .portfolio-dropdown .dropdown-item:hover {
+            background: #343a40;
+            color: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        /* ===================================
+           CV PAPER
+        =================================== */
+        .cv-paper {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 48px 56px;
+            background: #fff;
+            color: #212529;
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
+            font-size: .95rem;
+            line-height: 1.55;
+        }
+
+        .cv-paper h1,
+        .cv-paper h2,
+        .cv-paper h3,
+        .cv-paper h4,
+        .cv-paper p,
+        .cv-paper li,
+        .cv-paper dt,
+        .cv-paper dd,
+        .cv-paper strong {
+            color: #212529 !important;
+        }
+
+        .cv-paper .cv-title,
+        .cv-paper .cv-muted,
+        .cv-paper .cv-entry-sub,
+        .cv-paper .cv-entry-date,
+        .cv-paper .cv-contact i {
+            color: #5c636a !important;
+        }
+
+        .cv-toolbar h1 {
+            color: var(--bs-emphasis-color);
+        }
+
+        /* CV HEADER */
+        .cv-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 28px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #212529;
+        }
+
+        .cv-name {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .cv-title {
+            margin: 6px 0 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #5c636a;
+        }
+
+        .cv-contact {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: .9rem;
+        }
+
+        .cv-contact li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 3px;
+        }
+
+        .cv-contact i {
+            width: 16px;
+        }
+
+        /* PHOTO */
+        .cv-photo {
+            flex: 0 0 auto;
+            width: 2in;
+            height: 2in;
+            overflow: hidden;
+            border: 1px solid #ced4da;
+            background: #f4f5f7;
+        }
+
+        .cv-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* CV SECTIONS */
+        .cv-section {
+            margin-top: 26px;
+        }
+
+        .cv-section-title {
+            margin: 0 0 12px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ced4da;
+            font-size: .95rem;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+        .cv-entry {
+            margin-bottom: 16px;
+        }
+
+        .cv-entry-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cv-entry-title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cv-entry-date {
+            font-size: .88rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .cv-entry-sub {
+            font-size: .92rem;
+            font-style: italic;
+        }
+
+        .cv-list {
+            margin: 6px 0 0;
+            padding-left: 1.2rem;
+        }
+
+        .cv-list li {
+            margin-bottom: 3px;
+        }
+
+        .cv-skills {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 6px 16px;
+            margin: 0;
+        }
+
+        .cv-skills dt {
+            font-weight: 700;
+        }
+
+        .cv-skills dd {
+            margin: 0;
+        }
+
+        /* RESPONSIVENESS */
+        @media (max-width: 640px) {
+            .cv-paper {
+                padding: 28px 22px;
+            }
+
+            .cv-header {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
+
+            .cv-name {
+                font-size: 1.8rem;
+            }
+
+            .cv-skills {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .cv-skills dd {
+                margin-bottom: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-navbar .brand-mark {
+                width: 36px;
+                height: 36px;
+                font-size: 12px;
+            }
+
+            .brand-name {
+                font-size: 13px;
+            }
+
+            .brand-name small {
+                font-size: 10px;
+            }
+
+            .portfolio-controls {
+                gap: 6px;
+            }
+
             #themeToggle,
-            aside {
+            .portfolio-menu-button {
+                width: 35px;
+                height: 35px;
+            }
+
+            .portfolio-dropdown {
+                min-width: 190px;
+            }
+        }
+
+        /* PRINT */
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        @media print {
+            header.sticky-top,
+            .cv-toolbar {
                 display: none !important;
             }
 
-            body {
+            body,
+            main {
                 background: #fff !important;
-                color: #000 !important;
+                padding: 0 !important;
             }
 
             .container {
                 max-width: 100% !important;
-                width: 100% !important;
+                padding: 0 !important;
             }
 
-            .card {
-                box-shadow: none !important;
-                border: 1px solid #ddd !important;
+            .cv-paper {
+                max-width: 100%;
+                padding: 0;
+                border: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .cv-entry,
+            .cv-section-title {
                 break-inside: avoid;
-            }
-
-            header {
-                padding-top: 1rem !important;
-                padding-bottom: 1rem !important;
-            }
-
-            main {
-                padding-bottom: 0 !important;
-            }
-
-            a {
-                color: #000 !important;
-                text-decoration: none !important;
             }
         }
     </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="sticky-top">
+
+        <nav class="navbar glass-nav border-bottom portfolio-navbar">
+
+            <div class="container py-2 d-flex flex-nowrap align-items-center">
+
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+                   href="index.html#home">
+
+                    <span class="brand-mark">TM</span>
+
+                    <span class="brand-name">
+                        Troi Manimtim
+                        <small class="d-block text-body-secondary fw-normal">
+                            Web Developer
+                        </small>
+                    </span>
+
+                </a>
+
+                <div class="portfolio-controls">
+
+                    <!-- THEME -->
+                    <button
+                        type="button"
+                        id="themeToggle"
+                        class="btn btn-sm btn-outline-secondary rounded-pill"
+                        aria-label="Toggle dark mode">
+                        <i class="bi bi-moon-stars"></i>
+                    </button>
+
+                    <!-- MENU -->
+                    <div class="dropdown">
+
+                        <button
+                            type="button"
+                            class="portfolio-menu-button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            aria-label="Open navigation menu">
+                            <i class="bi bi-list"></i>
+                        </button>
+
+                        <ul class="dropdown-menu dropdown-menu-end portfolio-dropdown shadow">
+
+                            <li><a class="dropdown-item" href="index.html#home">HOME</a></li>
+                            <li><a class="dropdown-item" href="project.html">PROJECTS</a></li>
+                            <li><a class="dropdown-item" href="cv.html">CV</a></li>
+                            <li><a class="dropdown-item" href="index.html#about">ABOUT</a></li>
+                            <li><a class="dropdown-item" href="index.html#skills">SKILLS</a></li>
+                            <li><a class="dropdown-item" href="index.html#education">EDUCATION</a></li>
+                            <li><a class="dropdown-item" href="index.html#contact">CONTACT</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="section-padding">
+
+        <div class="container">
+
+            <!-- CV HEADING -->
+            <div class="cv-toolbar d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+
+                <div>
+                    <div class="section-label">
+                        CURRICULUM VITAE
+                    </div>
+
+                    <h1 class="display-5 fw-bold">
+                        Troi Manimtim
+                    </h1>
+                </div>
+
+                <!-- DOWNLOAD CV PDF -->
+                <a
+                    href="documents/CV.pdf"
+                    download="Troi-Manimtim-CV.pdf"
+                    class="btn btn-dark"
+                    id="downloadCvBtn"
+                >
+                    <i class="bi bi-download"></i>
+                    Download CV PDF
+                </a>
+
+            </div>
+
+            <!-- CV PAPER -->
+            <article class="cv-paper" data-bs-theme="light">
+
+                <!-- PROFILE -->
+                <div class="cv-header">
+
+                    <div>
+
+                        <h2 class="cv-name">
+                            Troi Manimtim
+                        </h2>
+
+                        <p class="cv-title">
+                            Web Developer
+                        </p>
+
+                        <ul class="cv-contact">
+
+                            <li>
+                                <i class="bi bi-envelope"></i>
+                                tpmanimtim@ccc.edu.ph
+                            </li>
+
+                            <li>
+                                <i class="bi bi-telephone"></i>
+                                0991 767 4731
+                            </li>
+
+                            <li>
+                                <i class="bi bi-geo-alt"></i>
+                                Canlubang, Calamba
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="cv-photo">
+
+                        <img
+                            src="assets/images/portfolio_pic.jpg"
+                            alt="Troi Manimtim">
+
+                    </div>
+                </div>
+
+                <!-- OBJECTIVES -->
+                <section class="cv-section">
+
+                    <h3 class="cv-section-title">
+                        Objectives
+                    </h3>
+
+                    <p class="mb-0">
+                        To obtain a web developer position where I can apply
+                        my skills in HTML, CSS, JavaScript, PHP and MySQL
+                        to build responsive, user-friendly websites, while
+                        continuing to learn and contribute to the success
+                        of the company.
+                    </p>
+
+                </section>
+
+                <!-- PROJECTS -->
+                <section class="cv-section">
+
+                    <h3 class="cv-section-title">
+                        Projects
+                    </h3>
+
+                    <!-- DENTAL CLINIC -->
+                    <div class="cv-entry">
+
+                        <div class="cv-entry-head">
+
+                            <h4 class="cv-entry-title">
+                                Hollie-Gab Dental Clinic Management System
+                            </h4>
+
+                            <span class="cv-entry-date">
+                                2026
+                            </span>
+
+                        </div>
+
+                        <div class="cv-entry-sub">
+                            FULL STACK
+                        </div>
+
+                        <div class="cv-entry-sub">
+                            PHP, MySQL, JavaScript, Chart.js, HTML, CSS
+                        </div>
+
+                    </div>
+
+                    <!-- ISKOLAR -->
+                    <div class="cv-entry">
+
+                        <div class="cv-entry-head">
+
+                            <h4 class="cv-entry-title">
+                                iSkolar Hub
+                            </h4>
+
+                            <span class="cv-entry-date">
+                                2025
+                            </span>
+
+                        </div>
+
+                        <div class="cv-entry-sub">
+                            DATA ANALYST
+                        </div>
+
+                        <div class="cv-entry-sub">
+                            PHP, MySQL, JavaScript, HTML, CSS
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- TECH STACK -->
+                <section class="cv-section">
+
+                    <h3 class="cv-section-title">
+                        Tech Stack
+                    </h3>
+
+                    <dl class="cv-skills">
+
+                        <dt>Front-end</dt>
+                        <dd>HTML5, CSS3, JavaScript, Bootstrap</dd>
+
+                        <dt>Back-end</dt>
+                        <dd>PHP</dd>
+
+                        <dt>Database</dt>
+                        <dd>MySQL, phpMyAdmin</dd>
+
+                        <dt>Libraries</dt>
+                        <dd>Chart.js</dd>
+
+                        <dt>Tools</dt>
+                        <dd>XAMPP, Git, GitHub, VS Code</dd>
+
+                    </dl>
+
+                </section>
+
+                <!-- SOFT SKILLS -->
+                <section class="cv-section">
+
+                    <h3 class="cv-section-title">
+                        Soft Skills
+                    </h3>
+
+                    <dl class="cv-skills">
+
+                        <dt>Problem Solving</dt>
+                        <dd>
+                            Analytical Thinking, Critical Thinking,
+                            Troubleshooting
+                        </dd>
+
+                        <dt>Communication</dt>
+                        <dd>
+                            Verbal Communication, Written Communication,
+                            Active Listening
+                        </dd>
+
+                        <dt>Teamwork</dt>
+                        <dd>
+                            Collaboration, Adaptability,
+                            Respect for Different Perspectives
+                        </dd>
+
+                        <dt>Time Management</dt>
+                        <dd>
+                            Task Prioritization, Organization,
+                            Meeting Deadlines
+                        </dd>
+
+                        <dt>Work Ethic</dt>
+                        <dd>
+                            Responsibility, Attention to Detail,
+                            Professionalism
+                        </dd>
+
+                        <dt>Learning Ability</dt>
+                        <dd>
+                            Continuous Learning, Self-Motivation,
+                            Willingness to Improve
+                        </dd>
+
+                    </dl>
+
+                </section>
+
+            </article>
+
+        </div>
+    </main>
+
+    <!-- BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- THEME SWITCH -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const html = document.documentElement;
+            const toggle = document.getElementById("themeToggle");
+            const icon = toggle.querySelector("i");
+
+            function updateIcon() {
+
+                const dark = html.getAttribute("data-bs-theme") === "dark";
+
+                icon.className = dark
+                    ? "bi bi-sun"
+                    : "bi bi-moon-stars";
+
+                toggle.setAttribute(
+                    "aria-label",
+                    dark ? "Switch to light mode" : "Switch to dark mode"
+                );
+            }
+
+            const storedTheme = localStorage.getItem("portfolio-theme");
+
+            if (storedTheme === "dark" || storedTheme === "light") {
+                html.setAttribute("data-bs-theme", storedTheme);
+            }
+
+            updateIcon();
+
+            toggle.addEventListener("click", function () {
+
+                const dark = html.getAttribute("data-bs-theme") === "dark";
+                const newTheme = dark ? "light" : "dark";
+
+                html.setAttribute("data-bs-theme", newTheme);
+                localStorage.setItem("portfolio-theme", newTheme);
+
+                updateIcon();
+            });
+
+        });
+    </script>
 
 </body>
 </html>
