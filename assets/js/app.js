@@ -295,3 +295,61 @@ function x(value) {
         .replaceAll("'", "&#039;");
 
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll(
+        ".nav-link-custom"
+    );
+
+    const sections = document.querySelectorAll(
+        "#home, #about, #skills, #education, #contact"
+    );
+
+    function updateActiveLink(hash) {
+        links.forEach(link => {
+            const url = new URL(link.href, window.location.href);
+
+            const isActive =
+                url.pathname === window.location.pathname &&
+                url.hash === hash;
+
+            link.classList.toggle("active", isActive);
+        });
+    }
+
+    // Highlight current page on load
+    updateActiveLink(window.location.hash || "#home");
+
+    // Update when clicking navigation links
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            const url = new URL(link.href, window.location.href);
+
+            if (url.pathname === window.location.pathname) {
+                updateActiveLink(url.hash || "#home");
+            }
+        });
+    });
+
+    // Detect active section while scrolling
+    if (sections.length) {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    updateActiveLink("#" + entry.target.id);
+                }
+            });
+        }, {
+            rootMargin: "-25% 0px -65% 0px"
+        });
+
+        sections.forEach(section => observer.observe(section));
+    }
+
+    // Browser back/forward navigation
+    window.addEventListener("hashchange", () => {
+        updateActiveLink(window.location.hash || "#home");
+    });
+});
+
