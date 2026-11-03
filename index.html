@@ -1,242 +1,33 @@
-<!doctype html>
-<html lang="en" data-bs-theme="light">
+
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Troi Manimtim - Web Developer Portfolio">
 
-    <title>Troi Manimtim | Web Developer</title>
+    <title>Projects | Troi Manimtim</title>
 
+    <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICONS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CUSTOM CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-
-    <style>
-        /* PROFILE PHOTO */
-        .profile-photo {
-            position: relative;
-            z-index: 1;
-            display: block;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            object-position: center top;
-            border-radius: 24px;
-        }
-
-        /* NAVIGATION */
-        .portfolio-navbar {
-            position: relative;
-            z-index: 1030;
-        }
-
-        .portfolio-navbar .navbar-brand {
-            min-width: 0;
-            margin-right: 10px;
-            color: var(--bs-body-color);
-        }
-
-        .portfolio-navbar .brand-mark {
-            width: 42px;
-            height: 42px;
-            flex-shrink: 0;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #2563eb;
-            color: #ffffff;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 800;
-        }
-
-        .portfolio-navbar .brand-name {
-            font-size: 16px;
-            line-height: 1.2;
-        }
-
-        .portfolio-navbar .brand-name small {
-            margin-top: 3px;
-            font-size: 12px;
-        }
-
-        .portfolio-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: auto;
-            flex-shrink: 0;
-        }
-
-        #themeToggle {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* PERMANENT MENU BUTTON */
-        .portfolio-menu-button {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #212529;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background .2s ease;
-        }
-
-        .portfolio-menu-button i {
-            font-size: 24px;
-            line-height: 1;
-        }
-
-        .portfolio-menu-button:hover,
-        .portfolio-menu-button:focus-visible,
-        .portfolio-menu-button[aria-expanded="true"] {
-            background: #212529;
-            color: #ffffff;
-        }
-
-        /* NAVIGATION DROPDOWN */
-        .portfolio-dropdown {
-            min-width: 220px;
-            padding: 8px 0;
-            margin-top: 12px !important;
-            background: var(--bs-body-bg);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 12px;
-            max-height: 75vh;
-            overflow-y: auto;
-        }
-
-        .portfolio-dropdown .dropdown-item {
-            display: block;
-            padding: 11px 18px;
-            color: var(--bs-body-color);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .4px;
-            text-decoration: none;
-        }
-
-        .portfolio-dropdown .dropdown-item:hover,
-        .portfolio-dropdown .dropdown-item:focus {
-            background: rgba(37, 99, 235, .1);
-            color: #2563eb;
-        }
-
-        [data-bs-theme="dark"] .portfolio-dropdown {
-            background: #212529;
-            border-color: #495057;
-        }
-
-        [data-bs-theme="dark"] .portfolio-dropdown .dropdown-item:hover {
-            background: #343a40;
-            color: #ffffff;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
-
-        /* HERO RESPONSIVENESS */
-        @media (max-width: 991.98px) {
-            .hero-section .hero-row {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .hero-section .hero-photo-column {
-                order: 1;
-                width: 100%;
-            }
-
-            .hero-section .hero-text-column {
-                order: 2;
-                width: 100%;
-            }
-
-            .hero-section .profile-card {
-                width: min(100%, 320px);
-                margin-inline: auto;
-            }
-
-            .hero-section .hero-text-column {
-                text-align: center;
-            }
-
-            .hero-section .hero-text-column .eyebrow {
-                justify-content: center;
-            }
-
-            .hero-section .hero-description {
-                margin-inline: auto;
-            }
-
-            .hero-section .hero-actions {
-                justify-content: center;
-            }
-
-            .hero-section h1 {
-                font-size: clamp(2.5rem, 8vw, 4.5rem);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .portfolio-navbar .brand-mark {
-                width: 36px;
-                height: 36px;
-                font-size: 12px;
-            }
-
-            .portfolio-navbar .brand-name {
-                font-size: 13px;
-            }
-
-            .portfolio-navbar .brand-name small {
-                font-size: 10px;
-            }
-
-            .portfolio-controls {
-                gap: 6px;
-            }
-
-            #themeToggle,
-            .portfolio-menu-button {
-                width: 35px;
-                height: 35px;
-            }
-
-            .portfolio-dropdown {
-                min-width: 190px;
-            }
-
-            .hero-section .profile-card {
-                width: min(100%, 260px);
-            }
-
-            .hero-section .hero-actions .btn {
-                width: 100%;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
-   
+<!-- ================= NAVIGATION ================= -->
+
 <header class="sticky-top">
     <nav class="navbar glass-nav border-bottom portfolio-navbar">
-        <div class="container py-2 d-flex align-items-center">
+        <div class="container py-2">
 
             <!-- BRAND -->
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
@@ -252,579 +43,683 @@
                 </span>
             </a>
 
-            <!-- DESKTOP NAVIGATION -->
+            <!-- VISIBLE NAVIGATION -->
+            <div class="portfolio-navigation" id="portfolioNavigation">
 
-                <div class="portfolio-nav-links ms-auto" id="desktopNavigation">
-                    <a href="index.html#home" class="nav-link-custom">HOME</a>
-                    <a href="project.html" class="nav-link-custom">PROJECTS</a>
-                    <a href="cv.html" class="nav-link-custom">CV</a>
-                    <a href="index.html#about" class="nav-link-custom">ABOUT</a>
-                    <a href="index.html#skills" class="nav-link-custom">SKILLS</a>
-                    <a href="index.html#education" class="nav-link-custom">EDUCATION</a>
-                    <a href="index.html#contact" class="nav-link-custom">CONTACT</a>
-                </div>
+                <a href="index.html#home" class="nav-link-custom">HOME</a>
+                <a href="project.html" class="nav-link-custom">PROJECTS</a>
+                <a href="cv.html" class="nav-link-custom">CV</a>
+                <a href="index.html#about" class="nav-link-custom">ABOUT</a>
+                <a href="index.html#skills" class="nav-link-custom">SKILLS</a>
+                <a href="index.html#education" class="nav-link-custom">EDUCATION</a>
+                <a href="index.html#contact" class="nav-link-custom">CONTACT</a>
 
+            </div>
 
-            <!-- CONTROLS -->
+            <!-- THEME TOGGLE -->
             <div class="portfolio-controls">
 
-                <button
-                    type="button"
-                    id="themeToggle"
-                    class="btn btn-sm btn-outline-secondary rounded-pill"
-                    aria-label="Toggle dark mode">
-                    <i class="bi bi-moon-stars"></i>
-                </button>
+                <button type="button"
+                        id="themeToggle"
+                        class="btn btn-sm btn-outline-secondary rounded-pill"
+                        aria-label="Toggle dark mode">
 
-                <!-- MOBILE MENU BUTTON -->
-                <button
-                    type="button"
-                    class="portfolio-menu-button"
-                    id="mobileMenuToggle"
-                    aria-label="Open navigation menu"
-                    aria-expanded="false">
-                    <i class="bi bi-list"></i>
+                    <i class="bi bi-sun"></i>
+
                 </button>
 
             </div>
-        </div>
 
-        <!-- MOBILE NAVIGATION -->
-        <div class="mobile-nav-links" id="mobileNavigation">
-            <a href="index.html#home">HOME</a>
-            <a href="project.html">PROJECTS</a>
-            <a href="cv.html">CV</a>
-            <a href="index.html#about">ABOUT</a>
-            <a href="index.html#skills">SKILLS</a>
-            <a href="index.html#education">EDUCATION</a>
-            <a href="index.html#contact">CONTACT</a>
         </div>
-
     </nav>
 </header>
 
 
-    <main>
+<!-- ================= PAGE HEADER ================= -->
 
-        <!-- HOME -->
-<section id="home" class="hero-section">
-    <div class="container py-5">
-        <div class="row align-items-center g-5 hero-row">
+<section class="projects-header">
 
-            <!-- PROFILE PICTURE -->
-            <div class="col-lg-5 hero-photo-column">
-                <div class="profile-card mx-auto">
-                    <div class="profile-glow"></div>
+    <div class="container">
 
-                    <img
-                        src="assets/images/portfolio_pic.jpg"
-                        alt="Troi Manimtim"
-                        class="profile-photo">
-                </div>
-            </div>
+        <span class="eyebrow">ACADEMIC PROJECTS</span>
 
-            <!-- NAME AND INTRODUCTION -->
-            <div class="col-lg-7 hero-text-column">
+        <h1 class="projects-header-title">
+            My Projects
+        </h1>
 
-                <div class="eyebrow mb-3">
-                    WEB DEVELOPER
-                </div>
+        <p class="projects-header-description">
+            A collection of academic projects completed throughout
+            my studies, showcasing my creativity, design skills,
+            and technical knowledge.
+        </p>
 
-                <h1 class="display-2 fw-bold tracking-tight mb-4">
-                    Troi <span class="text-primary">Manimtim</span>
-                </h1>
-
-                <p class="lead fs-3 fw-semibold mb-3">
-                    Building practical digital solutions through technology and creativity.
-                </p>
-
-                <p class="text-body-secondary fs-5 col-xl-10 mb-4 hero-description">
-                    I create clean, responsive, and useful web experiences
-                    while continuously improving my technical and
-                    problem-solving skills.
-                </p>
-
-                <div class="d-flex flex-wrap gap-2 hero-actions">
-                    <a href="project.html" class="btn btn-dark btn-lg px-4">
-                        View My Projects
-                        <i class="bi bi-arrow-up-right ms-1"></i>
-                    </a>
-
-                    <a href="cv.html" class="btn btn-outline-secondary btn-lg px-4">
-                        View CV
-                    </a>
-
-                    <a href="#contact" class="btn btn-outline-primary btn-lg px-4">
-                        Contact Me
-                    </a>
-                </div>
-
-            </div>
-        </div>
     </div>
+
 </section>
 
 
-        <!-- ABOUT -->
-        <section id="about" class="section-padding">
-            <div class="container">
+<!-- ================= SEARCH AND FILTER ================= -->
 
-                <div class="section-label">01 — ABOUT</div>
+<section class="project-search-section">
 
-                <div class="row g-5">
-                    <div class="col-lg-6">
-                        <h2 class="display-6 fw-bold">
-                            A portfolio built around practical work.
-                        </h2>
+    <div class="container">
 
-                        <p class="fs-5 text-body-secondary mt-4">
-                            I am a aspiring Web Developer focused on building practical
-                            digital solutions, learning modern technologies,
-                            and improving the usability of the systems I create.
-                        </p>
+        <div class="project-search-box">
 
-                    
-                    </div>
+            <i class="bi bi-search"></i>
 
-                    <div class="col-lg-6">
-                        <div class="row g-3">
+            <input
+                type="search"
+                id="projectSearch"
+                placeholder="Search projects by title, category, or technology..."
+                autocomplete="off"
+                aria-label="Search projects">
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Location</small>
-                                    <strong>Canlubang, Calamba</strong>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Email</small>
-                                    <strong>tpmanimtim@ccc.edu.ph</strong>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Phone</small>
-                                    <strong>0991 767 4731</strong>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Specialization</small>
-                                    <strong>Programming</strong>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Education</small>
-                                    <strong>City College of Calamba</strong>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section-padding section-muted">
-            <div class="container">
-
-                <div class="section-label">02 — SKILLS</div>
-
-                <h2 class="display-6 fw-bold mb-2">
-                    Tools and skills I use.
-                </h2>
-
-                
-
-                <div id="skillsGrid" class="row g-3"></div>
-
-            </div>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section id="experience" class="section-padding">
-            <div class="container">
-
-                <div class="section-label">03 — EXPERIENCE</div>
-
-                <div id="experienceTimeline" class="timeline"></div>
-
-            </div>
-        </section>
-
-        <!-- EDUCATION AND CERTIFICATES -->
-        <section id="education" class="section-padding section-muted">
-            <div class="container">
-
-                <div class="section-label">
-                    04 — EDUCATION & CERTIFICATES
-                </div>
-
-                <div class="row g-4 align-items-stretch">
-
-                    <div class="col-lg-6 d-flex flex-column">
-                        <h3 class="fw-bold mb-3">Education</h3>
-
-                        <div id="educationList" class="education-fixed-card flex-grow-1">
-                            <span class="education-year">Currently 3rd Year</span>
-
-                            <h4 class="education-title">
-                                Bachelor of Science in Information Technology
-                            </h4>
-
-                            <p class="education-school">
-                                City College of Calamba
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 d-flex flex-column">
-                        <h3 class="fw-bold mb-3">CERTIFICATES</h3>
-
-                        <div id="credentialsList" class="education-fixed-card flex-grow-1">
-                            <span class="education-year">2024</span>
-
-                            <h4 class="education-title">
-                                National Certificate on Computer
-                                Systems Servicing NC II
-                            </h4>
-
-                            <p class="education-school">TESDA</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-
-                <div class="contact-box p-4 p-lg-5">
-                    <div class="row g-5">
-
-                        <div class="col-lg-5">
-                            <div class="section-label">05 — CONTACT</div>
-
-                            <h2 class="display-6 fw-bold">Let's connect.</h2>
-
-                            <p class="text-body-secondary">
-                                Feel free to reach out through any of the
-                                details below, or send me a message directly
-                                using the contact form.
-                            </p>
-
-                            <div class="contact-list mt-4">
-
-                                <div>
-                                    <i class="bi bi-envelope"></i>
-                                    <span>tpmanimtim@ccc.edu.ph</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-telephone"></i>
-                                    <span>0991 767 4731</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    <span>Canlubang, Calamba</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-github"></i>
-                                    <a href="https://github.com/galani920"
-                                       target="_blank"
-                                       rel="noopener noreferrer">
-                                        github.com/galani920
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- CONTACT FORM -->
-                        <div class="col-lg-7">
-                            <form id="contactForm">
-                                <div class="row g-3">
-
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="contactName">
-                                            Name
-                                        </label>
-
-                                        <input
-                                            id="contactName"
-                                            name="name"
-                                            class="form-control"
-                                            maxlength="100"
-                                            autocomplete="name"
-                                            required>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="contactEmail">
-                                            Email
-                                        </label>
-
-                                        <input
-                                            id="contactEmail"
-                                            name="email"
-                                            type="email"
-                                            class="form-control"
-                                            maxlength="254"
-                                            autocomplete="email"
-                                            required>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label" for="contactSubject">
-                                            Subject
-                                        </label>
-
-                                        <input
-                                            id="contactSubject"
-                                            name="subject"
-                                            class="form-control"
-                                            maxlength="150"
-                                            required>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label" for="contactMessage">
-                                            Message
-                                        </label>
-
-                                        <textarea
-                                            id="contactMessage"
-                                            name="message"
-                                            class="form-control"
-                                            rows="6"
-                                            maxlength="5000"
-                                            required></textarea>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <button
-                                            id="sendMessageBtn"
-                                            type="submit"
-                                            class="btn btn-dark btn-lg px-4">
-                                            Send Message
-                                            <i class="bi bi-send ms-1"></i>
-                                        </button>
-
-                                        <div
-                                            id="contactStatus"
-                                            class="mt-3 small"
-                                            role="status"
-                                            aria-live="polite"></div>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="border-top py-4">
-        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-body-secondary">
-
-            <span>
-                © <span id="year"></span> Troi Manimtim.
-            </span>
-
-            <span>
-                HTML · Bootstrap · Tailwind CSS · JavaScript
-            </span>
+            <button type="button" id="clearSearch">
+                Clear
+            </button>
 
         </div>
-    </footer>
 
-    <!-- JAVASCRIPT LIBRARIES -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/data.js"></script>
-    <script src="assets/js/app.js"></script>
+        <!-- FILTER BUTTONS -->
+        <div class="project-filters">
 
-    <!-- EDUCATION CONTENT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+            <button class="filter-btn active" data-filter="all">
+                All Projects
+            </button>
 
-            const education = document.getElementById("educationList");
-            const certificates = document.getElementById("credentialsList");
-            const year = document.getElementById("year");
+            <button class="filter-btn" data-filter="prelim">
+                Prelim
+            </button>
 
-            if (education) {
-                education.className = "education-fixed-card flex-grow-1";
+            <button class="filter-btn" data-filter="midterm">
+                Midterm
+            </button>
 
-                education.innerHTML = `
-                    <span class="education-year">Currently 3rd Year</span>
+            <button class="filter-btn" data-filter="finals">
+                Finals
+            </button>
 
-                    <h4 class="education-title">BSIT</h4>
+        </div>
 
-                    <p class="education-school">
-                        City College of Calamba
-                    </p>
+        <p class="project-result-count" id="projectResultCount">
+            Showing 5 of 5 projects
+        </p>
 
-                    <p class="education-description">
-                        Bachelor of Science in Information Technology
-                    </p>
-                `;
-            }
+    </div>
 
-            if (certificates) {
-                certificates.className = "education-fixed-card flex-grow-1";
+</section>
 
-                certificates.innerHTML = `
-                    <span class="education-year">2024</span>
 
-                    <h4 class="education-title">
-                        National Certificate on Computer
-                        Systems Servicing NC II
-                    </h4>
+<!-- ================= PROJECTS ================= -->
 
-                    <p class="education-school">TESDA</p>
-                `;
-            }
+<main class="projects-content">
 
-            if (year) {
-                year.textContent = new Date().getFullYear();
-            }
+    <div class="container">
 
-        });
-    </script>
 
-    <!-- EMAILJS LIBRARY -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <!-- ================= PRELIM ================= -->
 
-    <!-- EMAILJS CONTACT FORM -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        <section class="semester-section" id="prelim">
 
-            const EMAILJS_PUBLIC_KEY = "Bl_pSuoHVtteKMVEK";
-            const EMAILJS_SERVICE_ID = "service_mi9m8lg";
-            const EMAILJS_TEMPLATE_ID = "template_r1q26zl";
+            <div class="semester-header">
 
-            const contactForm = document.getElementById("contactForm");
-            const sendButton = document.getElementById("sendMessageBtn");
-            const contactStatus = document.getElementById("contactStatus");
+                <div class="semester-number">01</div>
 
-            if (!contactForm || !sendButton || !contactStatus) {
-                return;
-            }
+                <div>
+                    <span class="semester-label">Academic Projects</span>
+                    <h2 class="semester-title">PRELIM</h2>
+                </div>
 
-            let isSending = false;
+            </div>
 
-            contactForm.addEventListener("submit", async function (event) {
+            <div class="row g-4">
 
-                event.preventDefault();
-                event.stopImmediatePropagation();
 
-                if (isSending) return;
-                if (!contactForm.reportValidity()) return;
+                <!-- PRELIM PROJECT 1 -->
 
-                if (typeof emailjs === "undefined") {
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "Email service could not be loaded. Check your connection.";
-                    return;
-                }
+                <div class="col-md-6 col-xl-4 project-item"
+                     data-semester="prelim"
+                     data-search="fruitful design kiwi fruit illustration digital art">
 
-                const configurationMissing = [
-                    EMAILJS_PUBLIC_KEY,
-                    EMAILJS_SERVICE_ID,
-                    EMAILJS_TEMPLATE_ID
-                ].some(value =>
-                    !value ||
-                    value.trim() === "" ||
-                    value.startsWith("YOUR_")
-                );
+                    <article class="academic-project-card">
 
-                if (configurationMissing) {
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "EmailJS configuration is incomplete.";
-                    return;
-                }
+                        <img
+                            src="assets/images/PRELIMACT1.jpg"
+                            alt="Kiwi fruit illustration"
+                            class="academic-project-image"
+                            loading="lazy">
 
-                const formData = new FormData(contactForm);
+                        <div class="academic-project-content">
 
-                const templateParams = {
-                    from_name: String(formData.get("name") || "").trim(),
-                    from_email: String(formData.get("email") || "").trim(),
-                    subject: String(formData.get("subject") || "").trim(),
-                    message: String(formData.get("message") || "").trim()
-                };
+                            <div class="project-meta">
+                                <span class="project-category">Academic</span>
+                                <span class="project-year">2026</span>
+                            </div>
 
-                isSending = true;
-                sendButton.disabled = true;
+                            <h3 class="project-title">
+                                Fruitful Design
+                            </h3>
 
-                const originalContent = sendButton.innerHTML;
+                            <p class="project-description">
+                                A kiwi fruit illustration featuring
+                                a sliced kiwi and its green interior,
+                                created as an academic design activity.
+                            </p>
 
-                sendButton.innerHTML = `
-                    <span
-                        class="spinner-border spinner-border-sm me-2"
-                        role="status"
-                        aria-hidden="true"></span>
-                    Sending...
-                `;
+                            <div class="project-technologies">
+                                <span class="technology-tag">Illustration</span>
+                                <span class="technology-tag">Digital Art</span>
+                            </div>
 
-                contactStatus.textContent = "";
+                            <button class="view-project-btn"
+                                    data-project="fruitful">
+                                View Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
 
-                try {
-                    emailjs.init({
-                        publicKey: EMAILJS_PUBLIC_KEY
-                    });
+                        </div>
 
-                    await emailjs.send(
-                        EMAILJS_SERVICE_ID,
-                        EMAILJS_TEMPLATE_ID,
-                        templateParams
-                    );
+                    </article>
 
-                    contactStatus.className = "mt-3 small text-success";
-                    contactStatus.textContent =
-                        "Your message has been sent successfully!";
+                </div>
 
-                    contactForm.reset();
 
-                } catch (error) {
-                    console.error("EmailJS Error:", error);
+                <!-- PRELIM PROJECT 2 -->
 
-                    const errorCode = error?.status || "Unknown";
+                <div class="col-md-6 col-xl-4 project-item"
+                     data-semester="prelim"
+                     data-search="brand design istillo coffee logo graphics">
 
-                    const errorMessage =
-                        error?.text ||
-                        error?.message ||
-                        "Unknown EmailJS error";
+                    <article class="academic-project-card">
 
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "Email failed (" + errorCode + "): " + errorMessage;
+                        <img
+                            src="assets/images/PRELIMACT2.jpg"
+                            alt="iSTILO coffee logo"
+                            class="academic-project-image logo-image"
+                            loading="lazy">
 
-                } finally {
-                    isSending = false;
-                    sendButton.disabled = false;
-                    sendButton.innerHTML = originalContent;
-                }
+                        <div class="academic-project-content">
 
-            }, true);
-        });
-    </script>
+                            <div class="project-meta">
+                                <span class="project-category">Branding</span>
+                                <span class="project-year">2026</span>
+                            </div>
+
+                            <h3 class="project-title">
+                                Brand Design
+                            </h3>
+
+                            <p class="project-description">
+                                A coffee-inspired logo design featuring
+                                a steaming cup and scattered coffee beans.
+                            </p>
+
+                            <div class="project-technologies">
+                                <span class="technology-tag">Logo Design</span>
+                                <span class="technology-tag">Graphics</span>
+                            </div>
+
+                            <button class="view-project-btn"
+                                    data-project="brand">
+                                View Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MIDTERM ================= -->
+
+        <section class="semester-section" id="midterm">
+
+            <div class="semester-header">
+
+                <div class="semester-number">02</div>
+
+                <div>
+                    <span class="semester-label">Academic Projects</span>
+                    <h2 class="semester-title">MIDTERM</h2>
+                </div>
+
+            </div>
+
+            <div class="row g-4">
+
+
+                <!-- MIDTERM PROJECT 1: BREW HAVEN -->
+
+                <div class="col-md-6 col-xl-4 project-item"
+                     data-semester="midterm"
+                     data-search="brew haven coffee shop pumpkin spice latte branding logo graphic design campaign poster banner landing page newsletter social media">
+
+                    <article class="academic-project-card">
+
+                        <!-- BREW HAVEN IMAGE CAROUSEL -->
+
+                        <div id="brewHavenCarousel"
+                             class="carousel slide project-carousel"
+                             data-bs-ride="false">
+
+                            <div class="carousel-inner">
+
+                                <!-- IMAGE 1 -->
+                                <div class="carousel-item active">
+
+                                    <img
+                                        src="assets/images/MIDTERMACT1.jpg"
+                                        class="d-block w-100 academic-project-image"
+                                        alt="Brew Haven original logo"
+                                        loading="lazy">
+
+                                    <span class="carousel-label">
+                                        Original Logo
+                                    </span>
+
+                                </div>
+
+                                <!-- IMAGE 2 -->
+                                <div class="carousel-item">
+
+                                    <img
+                                        src="assets/images/BANNER%20AD.jpg"
+                                        class="d-block w-100 academic-project-image"
+                                        alt="Brew Haven promotional banner"
+                                        loading="lazy">
+
+                                    <span class="carousel-label">
+                                        Banner Advertisement
+                                    </span>
+
+                                </div>
+
+                                <!-- IMAGE 3 -->
+                                <div class="carousel-item">
+
+                                    <img
+                                        src="assets/images/LANDING%20PAGE.jpg"
+                                        class="d-block w-100 academic-project-image"
+                                        alt="Brew Haven landing page design"
+                                        loading="lazy">
+
+                                    <span class="carousel-label">
+                                        Landing Page
+                                    </span>
+
+                                </div>
+
+                                <!-- IMAGE 4 -->
+                                <div class="carousel-item">
+
+                                    <img
+                                        src="assets/images/NEWSLETTER%20HEADER.jpg"
+                                        class="d-block w-100 academic-project-image"
+                                        alt="Brew Haven newsletter header"
+                                        loading="lazy">
+
+                                    <span class="carousel-label">
+                                        Newsletter Header
+                                    </span>
+
+                                </div>
+
+                                <!-- IMAGE 5 -->
+                                <div class="carousel-item">
+
+                                    <img
+                                        src="assets/images/SOCIAL%20MEDIA%20POST.jpg"
+                                        class="d-block w-100 academic-project-image"
+                                        alt="Brew Haven social media post"
+                                        loading="lazy">
+
+                                    <span class="carousel-label">
+                                        Social Media Post
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            <!-- PREVIOUS -->
+                            <button class="carousel-control-prev"
+                                    type="button"
+                                    data-bs-target="#brewHavenCarousel"
+                                    data-bs-slide="prev"
+                                    aria-label="Previous image">
+
+                                <span class="carousel-control-prev-icon"></span>
+
+                            </button>
+
+                            <!-- NEXT -->
+                            <button class="carousel-control-next"
+                                    type="button"
+                                    data-bs-target="#brewHavenCarousel"
+                                    data-bs-slide="next"
+                                    aria-label="Next image">
+
+                                <span class="carousel-control-next-icon"></span>
+
+                            </button>
+
+                            <!-- INDICATORS -->
+                            <div class="carousel-indicators">
+
+                                <button type="button"
+                                        data-bs-target="#brewHavenCarousel"
+                                        data-bs-slide-to="0"
+                                        class="active"
+                                        aria-label="Image 1"></button>
+
+                                <button type="button"
+                                        data-bs-target="#brewHavenCarousel"
+                                        data-bs-slide-to="1"
+                                        aria-label="Image 2"></button>
+
+                                <button type="button"
+                                        data-bs-target="#brewHavenCarousel"
+                                        data-bs-slide-to="2"
+                                        aria-label="Image 3"></button>
+
+                                <button type="button"
+                                        data-bs-target="#brewHavenCarousel"
+                                        data-bs-slide-to="3"
+                                        aria-label="Image 4"></button>
+
+                                <button type="button"
+                                        data-bs-target="#brewHavenCarousel"
+                                        data-bs-slide-to="4"
+                                        aria-label="Image 5"></button>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="academic-project-content">
+
+                            <div class="project-meta">
+                                <span class="project-category">Branding</span>
+                                <span class="project-year">2026</span>
+                            </div>
+
+                            <h3 class="project-title">
+                                Brew Haven Coffee Shop
+                            </h3>
+
+                            <p class="project-description">
+                                A seasonal coffee shop branding concept
+                                built around Pumpkin Spice Latte and the
+                                cozy atmosphere of the rainy season.
+                            </p>
+
+                            <div class="project-technologies">
+                                <span class="technology-tag">Logo Design</span>
+                                <span class="technology-tag">Branding</span>
+                                <span class="technology-tag">Graphic Design</span>
+                                <span class="technology-tag">Campaign Design</span>
+                            </div>
+
+                            <button class="view-project-btn"
+                                    data-project="brew-haven">
+                                View Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+
+                <!-- MIDTERM PROJECT 2 -->
+
+                <div class="col-md-6 col-xl-4 project-item"
+                     data-semester="midterm"
+                     data-search="typography gabi ng lagim horror movie poster graphics poster design">
+
+                    <article class="academic-project-card">
+
+                        <img
+                            src="assets/images/MIDTERMACT2.jpg"
+                            alt="Gabi ng Lagim poster"
+                            class="academic-project-image poster-image"
+                            loading="lazy">
+
+                        <div class="academic-project-content">
+
+                            <div class="project-meta">
+                                <span class="project-category">Poster Design</span>
+                                <span class="project-year">2026</span>
+                            </div>
+
+                            <h3 class="project-title">
+                                Typography
+                            </h3>
+
+                            <p class="project-description">
+                                A Filipino horror movie poster concept
+                                using bold red typography and a dark
+                                background to create a suspenseful mood.
+                            </p>
+
+                            <div class="project-technologies">
+                                <span class="technology-tag">Typography</span>
+                                <span class="technology-tag">Poster Design</span>
+                                <span class="technology-tag">Graphics</span>
+                            </div>
+
+                            <button class="view-project-btn"
+                                    data-project="typography">
+                                View Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FINALS ================= -->
+
+        <section class="semester-section" id="finals">
+
+            <div class="semester-header">
+
+                <div class="semester-number">03</div>
+
+                <div>
+                    <span class="semester-label">Academic Projects</span>
+                    <h2 class="semester-title">FINALS</h2>
+                </div>
+
+            </div>
+
+            <div class="row g-4">
+
+
+                <!-- FINAL PROJECT 1 -->
+
+                <div class="col-md-6 col-xl-4 project-item"
+                     data-semester="finals"
+                     data-search="wireframe personal portfolio website figma web development">
+
+                    <article class="academic-project-card">
+
+                        <img
+                            src="assets/images/FINALACT1.jpg"
+                            alt="Portfolio wireframe project"
+                            class="academic-project-image"
+                            loading="lazy">
+
+                        <div class="academic-project-content">
+
+                            <div class="project-meta">
+                                <span class="project-category">Web Development</span>
+                                <span class="project-year">2026</span>
+                            </div>
+
+                            <h3 class="project-title">
+                                Wireframe
+                            </h3>
+
+                            <p class="project-description">
+                                A personal portfolio website wireframe
+                                showcasing academic projects, technical
+                                skills, education, and contact details.
+                            </p>
+
+                            <div class="project-technologies">
+                                <span class="technology-tag">Figma</span>
+                                <span class="technology-tag">UI/UX</span>
+                            </div>
+
+                            <button class="view-project-btn"
+                                    data-project="wireframe">
+                                View Project
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NO RESULTS -->
+
+        <div class="no-projects" id="noProjects" hidden>
+
+            <i class="bi bi-search"></i>
+
+            <h3>No projects found</h3>
+
+            <p>
+                Try another keyword or select a different filter.
+            </p>
+
+            <button type="button" id="resetProjects">
+                Reset Filters
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- ================= PROJECT DETAILS MODAL ================= -->
+
+<div class="modal fade" id="projectModal" tabindex="-1"
+     aria-labelledby="projectModalTitle" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content project-modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="semester-label" id="modalCategory">
+                        PROJECT DETAILS
+                    </span>
+
+                    <h2 class="modal-title" id="projectModalTitle">
+                        Project Title
+                    </h2>
+                </div>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+
+                <div id="modalProjectImages" class="modal-project-images"></div>
+
+                <h5 class="detail-heading">Project Overview</h5>
+
+                <p id="modalDescription" class="project-description"></p>
+
+                <h5 class="detail-heading">Project Objectives</h5>
+
+                <ul id="modalObjectives" class="detail-list"></ul>
+
+                <h5 class="detail-heading">Design and Features</h5>
+
+                <ul id="modalFeatures" class="detail-list"></ul>
+
+                <h5 class="detail-heading">Tools and Technologies</h5>
+
+                <div id="modalTechnologies" class="project-technologies"></div>
+
+            </div>
+
+            <div class="modal-footer">
+
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="projects-footer">
+
+    <div class="container text-center">
+
+        <p class="footer-copyright">
+            &copy; <span id="year"></span> Troi Manimtim.
+        </p>
+
+        <p class="footer-description">
+            Information Technology Portfolio
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- ================= SCRIPTS ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/projects.js"></script>
 
 </body>
 </html>
