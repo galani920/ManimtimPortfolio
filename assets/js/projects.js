@@ -1,5 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
+    "use strict";
 
     /* =========================================
        THEME TOGGLE
@@ -9,10 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("themeToggle");
     const themeIcon = themeToggle?.querySelector("i");
 
-    const savedTheme = localStorage.getItem("portfolio-theme");
+    try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
 
-    if (savedTheme === "dark" || savedTheme === "light") {
-        html.setAttribute("data-bs-theme", savedTheme);
+        if (savedTheme === "dark" || savedTheme === "light") {
+            html.setAttribute("data-bs-theme", savedTheme);
+        }
+    } catch (error) {
+        // Continue using the current theme if storage is unavailable.
     }
 
     function updateThemeIcon() {
@@ -32,7 +37,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const newTheme = isDark ? "light" : "dark";
 
         html.setAttribute("data-bs-theme", newTheme);
-        localStorage.setItem("portfolio-theme", newTheme);
+
+        try {
+            localStorage.setItem("portfolio-theme", newTheme);
+        } catch (error) {
+            // The theme still changes for the current page.
+        }
 
         updateThemeIcon();
     });
@@ -62,7 +72,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const currentHash = window.location.hash || "#home";
 
         navLinks.forEach(link => {
-            const linkURL = new URL(link.href, window.location.href);
+            let linkURL;
+
+            try {
+                linkURL = new URL(link.href, window.location.href);
+            } catch (error) {
+                return;
+            }
 
             const linkPage =
                 linkURL.pathname.split("/").pop() || "index.html";
@@ -89,20 +105,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       PROJECT SEARCH AND FILTER
+       PROJECT SEARCH AND SEMESTER FILTER
     ========================================= */
 
     const searchInput = document.getElementById("projectSearch");
     const clearButton = document.getElementById("clearSearch");
     const filterButtons = document.querySelectorAll(".filter-btn");
 
-    const projectItems = document.querySelectorAll(".project-item");
+    // Supports both project-item and the original project card markup.
+    const projectItems = document.querySelectorAll(
+        ".project-item, .academic-project-card"
+    );
+
     const semesterSections = document.querySelectorAll(".semester-section");
 
     const resultCount = document.getElementById("projectResultCount");
     const noProjects = document.getElementById("noProjects");
 
     let activeFilter = "all";
+
+    function getProjectSemester(project) {
+        const item = project.closest(".project-item") || project;
+
+        return (
+            item.dataset.semester ||
+            project.dataset.semester ||
+            project.closest(".semester-section")?.id ||
+            ""
+        ).toLowerCase();
+    }
 
     function filterProjects() {
         const searchValue = (searchInput?.value || "")
@@ -112,87 +143,77 @@ document.addEventListener("DOMContentLoaded", function () {
         let visibleCount = 0;
 
         projectItems.forEach(project => {
-            const semester = project.dataset.semester;
+            const semester = getProjectSemester(project);
 
             const searchableText = (
                 (project.dataset.search || "") + " " +
+                (project.dataset.title || "") + " " +
+                (project.dataset.description || "") + " " +
                 project.textContent
             ).toLowerCase();
 
-            const matchesSearch =
-                searchableText.includes(searchValue);
+            const matchesSearch = searchableText.includes(searchValue);
 
             const matchesFilter =
                 activeFilter === "all" ||
-                semester === activeFilter;
+                semester === activeFilter ||
+                semester.includes(activeFilter);
 
-            const shouldDisplay =
-                matchesSearch && matchesFilter;
+            const shouldDisplay = matchesSearch && matchesFilter;
 
-            project.style.display =
-                shouldDisplay ? "" : "none";
+            project.style.display = shouldDisplay ? "" : "none";
 
             if (shouldDisplay) {
                 visibleCount++;
             }
         });
 
-
-        /* HIDE EMPTY SEMESTER SECTIONS */
-
+        // Hide semester sections with no visible projects.
         semesterSections.forEach(section => {
             const visibleProjects = Array.from(
-                section.querySelectorAll(".project-item")
-            ).filter(project => project.style.display !== "none");
+                section.querySelectorAll(
+                    ".project-item, .academic-project-card"
+                )
+            ).filter(project => {
+                return project.style.display !== "none" &&
+                    getComputedStyle(project).display !== "none";
+            });
 
             section.style.display =
                 visibleProjects.length > 0 ? "" : "none";
         });
-
-
-        /* UPDATE RESULT COUNTER */
 
         if (resultCount) {
             resultCount.textContent =
                 `Showing ${visibleCount} of ${projectItems.length} projects`;
         }
 
-
-        /* NO RESULTS MESSAGE */
-
         if (noProjects) {
             noProjects.hidden = visibleCount !== 0;
         }
     }
 
-
-    /* REAL-TIME SEARCH */
-
     searchInput?.addEventListener("input", filterProjects);
-
-
-    /* SEMESTER FILTER */
 
     filterButtons.forEach(button => {
         button.addEventListener("click", function () {
-
-            filterButtons.forEach(btn =>
-                btn.classList.remove("active")
-            );
+            filterButtons.forEach(btn => {
+                btn.classList.remove("active");
+                btn.setAttribute("aria-pressed", "false");
+            });
 
             this.classList.add("active");
+            this.setAttribute("aria-pressed", "true");
 
-            activeFilter = this.dataset.filter || "all";
+            activeFilter = (
+                this.dataset.filter || "all"
+            ).toLowerCase();
 
             filterProjects();
         });
     });
 
-
-    /* CLEAR SEARCH */
-
-    clearButton?.addEventListener("click", function () {
-
+    function resetProjectFilters() {
         if (searchInput) {
             searchInput.value = "";
         }
@@ -200,26 +221,20 @@ document.addEventListener("DOMContentLoaded", function () {
         activeFilter = "all";
 
         filterButtons.forEach(button => {
-            button.classList.toggle(
-                "active",
-                button.dataset.filter === "all"
-            );
+            const isAll = button.dataset.filter === "all";
+
+            button.classList.toggle("active", isAll);
+            button.setAttribute("aria-pressed", String(isAll));
         });
 
         filterProjects();
-
         searchInput?.focus();
-    });
+    }
 
-
-    /* RESET FILTERS */
+    clearButton?.addEventListener("click", resetProjectFilters);
 
     document.getElementById("resetProjects")
-        ?.addEventListener("click", function () {
-
-            clearButton?.click();
-
-        });
+        ?.addEventListener("click", resetProjectFilters);
 
 
     /* =========================================
@@ -227,7 +242,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================================= */
 
     const projectData = {
-
         fruitful: {
             title: "Fruitful Design",
             category: "Prelim | Academic Design",
@@ -258,7 +272,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "assets/images/PRELIMACT1.jpg"
             ]
         },
-
 
         brand: {
             title: "Brand Design",
@@ -292,7 +305,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
-
         "brew-haven": {
             title: "Brew Haven Coffee Shop",
             category: "Midterm | Branding and Campaign Design",
@@ -301,20 +313,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Brew Haven is a seasonal coffee shop branding concept " +
                 "centered on Pumpkin Spice Latte and the cozy atmosphere " +
                 "of the rainy season. The project develops a consistent " +
-                "visual identity across different promotional materials " +
-                "and digital marketing assets.",
+                "visual identity across promotional materials and digital " +
+                "marketing assets.",
 
             objectives: [
                 "Develop a cohesive coffee shop brand identity.",
                 "Create a recognizable logo for Brew Haven.",
                 "Promote the Pumpkin Spice Latte concept through visual advertising.",
-                "Maintain consistent branding across different marketing materials.",
+                "Maintain consistent branding across marketing materials.",
                 "Create promotional designs that communicate the rainy-season theme."
             ],
 
             features: [
                 "Original Brew Haven coffee shop logo.",
-                "Pumpkin Spice Latte promotional banner.",
+                "Pumpkin Spice Latte promotional poster.",
                 "Landing page visual design.",
                 "Newsletter header design.",
                 "Social media promotional post.",
@@ -339,7 +351,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "assets/images/SOCIAL MEDIA POST.jpg"
             ]
         },
-
 
         typography: {
             title: "Typography",
@@ -375,7 +386,6 @@ document.addEventListener("DOMContentLoaded", function () {
             ]
         },
 
-
         wireframe: {
             title: "Wireframe",
             category: "Finals | Web Design",
@@ -409,7 +419,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 "assets/images/FINALACT1.jpg"
             ]
         }
-
     };
 
 
@@ -417,173 +426,201 @@ document.addEventListener("DOMContentLoaded", function () {
        PROJECT DETAILS MODAL
     ========================================= */
 
-    const projectModalElement =
-        document.getElementById("projectModal");
+    const modalElement = document.getElementById("projectModal");
 
     const projectModal =
-        projectModalElement && typeof bootstrap !== "undefined"
-            ? new bootstrap.Modal(projectModalElement)
+        modalElement && window.bootstrap?.Modal
+            ? bootstrap.Modal.getOrCreateInstance(modalElement)
             : null;
 
-    const modalTitle =
-        document.getElementById("projectModalTitle");
+    const modalTitle = document.getElementById("projectModalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalDescription = document.getElementById("modalDescription");
 
-    const modalCategory =
-        document.getElementById("modalCategory");
+    const modalObjectives = document.getElementById("modalObjectives");
+    const modalFeatures = document.getElementById("modalFeatures");
+    const modalTechnologies = document.getElementById("modalTechnologies");
+    const modalImages = document.getElementById("modalProjectImages");
 
-    const modalDescription =
-        document.getElementById("modalDescription");
+    function populateList(container, items, className = "") {
+        if (!container) return;
 
-    const modalObjectives =
-        document.getElementById("modalObjectives");
+        container.replaceChildren();
 
-    const modalFeatures =
-        document.getElementById("modalFeatures");
+        items.forEach(item => {
+            const element = document.createElement("li");
+            element.textContent = item;
 
-    const modalTechnologies =
-        document.getElementById("modalTechnologies");
+            if (className) {
+                element.className = className;
+            }
 
-    const modalImages =
-        document.getElementById("modalProjectImages");
-
-
-    /* OPEN PROJECT DETAILS */
-
-    document.querySelectorAll(".view-project-btn")
-        .forEach(button => {
-
-            button.addEventListener("click", function () {
-
-                const projectID = this.dataset.project;
-                const project = projectData[projectID];
-
-                if (!project) return;
-
-                if (modalTitle) {
-                    modalTitle.textContent = project.title;
-                }
-
-                if (modalCategory) {
-                    modalCategory.textContent = project.category;
-                }
-
-                if (modalDescription) {
-                    modalDescription.textContent = project.description;
-                }
-
-
-                /* OBJECTIVES */
-
-                if (modalObjectives) {
-                    modalObjectives.innerHTML = "";
-
-                    project.objectives.forEach(objective => {
-
-                        const li = document.createElement("li");
-
-                        li.textContent = objective;
-
-                        modalObjectives.appendChild(li);
-
-                    });
-                }
-
-
-                /* FEATURES */
-
-                if (modalFeatures) {
-                    modalFeatures.innerHTML = "";
-
-                    project.features.forEach(feature => {
-
-                        const li = document.createElement("li");
-
-                        li.textContent = feature;
-
-                        modalFeatures.appendChild(li);
-
-                    });
-                }
-
-
-                /* TECHNOLOGIES */
-
-                if (modalTechnologies) {
-                    modalTechnologies.innerHTML = "";
-
-                    project.technologies.forEach(technology => {
-
-                        const span = document.createElement("span");
-
-                        span.className = "technology-tag";
-
-                        span.textContent = technology;
-
-                        modalTechnologies.appendChild(span);
-
-                    });
-                }
-
-
-                /* PROJECT IMAGES */
-
-                if (modalImages) {
-                    modalImages.innerHTML = "";
-
-                    project.images.forEach((imagePath, index) => {
-
-                        const img = document.createElement("img");
-
-                        img.src = imagePath;
-
-                        img.alt =
-                            `${project.title} project image ${index + 1}`;
-
-                        img.loading = "lazy";
-
-                        img.onerror = function () {
-                            this.style.display = "none";
-                        };
-
-                        modalImages.appendChild(img);
-
-                    });
-                }
-
-
-                projectModal?.show();
-
-            });
-
+            container.appendChild(element);
         });
+    }
+
+    function openProjectDetails(projectID) {
+        const project = projectData[projectID];
+
+        if (!project) {
+            console.warn("Project details not found:", projectID);
+            return;
+        }
+
+        if (modalTitle) {
+            modalTitle.textContent = project.title;
+        }
+
+        if (modalCategory) {
+            modalCategory.textContent = project.category;
+        }
+
+        if (modalDescription) {
+            modalDescription.textContent = project.description;
+        }
+
+        populateList(modalObjectives, project.objectives);
+        populateList(modalFeatures, project.features);
+
+        if (modalTechnologies) {
+            modalTechnologies.replaceChildren();
+
+            project.technologies.forEach(technology => {
+                const tag = document.createElement("span");
+
+                tag.className = "technology-tag";
+                tag.textContent = technology;
+
+                modalTechnologies.appendChild(tag);
+            });
+        }
+
+        if (modalImages) {
+            modalImages.replaceChildren();
+
+            project.images.forEach((imagePath, index) => {
+                const imageWrapper = document.createElement("div");
+                imageWrapper.className = "modal-project-image-wrapper";
+
+                const image = document.createElement("img");
+                image.src = imagePath;
+                image.alt = `${project.title} — image ${index + 1}`;
+                image.loading = "lazy";
+
+                image.onerror = function () {
+                    imageWrapper.remove();
+                };
+
+                imageWrapper.appendChild(image);
+                modalImages.appendChild(imageWrapper);
+            });
+        }
+
+        if (projectModal) {
+            projectModal.show();
+        } else {
+            // Fallback if Bootstrap's modal markup or script is missing.
+            console.warn(
+                "Project modal is unavailable. Check the modal HTML and Bootstrap script."
+            );
+        }
+    }
+
+    // Buttons can use data-project="brew-haven", for example.
+    document.querySelectorAll(".view-project-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            openProjectDetails(this.dataset.project);
+        });
+    });
+
+    // Also supports cards with a data-project attribute.
+    document.querySelectorAll(".project-item[data-project], " +
+        ".academic-project-card[data-project]").forEach(card => {
+
+        card.querySelectorAll(".view-project-btn").forEach(() => {
+            // The button handler above takes priority.
+        });
+
+        if (card.querySelector(".view-project-btn")) return;
+
+        card.querySelectorAll(".view-project, .project-view-button")
+            .forEach(button => {
+                button.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    openProjectDetails(card.dataset.project);
+                });
+            });
+    });
 
 
     /* =========================================
        BREW HAVEN CAROUSEL
     ========================================= */
 
-    const brewCarousel =
-        document.getElementById("brewHavenCarousel");
+    const brewCarousel = document.getElementById("brewHavenCarousel");
 
-    if (
-        brewCarousel &&
-        typeof bootstrap !== "undefined" &&
-        bootstrap.Carousel
-    ) {
+    if (brewCarousel && window.bootstrap?.Carousel) {
+        const carousel = bootstrap.Carousel.getOrCreateInstance(
+            brewCarousel,
+            {
+                interval: false,
+                ride: false,
+                wrap: true,
+                touch: true,
+                keyboard: true
+            }
+        );
 
-        new bootstrap.Carousel(brewCarousel, {
-            interval: false,
-            ride: false,
-            wrap: true,
-            touch: true,
-            keyboard: true
+        // Explicit controls support custom previous/next buttons too.
+        document.querySelectorAll("[data-brew-prev]").forEach(button => {
+            button.addEventListener("click", () => carousel.prev());
         });
 
+        document.querySelectorAll("[data-brew-next]").forEach(button => {
+            button.addEventListener("click", () => carousel.next());
+        });
+
+        // Update optional slide counter and accessible slide labels.
+        const slideCounter = document.getElementById("brewHavenSlideCounter");
+        const slides = brewCarousel.querySelectorAll(".carousel-item");
+
+        function updateCarouselCounter() {
+            const activeSlide = brewCarousel.querySelector(".carousel-item.active");
+            const activeIndex = Array.from(slides).indexOf(activeSlide);
+
+            if (slideCounter) {
+                slideCounter.textContent =
+                    `${Math.max(activeIndex + 1, 1)} / ${slides.length}`;
+            }
+        }
+
+        brewCarousel.addEventListener(
+            "slid.bs.carousel",
+            updateCarouselCounter
+        );
+
+        updateCarouselCounter();
+
+        // Clicking an image opens it larger in a new browser tab.
+        brewCarousel.querySelectorAll(".carousel-item img").forEach(image => {
+            image.style.cursor = "zoom-in";
+            image.title = "Open full-size image in a new tab";
+
+            image.addEventListener("click", function () {
+                if (!this.src) return;
+
+                const imageWindow = window.open(this.src, "_blank", "noopener");
+
+                if (imageWindow) {
+                    imageWindow.opener = null;
+                }
+            });
+        });
     }
 
 
     /* =========================================
-       INITIALIZE FILTERS
+       INITIALIZE
     ========================================= */
 
     filterProjects();
