@@ -1,33 +1,810 @@
 
-<div class="nav-actions">
-    <button class="theme-toggle" id="themeToggle"
-            type="button" aria-label="Switch color theme"
-            title="Switch theme">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="4"></circle>
-            <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path>
-        </svg>
-    </button>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="menu-wrap">
-        <button class="menu-toggle" id="menuToggle"
-                type="button" aria-label="Open navigation menu"
-                aria-expanded="false" aria-controls="dropdownMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <meta name="description" content="Troi Manimtim — Web Developer Portfolio">
+    <meta name="author" content="Troi Manimtim">
 
-        <nav class="dropdown-menu" id="dropdownMenu"
-             aria-label="Main navigation">
-            <a href="#home">Home</a>
-            <a href="project.html">Projects</a>
-            <a href="cv.html">CV</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#experience">Experience</a>
-            <a href="#education">Education</a>
-            <a href="#contact">Contact</a>
-        </nav>
+    <title>Troi Manimtim | Web Developer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css?v=4">
+</head>
+
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="site-header">
+    <div class="nav-wrap">
+
+        <a href="#home" class="brand" aria-label="Troi Manimtim homepage">
+            <span class="brand-mark">TM</span>
+
+            <span class="brand-copy">
+                <strong>Troi Manimtim</strong>
+                <small>Web Developer</small>
+            </span>
+        </a>
+
+        <div class="nav-actions">
+
+            <!-- Dark / Light Theme -->
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                type="button"
+                aria-label="Switch theme"
+                title="Switch theme">
+
+                <i class="bi bi-sun theme-icon-light" aria-hidden="true"></i>
+                <i class="bi bi-moon-stars theme-icon-dark" aria-hidden="true"></i>
+            </button>
+
+            <!-- Navigation Dropdown -->
+            <div class="menu-wrap">
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    type="button"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="dropdownMenu">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav
+                    class="dropdown-menu"
+                    id="dropdownMenu"
+                    aria-label="Main navigation">
+
+                    <a href="#home">HOME</a>
+                    <a href="project.html">PROJECTS</a>
+                    <a href="cv.html">CV</a>
+                    <a href="#about">ABOUT</a>
+                    <a href="#skills">SKILLS</a>
+                    <a href="#experience">EXPERIENCE</a>
+                    <a href="#education">EDUCATION</a>
+                    <a href="#certificates">CERTIFICATES</a>
+                    <a href="#contact">CONTACT</a>
+
+                </nav>
+            </div>
+        </div>
     </div>
-</div>
+</header>
+
+
+<main>
+
+    <!-- ==================== HOME ==================== -->
+    <section class="hero section-shell" id="home">
+
+        <div class="hero-copy">
+
+            <p class="eyebrow">
+                <span></span>
+                WEB DEVELOPER
+            </p>
+
+            <h1>
+                Troi <span>Manimtim</span>
+            </h1>
+
+            <h2>
+                Building practical digital solutions through technology and creativity.
+            </h2>
+
+            <p class="hero-description">
+                I develop responsive websites and database-driven applications
+                with a focus on usability, functionality, and continuous improvement.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="project.html" class="button button-primary">
+                    View My Projects <i class="bi bi-arrow-up-right"></i>
+                </a>
+
+                <a href="cv.html" class="button button-secondary">
+                    View CV
+                </a>
+
+                <a href="#contact" class="button button-quiet">
+                    Contact Me
+                </a>
+            </div>
+
+            <div class="hero-tags">
+                <span>Frontend Development</span>
+                <span>Backend Development</span>
+                <span>Database Management</span>
+            </div>
+
+        </div>
+
+        <div class="hero-visual">
+
+            <div class="portrait-frame">
+
+                <div class="portrait-glow"></div>
+
+                <img
+                    src="assets/images/portfolio_pic.jpg"
+                    alt="Troi Manimtim"
+                    class="profile-photo"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+
+                <div class="photo-fallback" aria-hidden="true">
+                    TM
+                </div>
+
+            </div>
+
+            <div class="floating-note">
+                <span class="status-dot"></span>
+                Learning · Building · Improving
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================== ABOUT ==================== -->
+    <section class="section section-muted" id="about">
+
+        <div class="section-shell">
+
+            <p class="section-label">01 — ABOUT ME</p>
+
+            <div class="about-grid">
+
+                <div>
+                    <h2 class="section-title">
+                        Turning ideas into functional digital experiences.
+                    </h2>
+                </div>
+
+                <div class="about-copy">
+                    <p>
+                        I am an Information Technology student at City College of
+                        Calamba with an interest in web development, database systems,
+                        and software engineering.
+                    </p>
+
+                    <p>
+                        Through academic and collaborative projects, I have gained
+                        experience developing web-based systems, organizing data,
+                        and implementing features designed to solve practical problems.
+                    </p>
+
+                    <p>
+                        I continue to strengthen my technical skills by building,
+                        testing, and improving applications while learning new tools
+                        and development practices.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="about-facts">
+
+                <article class="fact">
+                    <span class="fact-number">01</span>
+                    <h3>Web Development</h3>
+                    <p>
+                        Creating responsive interfaces and functional websites.
+                    </p>
+                </article>
+
+                <article class="fact">
+                    <span class="fact-number">02</span>
+                    <h3>Database Systems</h3>
+                    <p>
+                        Working with structured data and database-backed applications.
+                    </p>
+                </article>
+
+                <article class="fact">
+                    <span class="fact-number">03</span>
+                    <h3>Team Collaboration</h3>
+                    <p>
+                        Contributing to academic projects and collaborative solutions.
+                    </p>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================== SKILLS ==================== -->
+    <section class="section" id="skills">
+
+        <div class="section-shell">
+
+            <p class="section-label">02 — SKILLS</p>
+
+            <h2 class="section-title">
+                Technologies and tools.
+            </h2>
+
+            <p class="section-intro">
+                Technologies and development tools I use in my projects and studies.
+            </p>
+
+            <div class="skills-grid">
+
+                <article class="skill-card">
+                    <span class="skill-index">01</span>
+                    <h3>Frontend Development</h3>
+                    <p>HTML5, CSS3, JavaScript, Bootstrap</p>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-index">02</span>
+                    <h3>Backend Development</h3>
+                    <p>PHP, server-side logic, form handling</p>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-index">03</span>
+                    <h3>Database Management</h3>
+                    <p>MySQL, SQL, phpMyAdmin</p>
+                </article>
+
+                <article class="skill-card">
+                    <span class="skill-index">04</span>
+                    <h3>Development Tools</h3>
+                    <p>Visual Studio Code, XAMPP, Git, GitHub</p>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================== EXPERIENCE ==================== -->
+    <section class="section section-muted" id="experience">
+
+        <div class="section-shell">
+
+            <p class="section-label">03 — EXPERIENCE</p>
+
+            <h2 class="section-title">
+                Projects and collaboration.
+            </h2>
+
+            <p class="section-intro">
+                Selected software development and academic collaboration experiences.
+            </p>
+
+            <div class="experience-timeline">
+
+                <!-- EXPERIENCE: DENTAL CLINIC -->
+                <article class="experience-item">
+
+                    <span class="timeline-dot" aria-hidden="true"></span>
+
+                    <div class="experience-card">
+
+                        <div class="experience-topline">
+                            <span class="experience-date">2026</span>
+                            <span class="experience-type">Web Development</span>
+                        </div>
+
+                        <h3>Web Developer</h3>
+
+                        <p class="experience-company">
+                            Hollie-Gab Dental Clinic
+                        </p>
+
+                        <p class="experience-project">
+                            Dental Clinic Management System
+                        </p>
+
+                        <p class="experience-detail">
+                            Developed a web-based dental clinic management system
+                            designed to organize patient records, appointments,
+                            service information, and payment-related workflows.
+                        </p>
+
+                        <div class="tech-tags">
+                            <span>PHP</span>
+                            <span>MySQL</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                        </div>
+
+                    </div>
+                </article>
+
+
+                <!-- EXPERIENCE: ISKOLAR HUB -->
+                <article class="experience-item">
+
+                    <span class="timeline-dot" aria-hidden="true"></span>
+
+                    <div class="experience-card">
+
+                        <div class="experience-topline">
+                            <span class="experience-date">2025</span>
+                            <span class="experience-type">DBMS Collaboration</span>
+                        </div>
+
+                        <h3>Data Analyst / Web Developer</h3>
+
+                        <p class="experience-company">
+                            DBMS Collaboration Project
+                        </p>
+
+                        <p class="experience-project">
+                            iSkolar Hub
+                        </p>
+
+                        <p class="experience-detail">
+                            Participated in a collaborative database management
+                            project involving web development and data organization.
+                            Contributed to the development of a system concept that
+                            connects application functionality with structured data.
+                        </p>
+
+                        <div class="tech-tags">
+                            <span>Data Analysis</span>
+                            <span>Web Development</span>
+                            <span>DBMS</span>
+                            <span>MySQL</span>
+                            <span>Collaboration</span>
+                        </div>
+
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section class="section" id="education">
+
+        <div class="section-shell">
+
+            <p class="section-label">04 — EDUCATION</p>
+
+            <h2 class="section-title">
+                Academic background.
+            </h2>
+
+            <div class="education-grid">
+
+                <article class="education-card">
+
+                    <span class="card-kicker">CURRENT STUDIES</span>
+
+                    <h3>
+                        Bachelor of Science in Information Technology
+                    </h3>
+
+                    <p>
+                        City College of Calamba
+                    </p>
+
+                    <span class="education-note">
+                        Third Year
+                    </span>
+
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================== CERTIFICATES ==================== -->
+    <section class="section section-muted" id="certificates">
+
+        <div class="section-shell">
+
+            <p class="section-label">05 — CERTIFICATES</p>
+
+            <h2 class="section-title">
+                Training and certifications.
+            </h2>
+
+            <div class="education-grid">
+
+                <article class="education-card">
+
+                    <span class="card-kicker">TESDA</span>
+
+                    <h3>
+                        Computer Systems Servicing NC II
+                    </h3>
+
+                    <p>
+                        Technical Education and Skills Development Authority
+                    </p>
+
+                    <span class="education-note">
+                        National Certificate
+                    </span>
+
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ==================== CONTACT ==================== -->
+    <section class="section" id="contact">
+
+        <div class="section-shell">
+
+            <p class="section-label">06 — CONTACT</p>
+
+            <div class="contact-panel">
+
+                <!-- CONTACT INFORMATION -->
+                <div class="contact-copy">
+
+                    <h2 class="section-title">
+                        Let's work together.
+                    </h2>
+
+                    <p class="section-intro">
+                        Have a project, opportunity, or question? Contact me directly
+                        or send a message using the form.
+                    </p>
+
+                    <div class="contact-links">
+
+                        <a href="mailto:tpmanimtim@ccc.edu.ph">
+                            <span>
+                                <i class="bi bi-envelope"></i> Email
+                            </span>
+                            <strong>tpmanimtim@ccc.edu.ph</strong>
+                        </a>
+
+                        <a href="tel:09917674731">
+                            <span>
+                                <i class="bi bi-telephone"></i> Phone
+                            </span>
+                            <strong>0991 767 4731</strong>
+                        </a>
+
+                        <div class="contact-location">
+                            <span>
+                                <i class="bi bi-geo-alt"></i> Location
+                            </span>
+                            <strong>Canlubang, Calamba</strong>
+                        </div>
+
+                        <a
+                            href="https://github.com/galani920"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <span>
+                                <i class="bi bi-github"></i> GitHub
+                            </span>
+
+                            <strong>github.com/galani920</strong>
+                        </a>
+
+                    </div>
+                </div>
+
+
+                <!-- CONTACT FORM -->
+                <div class="contact-form-card">
+
+                    <form id="contactForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="contactName">Name</label>
+
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    name="name"
+                                    maxlength="100"
+                                    autocomplete="name"
+                                    placeholder="Your name"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+
+                                <input
+                                    type="email"
+                                    id="contactEmail"
+                                    name="email"
+                                    maxlength="254"
+                                    autocomplete="email"
+                                    placeholder="you@example.com"
+                                    required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="contactSubject">Subject</label>
+
+                                <input
+                                    type="text"
+                                    id="contactSubject"
+                                    name="subject"
+                                    maxlength="150"
+                                    placeholder="What is your message about?"
+                                    required>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="contactMessage">Message</label>
+
+                                <textarea
+                                    id="contactMessage"
+                                    name="message"
+                                    rows="6"
+                                    maxlength="5000"
+                                    placeholder="Write your message here..."
+                                    required></textarea>
+                            </div>
+
+                            <div class="form-group full-width">
+
+                                <button
+                                    type="submit"
+                                    id="sendMessageBtn"
+                                    class="button button-primary">
+
+                                    <span>Send Message</span>
+                                    <i class="bi bi-arrow-up-right"></i>
+
+                                </button>
+
+                                <div
+                                    id="contactStatus"
+                                    class="contact-status"
+                                    role="status"
+                                    aria-live="polite"></div>
+
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="site-footer">
+
+    <div class="section-shell footer-inner">
+
+        <span>
+            © <span id="currentYear"></span> Troi Manimtim
+        </span>
+
+        <span>
+            Web Developer Portfolio
+        </span>
+
+    </div>
+
+</footer>
+
+
+<!-- ==================== SCRIPTS ==================== -->
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* ---------------------------------
+       NAVIGATION DROPDOWN
+    --------------------------------- */
+
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+
+    function closeMenu() {
+        dropdownMenu.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+    }
+
+    menuToggle.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        const isOpen = dropdownMenu.classList.toggle("is-open");
+
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    });
+
+    dropdownMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", function (event) {
+        if (!event.target.closest(".menu-wrap")) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+
+    /* ---------------------------------
+       DARK / LIGHT THEME
+    --------------------------------- */
+
+    const themeToggle = document.getElementById("themeToggle");
+    const root = document.documentElement;
+
+    function applyTheme(theme) {
+        root.setAttribute("data-bs-theme", theme);
+        root.setAttribute("data-theme", theme);
+
+        themeToggle.setAttribute(
+            "aria-label",
+            theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
+        );
+
+        try {
+            localStorage.setItem("portfolio-theme", theme);
+        } catch (error) {
+            // Continue without persistent storage.
+        }
+    }
+
+    try {
+        const savedTheme = localStorage.getItem("portfolio-theme");
+
+        if (savedTheme === "dark" || savedTheme === "light") {
+            applyTheme(savedTheme);
+        } else {
+            applyTheme("dark");
+        }
+    } catch (error) {
+        applyTheme("dark");
+    }
+
+    themeToggle.addEventListener("click", function () {
+        const currentTheme = root.getAttribute("data-theme") || "dark";
+
+        applyTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+
+
+    /* ---------------------------------
+       FOOTER YEAR
+    --------------------------------- */
+
+    document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+
+    /* ---------------------------------
+       CONTACT FORM — EMAILJS
+    --------------------------------- */
+
+    const contactForm = document.getElementById("contactForm");
+    const sendMessageBtn = document.getElementById("sendMessageBtn");
+    const contactStatus = document.getElementById("contactStatus");
+
+    const EMAILJS_PUBLIC_KEY = "Bl_pSuoHVtteKMVEK";
+    const EMAILJS_SERVICE_ID = "service_mi9m8lg";
+    const EMAILJS_TEMPLATE_ID = "template_r1q26zl";
+
+    let emailJsInitialized = false;
+
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity() || sendMessageBtn.disabled) {
+            return;
+        }
+
+        if (typeof emailjs === "undefined") {
+            contactStatus.className = "contact-status error";
+            contactStatus.textContent =
+                "The email service could not load. Check your internet connection and try again.";
+            return;
+        }
+
+        const formData = new FormData(contactForm);
+
+        const templateParams = {
+            from_name: String(formData.get("name") || "").trim(),
+            from_email: String(formData.get("email") || "").trim(),
+            subject: String(formData.get("subject") || "").trim(),
+            message: String(formData.get("message") || "").trim()
+        };
+
+        sendMessageBtn.disabled = true;
+
+        sendMessageBtn.innerHTML =
+            '<span>Sending...</span><i class="bi bi-arrow-repeat"></i>';
+
+        contactStatus.className = "contact-status";
+        contactStatus.textContent = "";
+
+        try {
+            if (!emailJsInitialized) {
+                emailjs.init({
+                    publicKey: EMAILJS_PUBLIC_KEY
+                });
+
+                emailJsInitialized = true;
+            }
+
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                templateParams
+            );
+
+            contactStatus.className = "contact-status success";
+            contactStatus.textContent =
+                "Your message has been sent successfully.";
+
+            contactForm.reset();
+
+        } catch (error) {
+            console.error("EmailJS submission failed:", error);
+
+            contactStatus.className = "contact-status error";
+            contactStatus.textContent =
+                "Your message could not be sent. Please try again or contact me directly by email.";
+
+        } finally {
+            sendMessageBtn.disabled = false;
+
+            sendMessageBtn.innerHTML =
+                '<span>Send Message</span><i class="bi bi-arrow-up-right"></i>';
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>
