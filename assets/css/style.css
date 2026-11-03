@@ -116,3 +116,51 @@
     color: var(--accent-bright);
     background: var(--accent-soft);
 }
+
+/* FORCE the navigation buttons to match the reference screenshot */
+.site-header .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+}
+
+.site-header .nav-actions .theme-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border: 1px solid #56606c !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+}
+
+.site-header .nav-actions .menu-wrap > .menu-toggle {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 5px !important;
+    background: #343a40 !important;
+    box-shadow: none !important;
+}
+
+.site-header .nav-actions .menu-wrap > .menu-toggle span {
+    display: block !important;
+    width: 17px !important;
+    height: 2px !important;
+    min-height: 2px !important;
+    margin: 0 !important;
+    border: none !important;
+    border-radius: 1px !important;
+    background: #f9fafb !important;
+}
+
+.site-header .nav-actions .menu-wrap > .menu-toggle:hover {
+    background: #454d55 !important;
+}
