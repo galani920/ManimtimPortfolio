@@ -72,18 +72,7 @@ const portfolioData = {
             description:
                 'Appointment and Payment System (Dental Clinic)'
         }
-      {
-            date: '2025',
 
-            position: 'Data Analyst',
-
-            organization: 'Web Dev & Database Management ',
-
-            location: 'City College of Calamba',
-
-            description:
-                'iSkolar Hub (Study Place)'
-        }
     ],
 
 
