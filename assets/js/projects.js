@@ -28,17 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
     updateThemeIcon();
 
     themeToggle?.addEventListener("click", function () {
-
         const isDark = html.getAttribute("data-bs-theme") === "dark";
-
         const newTheme = isDark ? "light" : "dark";
 
         html.setAttribute("data-bs-theme", newTheme);
-
         localStorage.setItem("portfolio-theme", newTheme);
 
         updateThemeIcon();
-
     });
 
 
@@ -60,14 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const navLinks = document.querySelectorAll(".nav-link-custom");
 
     function updateActiveNavigation() {
-
         const currentPage =
             window.location.pathname.split("/").pop() || "index.html";
 
         const currentHash = window.location.hash || "#home";
 
         navLinks.forEach(link => {
-
             const linkURL = new URL(link.href, window.location.href);
 
             const linkPage =
@@ -77,19 +71,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (linkPage !== currentPage) return;
 
-            if (currentPage === "project.html" ||
-                currentPage === "cv.html") {
-
+            if (
+                currentPage === "project.html" ||
+                currentPage === "cv.html"
+            ) {
                 link.classList.add("active");
-
             } else if (linkURL.hash === currentHash) {
-
                 link.classList.add("active");
-
             }
-
         });
-
     }
 
     updateActiveNavigation();
@@ -115,19 +105,17 @@ document.addEventListener("DOMContentLoaded", function () {
     let activeFilter = "all";
 
     function filterProjects() {
-
-        const searchValue = searchInput.value
+        const searchValue = (searchInput?.value || "")
             .toLowerCase()
             .trim();
 
         let visibleCount = 0;
 
         projectItems.forEach(project => {
-
             const semester = project.dataset.semester;
 
             const searchableText = (
-                project.dataset.search + " " +
+                (project.dataset.search || "") + " " +
                 project.textContent
             ).toLowerCase();
 
@@ -147,40 +135,34 @@ document.addEventListener("DOMContentLoaded", function () {
             if (shouldDisplay) {
                 visibleCount++;
             }
-
         });
 
 
-        /* Hide empty semester sections */
+        /* HIDE EMPTY SEMESTER SECTIONS */
 
         semesterSections.forEach(section => {
-
-            const visibleProjects = section.querySelectorAll(
-                ".project-item:not([style*='display: none'])"
-            );
+            const visibleProjects = Array.from(
+                section.querySelectorAll(".project-item")
+            ).filter(project => project.style.display !== "none");
 
             section.style.display =
                 visibleProjects.length > 0 ? "" : "none";
-
         });
 
 
-        /* Update result counter */
+        /* UPDATE RESULT COUNTER */
 
         if (resultCount) {
-
             resultCount.textContent =
                 `Showing ${visibleCount} of ${projectItems.length} projects`;
-
         }
 
 
-        /* No results message */
+        /* NO RESULTS MESSAGE */
 
         if (noProjects) {
             noProjects.hidden = visibleCount !== 0;
         }
-
     }
 
 
@@ -192,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
     /* SEMESTER FILTER */
 
     filterButtons.forEach(button => {
-
         button.addEventListener("click", function () {
 
             filterButtons.forEach(btn =>
@@ -201,12 +182,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             this.classList.add("active");
 
-            activeFilter = this.dataset.filter;
+            activeFilter = this.dataset.filter || "all";
 
             filterProjects();
-
         });
-
     });
 
 
@@ -214,7 +193,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     clearButton?.addEventListener("click", function () {
 
-        searchInput.value = "";
+        if (searchInput) {
+            searchInput.value = "";
+        }
 
         activeFilter = "all";
 
@@ -227,8 +208,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         filterProjects();
 
-        searchInput.focus();
-
+        searchInput?.focus();
     });
 
 
@@ -251,6 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fruitful: {
             title: "Fruitful Design",
             category: "Prelim | Academic Design",
+
             description:
                 "An illustration project featuring a kiwi fruit. " +
                 "The design highlights the sliced fruit, its green interior, " +
@@ -439,9 +420,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const projectModalElement =
         document.getElementById("projectModal");
 
-    const projectModal = projectModalElement
-        ? new bootstrap.Modal(projectModalElement)
-        : null;
+    const projectModal =
+        projectModalElement && typeof bootstrap !== "undefined"
+            ? new bootstrap.Modal(projectModalElement)
+            : null;
 
     const modalTitle =
         document.getElementById("projectModalTitle");
@@ -473,86 +455,100 @@ document.addEventListener("DOMContentLoaded", function () {
             button.addEventListener("click", function () {
 
                 const projectID = this.dataset.project;
-
                 const project = projectData[projectID];
 
                 if (!project) return;
 
-                modalTitle.textContent = project.title;
+                if (modalTitle) {
+                    modalTitle.textContent = project.title;
+                }
 
-                modalCategory.textContent = project.category;
+                if (modalCategory) {
+                    modalCategory.textContent = project.category;
+                }
 
-                modalDescription.textContent = project.description;
+                if (modalDescription) {
+                    modalDescription.textContent = project.description;
+                }
 
 
                 /* OBJECTIVES */
 
-                modalObjectives.innerHTML = "";
+                if (modalObjectives) {
+                    modalObjectives.innerHTML = "";
 
-                project.objectives.forEach(objective => {
+                    project.objectives.forEach(objective => {
 
-                    const li = document.createElement("li");
+                        const li = document.createElement("li");
 
-                    li.textContent = objective;
+                        li.textContent = objective;
 
-                    modalObjectives.appendChild(li);
+                        modalObjectives.appendChild(li);
 
-                });
+                    });
+                }
 
 
                 /* FEATURES */
 
-                modalFeatures.innerHTML = "";
+                if (modalFeatures) {
+                    modalFeatures.innerHTML = "";
 
-                project.features.forEach(feature => {
+                    project.features.forEach(feature => {
 
-                    const li = document.createElement("li");
+                        const li = document.createElement("li");
 
-                    li.textContent = feature;
+                        li.textContent = feature;
 
-                    modalFeatures.appendChild(li);
+                        modalFeatures.appendChild(li);
 
-                });
+                    });
+                }
 
 
                 /* TECHNOLOGIES */
 
-                modalTechnologies.innerHTML = "";
+                if (modalTechnologies) {
+                    modalTechnologies.innerHTML = "";
 
-                project.technologies.forEach(technology => {
+                    project.technologies.forEach(technology => {
 
-                    const span = document.createElement("span");
+                        const span = document.createElement("span");
 
-                    span.className = "technology-tag";
+                        span.className = "technology-tag";
 
-                    span.textContent = technology;
+                        span.textContent = technology;
 
-                    modalTechnologies.appendChild(span);
+                        modalTechnologies.appendChild(span);
 
-                });
+                    });
+                }
 
 
                 /* PROJECT IMAGES */
 
-                modalImages.innerHTML = "";
+                if (modalImages) {
+                    modalImages.innerHTML = "";
 
-                project.images.forEach((imagePath, index) => {
+                    project.images.forEach((imagePath, index) => {
 
-                    const img = document.createElement("img");
+                        const img = document.createElement("img");
 
-                    img.src = imagePath;
+                        img.src = imagePath;
 
-                    img.alt = `${project.title} project image ${index + 1}`;
+                        img.alt =
+                            `${project.title} project image ${index + 1}`;
 
-                    img.loading = "lazy";
+                        img.loading = "lazy";
 
-                    img.onerror = function () {
-                        this.style.display = "none";
-                    };
+                        img.onerror = function () {
+                            this.style.display = "none";
+                        };
 
-                    modalImages.appendChild(img);
+                        modalImages.appendChild(img);
 
-                });
+                    });
+                }
 
 
                 projectModal?.show();
@@ -563,13 +559,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================================
-       CAROUSEL
+       BREW HAVEN CAROUSEL
     ========================================= */
 
     const brewCarousel =
         document.getElementById("brewHavenCarousel");
 
-    if (brewCarousel) {
+    if (
+        brewCarousel &&
+        typeof bootstrap !== "undefined" &&
+        bootstrap.Carousel
+    ) {
 
         new bootstrap.Carousel(brewCarousel, {
             interval: false,
@@ -582,7 +582,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    /* INITIALIZE FILTERS */
+    /* =========================================
+       INITIALIZE FILTERS
+    ========================================= */
 
     filterProjects();
 
