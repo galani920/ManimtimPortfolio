@@ -1,74 +1,94 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Troi Manimtim - Web Developer Portfolio">
 
-    <title>Troi Manimtim | Web Developer</title>
+    <title>Projects | Troi Manimtim</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* PROFILE PHOTO */
-        .profile-photo {
-            position: relative;
-            z-index: 1;
-            display: block;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            object-position: center top;
-            border-radius: 24px;
+        :root {
+            --accent: #2563eb;
+            --card: var(--bs-body-bg);
+            --border: var(--bs-border-color);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            overflow-x: hidden;
         }
 
         /* NAVIGATION */
+
         .portfolio-navbar {
             position: relative;
             z-index: 1030;
+            background: var(--bs-body-bg);
         }
 
         .portfolio-navbar .navbar-brand {
-            min-width: 0;
-            margin-right: 10px;
             color: var(--bs-body-color);
+            margin-right: auto;
         }
 
-        .portfolio-navbar .brand-mark {
+        .brand-mark {
             width: 42px;
             height: 42px;
-            flex-shrink: 0;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: #2563eb;
-            color: #ffffff;
+            background: var(--accent);
+            color: white;
             border-radius: 12px;
-            font-size: 15px;
             font-weight: 800;
         }
 
-        .portfolio-navbar .brand-name {
+        .brand-name {
             font-size: 16px;
             line-height: 1.2;
         }
 
-        .portfolio-navbar .brand-name small {
-            margin-top: 3px;
+        .brand-name small {
             font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .desktop-navigation {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .desktop-navigation .nav-link {
+            padding: 9px 12px;
+            color: var(--bs-secondary-color);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .04em;
+            transition: .2s;
+        }
+
+        .desktop-navigation .nav-link:hover,
+        .desktop-navigation .nav-link.active {
+            color: var(--accent);
         }
 
         .portfolio-controls {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: auto;
-            flex-shrink: 0;
+            margin-left: 15px;
         }
 
         #themeToggle {
@@ -79,131 +99,558 @@
             justify-content: center;
         }
 
-        /* PERMANENT MENU BUTTON */
-        .portfolio-menu-button {
+        .mobile-menu-button {
+            display: none;
             width: 40px;
             height: 40px;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 7px;
+            background: #343a40;
+            color: white;
+            font-size: 23px;
+        }
+
+        .mobile-navigation {
+            display: none;
+            padding: 10px 20px 18px;
+            border-top: 1px solid var(--bs-border-color);
+            background: var(--bs-body-bg);
+        }
+
+        .mobile-navigation.show {
+            display: block;
+        }
+
+        .mobile-navigation .nav-link {
+            padding: 11px 5px;
+            color: var(--bs-body-color);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .mobile-navigation .nav-link:hover {
+            color: var(--accent);
+        }
+
+        /* HEADER */
+
+        .projects-header {
+            padding: 7rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(
+                circle at 80% 20%,
+                rgba(37, 99, 235, .08),
+                transparent 35%
+            );
+        }
+
+        .projects-header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(15, 23, 42, .025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(15, 23, 42, .025) 1px, transparent 1px);
+            background-size: 45px 45px;
+        }
+
+        .projects-header .container {
+            position: relative;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+        .projects-header-title {
+            margin: 1rem 0;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            letter-spacing: -.06em;
+            line-height: .95;
+        }
+
+        .projects-header-description {
+            max-width: 650px;
+            color: var(--bs-secondary-color);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* SEARCH AND FILTER */
+
+        .project-search-section {
+            padding: 35px 0 10px;
+        }
+
+        .search-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border: 1px solid var(--bs-border-color);
+            border-radius: 12px;
+            background: var(--bs-body-bg);
+        }
+
+        .search-wrapper i {
+            color: var(--bs-secondary-color);
+            font-size: 18px;
+        }
+
+        .search-wrapper input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            color: var(--bs-body-color);
+        }
+
+        .clear-search {
+            border: none;
+            background: transparent;
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            border: 1px solid var(--bs-border-color);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--bs-secondary-color);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .search-results {
+            margin-top: 15px;
+            color: var(--bs-secondary-color);
+            font-size: 13px;
+        }
+
+        /* PROJECT CONTENT */
+
+        .projects-content {
+            padding: 4rem 0 7rem;
+        }
+
+        .semester-section {
+            margin-bottom: 7rem;
+        }
+
+        .semester-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .semester-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+
+        .semester-number {
+            width: 52px;
+            height: 52px;
+            flex-shrink: 0;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: rgba(37, 99, 235, .08);
+            border: 1px solid rgba(37, 99, 235, .25);
+            color: var(--accent);
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .semester-label {
+            display: block;
+            margin-bottom: 4px;
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .15em;
+        }
+
+        .semester-title {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -.055em;
+        }
+
+        /* PROJECT CARDS */
+
+        .academic-project-card {
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--bs-border-color);
+            border-radius: 16px;
+            background: var(--bs-body-bg);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, .045);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+
+        .academic-project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(15, 23, 42, .1);
+        }
+
+        .academic-project-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 1.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .project-category {
+            padding: 6px 10px;
+            border-radius: 6px;
+            background: rgba(37, 99, 235, .08);
+            border: 1px solid rgba(37, 99, 235, .18);
+            color: var(--accent);
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .project-year {
+            color: var(--bs-secondary-color);
+            font-size: 12px;
+        }
+
+        .project-title {
+            margin-bottom: .75rem;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .project-description {
+            margin-bottom: 1.25rem;
+            color: var(--bs-secondary-color);
+            font-size: .85rem;
+            line-height: 1.7;
+        }
+
+        .project-technologies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .technology-tag {
+            display: inline-flex;
+            padding: .4rem .65rem;
+            border-radius: 999px;
+            background: var(--bs-tertiary-bg);
+            border: 1px solid var(--bs-border-color);
+            color: var(--bs-secondary-color);
+            font-size: .68rem;
+            font-weight: 600;
+        }
+
+        .view-project-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: #212529;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background .2s ease;
-        }
-
-        .portfolio-menu-button i {
-            font-size: 24px;
-            line-height: 1;
-        }
-
-        .portfolio-menu-button:hover,
-        .portfolio-menu-button:focus-visible,
-        .portfolio-menu-button[aria-expanded="true"] {
-            background: #212529;
-            color: #ffffff;
-        }
-
-        /* NAVIGATION DROPDOWN */
-        .portfolio-dropdown {
-            min-width: 220px;
-            padding: 8px 0;
-            margin-top: 12px !important;
-            background: var(--bs-body-bg);
-            border: 1px solid var(--bs-border-color);
-            border-radius: 12px;
-            max-height: 75vh;
-            overflow-y: auto;
-        }
-
-        .portfolio-dropdown .dropdown-item {
-            display: block;
-            padding: 11px 18px;
-            color: var(--bs-body-color);
+            gap: 8px;
+            margin-top: auto;
+            padding: 11px 17px;
+            border: 0;
+            border-radius: 9px;
+            background: var(--accent);
+            color: white;
             font-size: 13px;
-            font-weight: 600;
-            letter-spacing: .4px;
+            font-weight: 700;
             text-decoration: none;
+            cursor: pointer;
+            transition: .2s;
         }
 
-        .portfolio-dropdown .dropdown-item:hover,
-        .portfolio-dropdown .dropdown-item:focus {
-            background: rgba(37, 99, 235, .1);
-            color: #2563eb;
+        .view-project-btn:hover {
+            background: #1d4ed8;
+            color: white;
         }
 
-        [data-bs-theme="dark"] .portfolio-dropdown {
-            background: #212529;
-            border-color: #495057;
+        /* BREW HAVEN CAROUSEL */
+
+        .brew-carousel {
+            position: relative;
+            overflow: hidden;
+            background: #24170f;
         }
 
-        [data-bs-theme="dark"] .portfolio-dropdown .dropdown-item:hover {
-            background: #343a40;
-            color: #ffffff;
-        }
-
-        html {
+        .brew-carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* HERO RESPONSIVENESS */
-        @media (max-width: 991.98px) {
-            .hero-section .hero-row {
-                display: flex;
-                flex-direction: column;
+        .brew-carousel-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .brew-slide {
+            position: relative;
+            flex: 0 0 100%;
+            height: 260px;
+            scroll-snap-align: start;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #24170f;
+        }
+
+        .brew-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .brew-carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .65);
+            color: white;
+            font-size: 20px;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        .brew-carousel-control:hover {
+            background: var(--accent);
+        }
+
+        .brew-prev {
+            left: 12px;
+        }
+
+        .brew-next {
+            right: 12px;
+        }
+
+        .brew-indicators {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            z-index: 4;
+        }
+
+        .brew-indicators button {
+            width: 8px;
+            height: 8px;
+            padding: 0;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,.45);
+            cursor: pointer;
+        }
+
+        .brew-indicators button.active {
+            width: 22px;
+            border-radius: 10px;
+            background: white;
+        }
+
+        /* MODAL */
+
+        .project-modal .modal-content {
+            background: var(--bs-body-bg);
+            color: var(--bs-body-color);
+            border: 1px solid var(--bs-border-color);
+            border-radius: 16px;
+        }
+
+        .project-modal .modal-header {
+            border-bottom: 1px solid var(--bs-border-color);
+        }
+
+        .project-modal .modal-footer {
+            border-top: 1px solid var(--bs-border-color);
+        }
+
+        .modal-project-image {
+            width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            background: #171717;
+            border-radius: 10px;
+        }
+
+        .detail-heading {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .detail-text {
+            color: var(--bs-secondary-color);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .empty-results {
+            display: none;
+            padding: 60px 20px;
+            text-align: center;
+            color: var(--bs-secondary-color);
+        }
+
+        /* FOOTER */
+
+        .projects-footer {
+            padding: 35px 0;
+            border-top: 1px solid var(--bs-border-color);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-align: center;
+        }
+
+        .footer-content span {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* DARK MODE */
+
+        [data-bs-theme="dark"] .projects-header::before {
+            background-image:
+                linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1100px) {
+            .desktop-navigation .nav-link {
+                padding: 8px;
+                font-size: 11px;
             }
 
-            .hero-section .hero-photo-column {
-                order: 1;
-                width: 100%;
+            .brand-name {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .desktop-navigation {
+                display: none;
             }
 
-            .hero-section .hero-text-column {
-                order: 2;
-                width: 100%;
+            .mobile-menu-button {
+                display: inline-flex;
             }
 
-            .hero-section .profile-card {
-                width: min(100%, 320px);
-                margin-inline: auto;
+            .portfolio-controls {
+                margin-left: auto;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .projects-header {
+                padding: 5rem 0 3.5rem;
             }
 
-            .hero-section .hero-text-column {
-                text-align: center;
+            .projects-content {
+                padding: 4rem 0 5rem;
             }
 
-            .hero-section .hero-text-column .eyebrow {
-                justify-content: center;
+            .semester-section {
+                margin-bottom: 5rem;
             }
 
-            .hero-section .hero-description {
-                margin-inline: auto;
+            .academic-project-content {
+                padding: 1.25rem;
             }
 
-            .hero-section .hero-actions {
-                justify-content: center;
+            .brew-slide {
+                height: 220px;
             }
 
-            .hero-section h1 {
-                font-size: clamp(2.5rem, 8vw, 4.5rem);
+            .semester-header {
+                gap: .9rem;
+            }
+
+            .semester-number {
+                width: 45px;
+                height: 45px;
             }
         }
 
         @media (max-width: 480px) {
-            .portfolio-navbar .brand-mark {
+            .brand-mark {
                 width: 36px;
                 height: 36px;
                 font-size: 12px;
             }
 
-            .portfolio-navbar .brand-name {
+            .brand-name {
                 font-size: 13px;
             }
 
-            .portfolio-navbar .brand-name small {
+            .brand-name small {
                 font-size: 10px;
             }
 
@@ -212,21 +659,14 @@
             }
 
             #themeToggle,
-            .portfolio-menu-button {
+            .mobile-menu-button {
                 width: 35px;
                 height: 35px;
             }
 
-            .portfolio-dropdown {
-                min-width: 190px;
-            }
-
-            .hero-section .profile-card {
-                width: min(100%, 260px);
-            }
-
-            .hero-section .hero-actions .btn {
-                width: 100%;
+            .filter-btn {
+                padding: 7px 11px;
+                font-size: 11px;
             }
         }
     </style>
@@ -234,580 +674,1070 @@
 
 <body>
 
-    <!-- NAVIGATION -->
-    <header class="sticky-top">
-        <nav class="navbar glass-nav border-bottom portfolio-navbar">
-            <div class="container py-2 d-flex flex-nowrap align-items-center">
+<!-- NAVIGATION -->
 
-                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
-                   href="index.html#home">
-                    <span class="brand-mark">TM</span>
+<header class="sticky-top">
 
-                    <span class="brand-name">
-                        Troi Manimtim
-                        <small class="d-block text-body-secondary fw-normal">
-                            Web Developer
-                        </small>
-                    </span>
-                </a>
+    <nav class="navbar glass-nav border-bottom portfolio-navbar">
 
-                <div class="portfolio-controls">
+        <div class="container py-2 d-flex flex-wrap align-items-center">
 
-                    <button
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold"
+               href="index.html#home">
+
+                <span class="brand-mark">TM</span>
+
+                <span class="brand-name">
+                    Troi Manimtim
+                    <small class="d-block text-body-secondary fw-normal">
+                        Web Developer
+                    </small>
+                </span>
+
+            </a>
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <div class="desktop-navigation">
+
+                <a class="nav-link" href="index.html#home">HOME</a>
+                <a class="nav-link active" href="project.html">PROJECTS</a>
+                <a class="nav-link" href="cv.html">CV</a>
+                <a class="nav-link" href="index.html#about">ABOUT</a>
+                <a class="nav-link" href="index.html#skills">SKILLS</a>
+                <a class="nav-link" href="index.html#education">EDUCATION</a>
+                <a class="nav-link" href="index.html#contact">CONTACT</a>
+
+            </div>
+
+            <div class="portfolio-controls">
+
+                <button id="themeToggle"
                         type="button"
-                        id="themeToggle"
                         class="btn btn-sm btn-outline-secondary rounded-pill"
                         aria-label="Toggle dark mode">
-                        <i class="bi bi-moon-stars"></i>
-                    </button>
 
-                    <div class="dropdown">
-                        <button
-                            type="button"
-                            class="portfolio-menu-button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                            aria-label="Open navigation menu">
-                            <i class="bi bi-list"></i>
-                        </button>
+                    <i class="bi bi-moon-stars"></i>
 
-                        <ul class="dropdown-menu dropdown-menu-end portfolio-dropdown shadow">
-                            <li><a class="dropdown-item" href="index.html#home">HOME</a></li>
-                            <li><a class="dropdown-item" href="project.html">PROJECTS</a></li>
-                            <li><a class="dropdown-item" href="cv.html">CV</a></li>
-                            <li><a class="dropdown-item" href="index.html#about">ABOUT</a></li>
-                            <li><a class="dropdown-item" href="index.html#skills">SKILLS</a></li>
-                            <li><a class="dropdown-item" href="index.html#education">EDUCATION</a></li>
-                            <li><a class="dropdown-item" href="index.html#contact">CONTACT</a></li>
-                        </ul>
-                    </div>
+                </button>
 
-                </div>
-            </div>
-        </nav>
-    </header>
+                <!-- MOBILE MENU BUTTON -->
 
-    <main>
+                <button class="mobile-menu-button"
+                        id="mobileMenuButton"
+                        type="button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="mobileNavigation">
 
-        <!-- HOME -->
-<section id="home" class="hero-section">
-    <div class="container py-5">
-        <div class="row align-items-center g-5 hero-row">
+                    <i class="bi bi-list"></i>
 
-            <!-- PROFILE PICTURE -->
-            <div class="col-lg-5 hero-photo-column">
-                <div class="profile-card mx-auto">
-                    <div class="profile-glow"></div>
-
-                    <img
-                        src="assets/images/portfolio_pic.jpg"
-                        alt="Troi Manimtim"
-                        class="profile-photo">
-                </div>
-            </div>
-
-            <!-- NAME AND INTRODUCTION -->
-            <div class="col-lg-7 hero-text-column">
-
-                <div class="eyebrow mb-3">
-                    WEB DEVELOPER
-                </div>
-
-                <h1 class="display-2 fw-bold tracking-tight mb-4">
-                    Troi <span class="text-primary">Manimtim</span>
-                </h1>
-
-                <p class="lead fs-3 fw-semibold mb-3">
-                    Building practical digital solutions through technology and creativity.
-                </p>
-
-                <p class="text-body-secondary fs-5 col-xl-10 mb-4 hero-description">
-                    I create clean, responsive, and useful web experiences
-                    while continuously improving my technical and
-                    problem-solving skills.
-                </p>
-
-                <div class="d-flex flex-wrap gap-2 hero-actions">
-                    <a href="project.html" class="btn btn-dark btn-lg px-4">
-                        View My Projects
-                        <i class="bi bi-arrow-up-right ms-1"></i>
-                    </a>
-
-                    <a href="cv.html" class="btn btn-outline-secondary btn-lg px-4">
-                        View CV
-                    </a>
-
-                    <a href="#contact" class="btn btn-outline-primary btn-lg px-4">
-                        Contact Me
-                    </a>
-                </div>
+                </button>
 
             </div>
+
         </div>
+
+        <!-- MOBILE NAVIGATION -->
+
+        <div class="mobile-navigation" id="mobileNavigation">
+
+            <a class="nav-link" href="index.html#home">HOME</a>
+            <a class="nav-link active" href="project.html">PROJECTS</a>
+            <a class="nav-link" href="cv.html">CV</a>
+            <a class="nav-link" href="index.html#about">ABOUT</a>
+            <a class="nav-link" href="index.html#skills">SKILLS</a>
+            <a class="nav-link" href="index.html#education">EDUCATION</a>
+            <a class="nav-link" href="index.html#contact">CONTACT</a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- PAGE HEADER -->
+
+<section class="projects-header">
+
+    <div class="container">
+
+        <span class="eyebrow">ACADEMIC PROJECTS</span>
+
+        <h1 class="projects-header-title">
+            My Projects
+        </h1>
+
+        <p class="projects-header-description">
+            A collection of academic projects completed throughout
+            my studies, showcasing my creativity, design skills,
+            and technical knowledge.
+        </p>
+
     </div>
+
 </section>
 
 
-        <!-- ABOUT -->
-        <section id="about" class="section-padding">
-            <div class="container">
+<!-- SEARCH AND FILTER -->
 
-                <div class="section-label">01 — ABOUT</div>
+<section class="project-search-section">
 
-                <div class="row g-5">
-                    <div class="col-lg-6">
-                        <h2 class="display-6 fw-bold">
-                            A portfolio built around practical work.
-                        </h2>
+    <div class="container">
 
-                        <p class="fs-5 text-body-secondary mt-4">
-                            I am a aspiring Web Developer focused on building practical
-                            digital solutions, learning modern technologies,
-                            and improving the usability of the systems I create.
+        <div class="search-wrapper">
+
+            <i class="bi bi-search"></i>
+
+            <input type="text"
+                   id="projectSearch"
+                   placeholder="Search projects by title, category, or technology..."
+                   autocomplete="off">
+
+            <button type="button"
+                    class="clear-search"
+                    id="clearSearch">
+
+                Clear
+
+            </button>
+
+        </div>
+
+        <div class="filter-buttons">
+
+            <button class="filter-btn active" data-filter="all">
+                All Projects
+            </button>
+
+            <button class="filter-btn" data-filter="prelim">
+                Prelim
+            </button>
+
+            <button class="filter-btn" data-filter="midterm">
+                Midterm
+            </button>
+
+            <button class="filter-btn" data-filter="finals">
+                Finals
+            </button>
+
+        </div>
+
+        <p class="search-results" id="searchResults">
+            Showing all projects
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<main class="projects-content">
+
+<div class="container">
+
+    <!-- PRELIM -->
+
+    <section class="semester-section" id="prelim">
+
+        <div class="semester-header">
+
+            <div class="semester-number">01</div>
+
+            <div>
+                <span class="semester-label">Academic Projects</span>
+                <h2 class="semester-title">PRELIM</h2>
+            </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- PRELIM ACTIVITY 1 -->
+
+            <div class="col-md-6 col-xl-4 project-item"
+                 data-period="prelim"
+                 data-search="fruitful design kiwi fruit illustration digital art academic">
+
+                <article class="academic-project-card">
+
+                    <img src="assets/images/PRELIMACT1.jpg"
+                         alt="Kiwi fruit illustration"
+                         class="w-100"
+                         style="height:240px;object-fit:contain;background:#171717;"
+                         loading="lazy">
+
+                    <div class="academic-project-content">
+
+                        <div class="project-meta">
+                            <span class="project-category">Academic</span>
+                            <span class="project-year">2026</span>
+                        </div>
+
+                        <h3 class="project-title">Fruitful Design</h3>
+
+                        <p class="project-description">
+                            A kiwi fruit illustration featuring a sliced
+                            kiwi and its green interior.
                         </p>
 
-                    
+                        <div class="project-technologies">
+                            <span class="technology-tag">Illustration</span>
+                            <span class="technology-tag">Digital Art</span>
+                        </div>
+
+                        <button class="view-project-btn"
+                                onclick="openProject('fruitful')">
+
+                            <i class="bi bi-eye"></i>
+                            View Project
+
+                        </button>
+
                     </div>
 
-                    <div class="col-lg-6">
-                        <div class="row g-3">
+                </article>
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Location</small>
-                                    <strong>Canlubang, Calamba</strong>
-                                </div>
+            </div>
+
+
+            <!-- PRELIM ACTIVITY 2 -->
+
+            <div class="col-md-6 col-xl-4 project-item"
+                 data-period="prelim"
+                 data-search="brand design istillo coffee logo graphic design branding">
+
+                <article class="academic-project-card">
+
+                    <img src="assets/images/PRELIMACT2.jpg"
+                         alt="iSTILO coffee logo"
+                         class="w-100"
+                         style="height:240px;object-fit:contain;background:#fffdf4;"
+                         loading="lazy">
+
+                    <div class="academic-project-content">
+
+                        <div class="project-meta">
+                            <span class="project-category">Academic</span>
+                            <span class="project-year">2026</span>
+                        </div>
+
+                        <h3 class="project-title">Brand Design</h3>
+
+                        <p class="project-description">
+                            A coffee-inspired logo design featuring
+                            a steaming cup and scattered coffee beans.
+                        </p>
+
+                        <div class="project-technologies">
+                            <span class="technology-tag">Logo Design</span>
+                            <span class="technology-tag">Graphics</span>
+                        </div>
+
+                        <button class="view-project-btn"
+                                onclick="openProject('brand')">
+
+                            <i class="bi bi-eye"></i>
+                            View Project
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MIDTERM -->
+
+    <section class="semester-section" id="midterm">
+
+        <div class="semester-header">
+
+            <div class="semester-number">02</div>
+
+            <div>
+                <span class="semester-label">Academic Projects</span>
+                <h2 class="semester-title">MIDTERM</h2>
+            </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- MIDTERM ACTIVITY 1: BREW HAVEN -->
+
+            <div class="col-md-6 col-xl-4 project-item"
+                 data-period="midterm"
+                 data-search="brew haven coffee shop pumpkin spice latte branding logo design graphic design campaign banner poster social media landing page newsletter">
+
+                <article class="academic-project-card">
+
+                    <!-- BREW HAVEN CAROUSEL -->
+
+                    <div class="brew-carousel">
+
+                        <div class="brew-carousel-track" id="brewTrack">
+
+                            <div class="brew-slide">
+                                <img src="assets/images/BANNER AD.jpg"
+                                     alt="Brew Haven banner advertisement"
+                                     loading="lazy">
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Email</small>
-                                    <strong>tpmanimtim@ccc.edu.ph</strong>
-                                </div>
+                            <div class="brew-slide">
+                                <img src="assets/images/LANDING PAGE.jpg"
+                                     alt="Brew Haven landing page design"
+                                     loading="lazy">
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Phone</small>
-                                    <strong>0991 767 4731</strong>
-                                </div>
+                            <div class="brew-slide">
+                                <img src="assets/images/MIDTERMACT1.jpg"
+                                     alt="Brew Haven primary branding design"
+                                     loading="lazy">
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Specialization</small>
-                                    <strong>Programming</strong>
-                                </div>
+                            <div class="brew-slide">
+                                <img src="assets/images/NEWSLETTER HEADER.jpg"
+                                     alt="Brew Haven newsletter header"
+                                     loading="lazy">
                             </div>
 
-                            <div class="col-sm-6">
-                                <div class="info-card">
-                                    <small>Education</small>
-                                    <strong>City College of Calamba</strong>
-                                </div>
+                            <div class="brew-slide">
+                                <img src="assets/images/SOCIAL MEDIA POST.jpg"
+                                     alt="Brew Haven social media promotional post"
+                                     loading="lazy">
+                            </div>
+
+                            <div class="brew-slide">
+                                <img src="assets/images/SKETCH.heif"
+                                     alt="Brew Haven original hand-drawn sketch"
+                                     loading="lazy">
                             </div>
 
                         </div>
+
+                        <button type="button"
+                                class="brew-carousel-control brew-prev"
+                                id="brewPrev"
+                                aria-label="Previous image">
+
+                            <i class="bi bi-chevron-left"></i>
+
+                        </button>
+
+                        <button type="button"
+                                class="brew-carousel-control brew-next"
+                                id="brewNext"
+                                aria-label="Next image">
+
+                            <i class="bi bi-chevron-right"></i>
+
+                        </button>
+
+                        <div class="brew-indicators" id="brewIndicators">
+
+                            <button class="active" aria-label="Slide 1"></button>
+                            <button aria-label="Slide 2"></button>
+                            <button aria-label="Slide 3"></button>
+                            <button aria-label="Slide 4"></button>
+                            <button aria-label="Slide 5"></button>
+                            <button aria-label="Slide 6"></button>
+
+                        </div>
+
                     </div>
+
+
+                    <div class="academic-project-content">
+
+                        <div class="project-meta">
+
+                            <span class="project-category">Branding</span>
+
+                            <span class="project-year">2026</span>
+
+                        </div>
+
+                        <h3 class="project-title">
+                            Brew Haven Coffee Shop
+                        </h3>
+
+                        <p class="project-description">
+                            A seasonal coffee shop branding concept
+                            built around Pumpkin Spice Latte and the
+                            cozy atmosphere of the rainy season.
+                        </p>
+
+                        <div class="project-technologies">
+
+                            <span class="technology-tag">Logo Design</span>
+                            <span class="technology-tag">Branding</span>
+                            <span class="technology-tag">Graphic Design</span>
+                            <span class="technology-tag">Campaign Design</span>
+
+                        </div>
+
+                        <button class="view-project-btn"
+                                onclick="openProject('brew')">
+
+                            <i class="bi bi-eye"></i>
+                            View Full Project
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- MIDTERM ACTIVITY 2 -->
+
+            <div class="col-md-6 col-xl-4 project-item"
+                 data-period="midterm"
+                 data-search="typography gabi ng lagim filipino horror movie poster design graphics">
+
+                <article class="academic-project-card">
+
+                    <img src="assets/images/MIDTERMACT2.jpg"
+                         alt="Gabi ng Lagim poster"
+                         class="w-100"
+                         style="height:240px;object-fit:contain;background:#242424;"
+                         loading="lazy">
+
+                    <div class="academic-project-content">
+
+                        <div class="project-meta">
+                            <span class="project-category">Poster Design</span>
+                            <span class="project-year">2026</span>
+                        </div>
+
+                        <h3 class="project-title">Typography</h3>
+
+                        <p class="project-description">
+                            A Filipino horror movie poster concept using
+                            bold red typography and a dark background.
+                        </p>
+
+                        <div class="project-technologies">
+                            <span class="technology-tag">Typography</span>
+                            <span class="technology-tag">Poster Design</span>
+                            <span class="technology-tag">Graphics</span>
+                        </div>
+
+                        <button class="view-project-btn"
+                                onclick="openProject('typography')">
+
+                            <i class="bi bi-eye"></i>
+                            View Project
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINALS -->
+
+    <section class="semester-section" id="finals">
+
+        <div class="semester-header">
+
+            <div class="semester-number">03</div>
+
+            <div>
+                <span class="semester-label">Academic Projects</span>
+                <h2 class="semester-title">FINALS</h2>
+            </div>
+
+        </div>
+
+        <div class="row g-4">
+
+            <!-- FINAL ACTIVITY 1 -->
+
+            <div class="col-md-6 col-xl-4 project-item"
+                 data-period="finals"
+                 data-search="wireframe personal portfolio website figma web development UI UX">
+
+                <article class="academic-project-card">
+
+                    <img src="assets/images/FINALACT1.jpg"
+                         alt="Personal portfolio wireframe"
+                         class="w-100"
+                         style="height:240px;object-fit:contain;background:#171717;"
+                         loading="lazy">
+
+                    <div class="academic-project-content">
+
+                        <div class="project-meta">
+                            <span class="project-category">Web Development</span>
+                            <span class="project-year">2026</span>
+                        </div>
+
+                        <h3 class="project-title">Wireframe</h3>
+
+                        <p class="project-description">
+                            A personal portfolio website wireframe
+                            showcasing projects, skills, education,
+                            experience, and contact information.
+                        </p>
+
+                        <div class="project-technologies">
+                            <span class="technology-tag">Figma</span>
+                            <span class="technology-tag">UI/UX Design</span>
+                        </div>
+
+                        <button class="view-project-btn"
+                                onclick="openProject('wireframe')">
+
+                            <i class="bi bi-eye"></i>
+                            View Project
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- NO RESULTS -->
+
+    <div class="empty-results" id="emptyResults">
+
+        <i class="bi bi-search fs-1"></i>
+
+        <h4 class="mt-3">No projects found</h4>
+
+        <p>Try another search term or select a different filter.</p>
+
+    </div>
+
+</div>
+
+</main>
+
+
+<!-- PROJECT DETAILS MODAL -->
+
+<div class="modal fade project-modal"
+     id="projectModal"
+     tabindex="-1"
+     aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <span class="eyebrow" id="modalCategory"></span>
+                    <h4 class="modal-title fw-bold mt-1" id="modalTitle"></h4>
                 </div>
 
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section-padding section-muted">
-            <div class="container">
-
-                <div class="section-label">02 — SKILLS</div>
-
-                <h2 class="display-6 fw-bold mb-2">
-                    Tools and skills I use.
-                </h2>
-
-                
-
-                <div id="skillsGrid" class="row g-3"></div>
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
 
             </div>
-        </section>
 
-        <!-- EXPERIENCE -->
-        <section id="experience" class="section-padding">
-            <div class="container">
+            <div class="modal-body">
 
-                <div class="section-label">03 — EXPERIENCE</div>
+                <div id="modalGallery" class="mb-4"></div>
 
-                <div id="experienceTimeline" class="timeline"></div>
+                <h5 class="detail-heading">Project Overview</h5>
+                <p class="detail-text" id="modalDescription"></p>
 
-            </div>
-        </section>
+                <h5 class="detail-heading">Objectives</h5>
+                <p class="detail-text" id="modalObjectives"></p>
 
-        <!-- EDUCATION AND CERTIFICATES -->
-        <section id="education" class="section-padding section-muted">
-            <div class="container">
+                <h5 class="detail-heading">Design and Development</h5>
+                <p class="detail-text" id="modalDevelopment"></p>
 
-                <div class="section-label">
-                    04 — EDUCATION & CERTIFICATES
-                </div>
+                <h5 class="detail-heading">Tools and Technologies</h5>
+                <div class="project-technologies" id="modalTechnologies"></div>
 
-                <div class="row g-4 align-items-stretch">
-
-                    <div class="col-lg-6 d-flex flex-column">
-                        <h3 class="fw-bold mb-3">Education</h3>
-
-                        <div id="educationList" class="education-fixed-card flex-grow-1">
-                            <span class="education-year">Currently 3rd Year</span>
-
-                            <h4 class="education-title">
-                                Bachelor of Science in Information Technology
-                            </h4>
-
-                            <p class="education-school">
-                                City College of Calamba
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 d-flex flex-column">
-                        <h3 class="fw-bold mb-3">CERTIFICATES</h3>
-
-                        <div id="credentialsList" class="education-fixed-card flex-grow-1">
-                            <span class="education-year">2024</span>
-
-                            <h4 class="education-title">
-                                National Certificate on Computer
-                                Systems Servicing NC II
-                            </h4>
-
-                            <p class="education-school">TESDA</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section-padding">
-            <div class="container">
-
-                <div class="contact-box p-4 p-lg-5">
-                    <div class="row g-5">
-
-                        <div class="col-lg-5">
-                            <div class="section-label">05 — CONTACT</div>
-
-                            <h2 class="display-6 fw-bold">Let's connect.</h2>
-
-                            <p class="text-body-secondary">
-                                Feel free to reach out through any of the
-                                details below, or send me a message directly
-                                using the contact form.
-                            </p>
-
-                            <div class="contact-list mt-4">
-
-                                <div>
-                                    <i class="bi bi-envelope"></i>
-                                    <span>tpmanimtim@ccc.edu.ph</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-telephone"></i>
-                                    <span>0991 767 4731</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-geo-alt"></i>
-                                    <span>Canlubang, Calamba</span>
-                                </div>
-
-                                <div>
-                                    <i class="bi bi-github"></i>
-                                    <a href="https://github.com/galani920"
-                                       target="_blank"
-                                       rel="noopener noreferrer">
-                                        github.com/galani920
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <!-- CONTACT FORM -->
-                        <div class="col-lg-7">
-                            <form id="contactForm">
-                                <div class="row g-3">
-
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="contactName">
-                                            Name
-                                        </label>
-
-                                        <input
-                                            id="contactName"
-                                            name="name"
-                                            class="form-control"
-                                            maxlength="100"
-                                            autocomplete="name"
-                                            required>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <label class="form-label" for="contactEmail">
-                                            Email
-                                        </label>
-
-                                        <input
-                                            id="contactEmail"
-                                            name="email"
-                                            type="email"
-                                            class="form-control"
-                                            maxlength="254"
-                                            autocomplete="email"
-                                            required>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label" for="contactSubject">
-                                            Subject
-                                        </label>
-
-                                        <input
-                                            id="contactSubject"
-                                            name="subject"
-                                            class="form-control"
-                                            maxlength="150"
-                                            required>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <label class="form-label" for="contactMessage">
-                                            Message
-                                        </label>
-
-                                        <textarea
-                                            id="contactMessage"
-                                            name="message"
-                                            class="form-control"
-                                            rows="6"
-                                            maxlength="5000"
-                                            required></textarea>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <button
-                                            id="sendMessageBtn"
-                                            type="submit"
-                                            class="btn btn-dark btn-lg px-4">
-                                            Send Message
-                                            <i class="bi bi-send ms-1"></i>
-                                        </button>
-
-                                        <div
-                                            id="contactStatus"
-                                            class="mt-3 small"
-                                            role="status"
-                                            aria-live="polite"></div>
-                                    </div>
-
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
+                <h5 class="detail-heading">Learning Outcomes</h5>
+                <p class="detail-text" id="modalLearning"></p>
 
             </div>
-        </section>
 
-    </main>
+            <div class="modal-footer">
 
-    <!-- FOOTER -->
-    <footer class="border-top py-4">
-        <div class="container d-flex flex-column flex-md-row justify-content-between gap-2 small text-body-secondary">
+                <button type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal">
+
+                    Close
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer class="projects-footer">
+
+    <div class="container">
+
+        <div class="footer-content">
 
             <span>
-                © <span id="year"></span> Troi Manimtim.
+                &copy; <span id="year"></span> Troi Manimtim.
             </span>
 
             <span>
-                HTML · Bootstrap · Tailwind CSS · JavaScript
+                Information Technology Portfolio
+            </span>
+
+            <span class="small">
+                Designed with creativity and passion.
             </span>
 
         </div>
-    </footer>
 
-    <!-- JAVASCRIPT LIBRARIES -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/data.js"></script>
-    <script src="assets/js/app.js"></script>
+    </div>
 
-    <!-- EDUCATION CONTENT -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+</footer>
 
-            const education = document.getElementById("educationList");
-            const certificates = document.getElementById("credentialsList");
-            const year = document.getElementById("year");
 
-            if (education) {
-                education.className = "education-fixed-card flex-grow-1";
+<!-- SCRIPTS -->
 
-                education.innerHTML = `
-                    <span class="education-year">Currently 3rd Year</span>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-                    <h4 class="education-title">BSIT</h4>
+<script>
 
-                    <p class="education-school">
-                        City College of Calamba
-                    </p>
+    // THEME SWITCH
 
-                    <p class="education-description">
-                        Bachelor of Science in Information Technology
-                    </p>
-                `;
-            }
+    const html = document.documentElement;
+    const themeToggle = document.getElementById("themeToggle");
 
-            if (certificates) {
-                certificates.className = "education-fixed-card flex-grow-1";
+    function updateThemeIcon() {
 
-                certificates.innerHTML = `
-                    <span class="education-year">2024</span>
+        const dark = html.getAttribute("data-bs-theme") === "dark";
 
-                    <h4 class="education-title">
-                        National Certificate on Computer
-                        Systems Servicing NC II
-                    </h4>
+        themeToggle.innerHTML = dark
+            ? '<i class="bi bi-sun"></i>'
+            : '<i class="bi bi-moon-stars"></i>';
 
-                    <p class="education-school">TESDA</p>
-                `;
-            }
+    }
 
-            if (year) {
-                year.textContent = new Date().getFullYear();
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "dark" || savedTheme === "light") {
+        html.setAttribute("data-bs-theme", savedTheme);
+    }
+
+    updateThemeIcon();
+
+    themeToggle.addEventListener("click", function () {
+
+        const current = html.getAttribute("data-bs-theme");
+
+        const next = current === "dark" ? "light" : "dark";
+
+        html.setAttribute("data-bs-theme", next);
+
+        localStorage.setItem("portfolio-theme", next);
+
+        updateThemeIcon();
+
+    });
+
+
+    // MOBILE NAVIGATION
+
+    const mobileMenuButton = document.getElementById("mobileMenuButton");
+    const mobileNavigation = document.getElementById("mobileNavigation");
+
+    mobileMenuButton.addEventListener("click", function () {
+
+        const isOpen = mobileNavigation.classList.toggle("show");
+
+        mobileMenuButton.setAttribute("aria-expanded", isOpen);
+
+        mobileMenuButton.innerHTML = isOpen
+            ? '<i class="bi bi-x-lg"></i>'
+            : '<i class="bi bi-list"></i>';
+
+    });
+
+    mobileNavigation.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            mobileNavigation.classList.remove("show");
+
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+
+            mobileMenuButton.innerHTML = '<i class="bi bi-list"></i>';
+
+        });
+
+    });
+
+
+    // REAL-TIME SEARCH AND FILTER
+
+    const searchInput = document.getElementById("projectSearch");
+    const clearSearch = document.getElementById("clearSearch");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projectItems = document.querySelectorAll(".project-item");
+    const sections = document.querySelectorAll(".semester-section");
+
+    const searchResults = document.getElementById("searchResults");
+    const emptyResults = document.getElementById("emptyResults");
+
+    let activeFilter = "all";
+
+    function filterProjects() {
+
+        const query = searchInput.value.toLowerCase().trim();
+
+        let visibleCount = 0;
+
+        projectItems.forEach(project => {
+
+            const period = project.dataset.period;
+
+            const searchableText =
+                (project.dataset.search + " " + project.innerText).toLowerCase();
+
+            const matchesSearch = searchableText.includes(query);
+
+            const matchesFilter =
+                activeFilter === "all" || period === activeFilter;
+
+            const visible = matchesSearch && matchesFilter;
+
+            project.style.display = visible ? "" : "none";
+
+            if (visible) {
+                visibleCount++;
             }
 
         });
-    </script>
 
-    <!-- EMAILJS LIBRARY -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        sections.forEach(section => {
 
-    <!-- EMAILJS CONTACT FORM -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
+            const visibleProjects = section.querySelectorAll(
+                '.project-item:not([style*="display: none"])'
+            );
 
-            const EMAILJS_PUBLIC_KEY = "Bl_pSuoHVtteKMVEK";
-            const EMAILJS_SERVICE_ID = "service_mi9m8lg";
-            const EMAILJS_TEMPLATE_ID = "template_r1q26zl";
+            section.style.display =
+                visibleProjects.length > 0 ? "" : "none";
 
-            const contactForm = document.getElementById("contactForm");
-            const sendButton = document.getElementById("sendMessageBtn");
-            const contactStatus = document.getElementById("contactStatus");
-
-            if (!contactForm || !sendButton || !contactStatus) {
-                return;
-            }
-
-            let isSending = false;
-
-            contactForm.addEventListener("submit", async function (event) {
-
-                event.preventDefault();
-                event.stopImmediatePropagation();
-
-                if (isSending) return;
-                if (!contactForm.reportValidity()) return;
-
-                if (typeof emailjs === "undefined") {
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "Email service could not be loaded. Check your connection.";
-                    return;
-                }
-
-                const configurationMissing = [
-                    EMAILJS_PUBLIC_KEY,
-                    EMAILJS_SERVICE_ID,
-                    EMAILJS_TEMPLATE_ID
-                ].some(value =>
-                    !value ||
-                    value.trim() === "" ||
-                    value.startsWith("YOUR_")
-                );
-
-                if (configurationMissing) {
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "EmailJS configuration is incomplete.";
-                    return;
-                }
-
-                const formData = new FormData(contactForm);
-
-                const templateParams = {
-                    from_name: String(formData.get("name") || "").trim(),
-                    from_email: String(formData.get("email") || "").trim(),
-                    subject: String(formData.get("subject") || "").trim(),
-                    message: String(formData.get("message") || "").trim()
-                };
-
-                isSending = true;
-                sendButton.disabled = true;
-
-                const originalContent = sendButton.innerHTML;
-
-                sendButton.innerHTML = `
-                    <span
-                        class="spinner-border spinner-border-sm me-2"
-                        role="status"
-                        aria-hidden="true"></span>
-                    Sending...
-                `;
-
-                contactStatus.textContent = "";
-
-                try {
-                    emailjs.init({
-                        publicKey: EMAILJS_PUBLIC_KEY
-                    });
-
-                    await emailjs.send(
-                        EMAILJS_SERVICE_ID,
-                        EMAILJS_TEMPLATE_ID,
-                        templateParams
-                    );
-
-                    contactStatus.className = "mt-3 small text-success";
-                    contactStatus.textContent =
-                        "Your message has been sent successfully!";
-
-                    contactForm.reset();
-
-                } catch (error) {
-                    console.error("EmailJS Error:", error);
-
-                    const errorCode = error?.status || "Unknown";
-
-                    const errorMessage =
-                        error?.text ||
-                        error?.message ||
-                        "Unknown EmailJS error";
-
-                    contactStatus.className = "mt-3 small text-danger";
-                    contactStatus.textContent =
-                        "Email failed (" + errorCode + "): " + errorMessage;
-
-                } finally {
-                    isSending = false;
-                    sendButton.disabled = false;
-                    sendButton.innerHTML = originalContent;
-                }
-
-            }, true);
         });
-    </script>
+
+        searchResults.textContent =
+            `Showing ${visibleCount} of ${projectItems.length} projects`;
+
+        emptyResults.style.display =
+            visibleCount === 0 ? "block" : "none";
+
+    }
+
+    searchInput.addEventListener("input", filterProjects);
+
+    clearSearch.addEventListener("click", function () {
+
+        searchInput.value = "";
+
+        activeFilter = "all";
+
+        filterButtons.forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.filter === "all"
+            );
+        });
+
+        filterProjects();
+
+        searchInput.focus();
+
+    });
+
+    filterButtons.forEach(button => {
+
+        button.addEventListener("click", function () {
+
+            activeFilter = this.dataset.filter;
+
+            filterButtons.forEach(btn =>
+                btn.classList.remove("active")
+            );
+
+            this.classList.add("active");
+
+            filterProjects();
+
+        });
+
+    });
+
+
+    // BREW HAVEN CAROUSEL
+
+    const brewTrack = document.getElementById("brewTrack");
+
+    const brewSlides = Array.from(
+        brewTrack.querySelectorAll(".brew-slide")
+    );
+
+    const brewIndicators = document.querySelectorAll(
+        "#brewIndicators button"
+    );
+
+    let currentSlide = 0;
+
+    function updateBrewCarousel(index) {
+
+        currentSlide = (index + brewSlides.length) % brewSlides.length;
+
+        brewTrack.scrollTo({
+            left: currentSlide * brewTrack.clientWidth,
+            behavior: "smooth"
+        });
+
+        brewIndicators.forEach((indicator, i) => {
+            indicator.classList.toggle("active", i === currentSlide);
+        });
+
+    }
+
+    document.getElementById("brewPrev").addEventListener(
+        "click",
+        () => updateBrewCarousel(currentSlide - 1)
+    );
+
+    document.getElementById("brewNext").addEventListener(
+        "click",
+        () => updateBrewCarousel(currentSlide + 1)
+    );
+
+    brewIndicators.forEach((indicator, index) => {
+
+        indicator.addEventListener("click", () => {
+            updateBrewCarousel(index);
+        });
+
+    });
+
+    // Keep indicators synchronized when users swipe or scroll.
+
+    let scrollTimeout;
+
+    brewTrack.addEventListener("scroll", function () {
+
+        clearTimeout(scrollTimeout);
+
+        scrollTimeout = setTimeout(() => {
+
+            const index = Math.round(
+                brewTrack.scrollLeft / brewTrack.clientWidth
+            );
+
+            currentSlide = Math.max(
+                0,
+                Math.min(index, brewSlides.length - 1)
+            );
+
+            brewIndicators.forEach((indicator, i) => {
+                indicator.classList.toggle("active", i === currentSlide);
+            });
+
+        }, 80);
+
+    });
+
+    window.addEventListener("resize", () => {
+        updateBrewCarousel(currentSlide);
+    });
+
+
+    // PROJECT DETAILS
+
+    const projectData = {
+
+        fruitful: {
+            title: "Fruitful Design",
+            category: "Prelim | Academic",
+            description: "A digital illustration activity focused on the visual representation of kiwi fruit. The design highlights the fruit's sliced appearance, green interior, and natural textures.",
+            objectives: "To practice digital illustration, develop visual composition skills, and communicate a subject through creative artwork.",
+            development: "The activity involved studying the visual characteristics of kiwi fruit and translating them into an illustration using color, shape, and composition.",
+            technologies: ["Illustration", "Digital Art"],
+            learning: "Developed creativity, attention to detail, visual composition, and the ability to communicate ideas through digital artwork.",
+            images: ["assets/images/PRELIMACT1.jpg"]
+        },
+
+        brand: {
+            title: "Brand Design",
+            category: "Prelim | Academic",
+            description: "A coffee-inspired logo design featuring a steaming cup and coffee beans. The concept focuses on creating a recognizable visual identity for a coffee-related brand.",
+            objectives: "To understand the principles of branding, logo creation, visual identity, and the relationship between design elements and brand recognition.",
+            development: "The design uses coffee-related visual elements and a cohesive composition to represent a coffee brand. Typography and imagery work together to communicate the concept.",
+            technologies: ["Logo Design", "Graphic Design", "Branding"],
+            learning: "Improved understanding of logo composition, visual hierarchy, color selection, and brand identity.",
+            images: ["assets/images/PRELIMACT2.jpg"]
+        },
+
+        brew: {
+            title: "Brew Haven Coffee Shop",
+            category: "Midterm | Branding and Campaign Design",
+            description: "Brew Haven is a seasonal coffee shop branding concept centered on Pumpkin Spice Latte and the cozy atmosphere of the rainy season. The project develops a consistent visual identity across different promotional materials.",
+            objectives: "To create a recognizable coffee shop identity, establish a consistent design direction, and apply branding principles across digital promotional materials.",
+            development: "The project includes an original logo concept, a promotional banner advertisement, a landing page design, a newsletter header, social media promotional content, and an initial hand-drawn sketch. Warm brown, orange, and cream tones establish a cozy seasonal identity. The Pumpkin Spice Latte serves as the central promotional theme.",
+            technologies: ["Logo Design", "Branding", "Graphic Design", "Campaign Design", "Digital Marketing", "Visual Communication"],
+            learning: "Developed skills in brand consistency, promotional layout design, visual storytelling, digital marketing materials, and adapting a visual identity across multiple formats.",
+            images: [
+                "assets/images/BANNER AD.jpg",
+                "assets/images/LANDING PAGE.jpg",
+                "assets/images/MIDTERMACT1.jpg",
+                "assets/images/NEWSLETTER HEADER.jpg",
+                "assets/images/SOCIAL MEDIA POST.jpg",
+                "assets/images/SKETCH.heif"
+            ]
+        },
+
+        typography: {
+            title: "Typography",
+            category: "Midterm | Poster Design",
+            description: "A Filipino horror movie poster concept inspired by Gabi ng Lagim. The composition uses bold typography and a dark visual atmosphere to communicate suspense and horror.",
+            objectives: "To explore typography as a visual communication tool and understand how font selection, color contrast, and composition influence the mood of a design.",
+            development: "The poster uses strong typographic elements and a dark background to create a dramatic presentation. Red and dark tones support the horror theme.",
+            technologies: ["Typography", "Poster Design", "Graphic Design"],
+            learning: "Improved understanding of font hierarchy, contrast, composition, and visual storytelling.",
+            images: ["assets/images/MIDTERMACT2.jpg"]
+        },
+
+        wireframe: {
+            title: "Portfolio Wireframe",
+            category: "Finals | Web Development",
+            description: "A personal portfolio website wireframe designed to organize and present an individual's projects, skills, educational background, experience, and contact information.",
+            objectives: "To plan the structure and user experience of a personal portfolio website before implementing the final design.",
+            development: "The wireframe organizes the website into sections and establishes the placement of important content. The layout considers navigation, readability, content hierarchy, and responsive presentation.",
+            technologies: ["Figma", "UI/UX Design", "Wireframing"],
+            learning: "Developed knowledge of wireframing, interface planning, content organization, and user-centered design.",
+            images: ["assets/images/FINALACT1.jpg"]
+        }
+
+    };
+
+
+    // OPEN PROJECT DETAILS
+
+    function openProject(projectId) {
+
+        const project = projectData[projectId];
+
+        if (!project) return;
+
+        document.getElementById("modalTitle").textContent = project.title;
+
+        document.getElementById("modalCategory").textContent = project.category;
+
+        document.getElementById("modalDescription").textContent = project.description;
+
+        document.getElementById("modalObjectives").textContent = project.objectives;
+
+        document.getElementById("modalDevelopment").textContent = project.development;
+
+        document.getElementById("modalLearning").textContent = project.learning;
+
+        const gallery = document.getElementById("modalGallery");
+
+        gallery.innerHTML = "";
+
+        project.images.forEach((imagePath, index) => {
+
+            const image = document.createElement("img");
+
+            image.src = imagePath;
+
+            image.alt = project.title + " project image " + (index + 1);
+
+            image.className = "modal-project-image mb-3";
+
+            image.loading = "lazy";
+
+            image.onerror = function () {
+                this.style.display = "none";
+            };
+
+            gallery.appendChild(image);
+
+        });
+
+        const technologyContainer =
+            document.getElementById("modalTechnologies");
+
+        technologyContainer.innerHTML = "";
+
+        project.technologies.forEach(technology => {
+
+            const tag = document.createElement("span");
+
+            tag.className = "technology-tag";
+
+            tag.textContent = technology;
+
+            technologyContainer.appendChild(tag);
+
+        });
+
+        const modal = bootstrap.Modal.getOrCreateInstance(
+            document.getElementById("projectModal")
+        );
+
+        modal.show();
+
+    }
+
+
+    // FOOTER YEAR
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+
+    // INITIAL FILTER
+
+    filterProjects();
+
+</script>
 
 </body>
 </html>
