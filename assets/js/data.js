@@ -1,5 +1,6 @@
+
 /* =========================================================
-   TROi MANIMTIM — PORTFOLIO DATA
+   TROI MANIMTIM — PORTFOLIO DATA
    =========================================================
 
    EDIT YOUR PORTFOLIO CONTENT HERE.
@@ -63,14 +64,27 @@ const portfolioData = {
         {
             date: '2026 — Present',
 
-            position: 'Full Stack',
+            position: 'Full Stack Developer',
 
             organization: 'Software Engineering 2',
 
             location: 'City College of Calamba',
 
             description:
-                'Appointment and Payment System (Dental Clinic)'
+                'Hollie-Gab Dental Clinic Management System — a web-based appointment and payment system focused on managing patient appointments, dental services, patient records, and payment-related information using PHP, MySQL, JavaScript, HTML, and CSS.'
+        },
+
+        {
+            date: '2025',
+
+            position: 'Data Analyst',
+
+            organization: 'Web Development and DBMS Project — iSkolar Hub',
+
+            location: 'City College of Calamba',
+
+            description:
+                'Participated in the iSkolar Hub academic project, applying data analysis, web development, and database management concepts. Worked with structured data and web technologies, including PHP, MySQL, JavaScript, HTML, and CSS.'
         }
 
     ],
@@ -114,7 +128,6 @@ const portfolioData = {
 
     /* =====================================================
        ACADEMIC PROJECTS
-       =====================================================
 
        IMPORTANT:
 
