@@ -14,14 +14,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
-        /* =========================================
-           NAVIGATION — PRESERVE ORIGINAL STYLE
-        ========================================= */
-
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 90px;
         }
+
+        /* NAVIGATION */
 
         .portfolio-navbar {
             position: relative;
@@ -42,7 +40,7 @@
             align-items: center;
             justify-content: center;
             background: #2563eb;
-            color: white;
+            color: #fff;
             border-radius: 12px;
             font-size: 15px;
             font-weight: 800;
@@ -79,7 +77,7 @@
             border: none;
             border-radius: 5px;
             background: #343a40;
-            color: white;
+            color: #fff;
             cursor: pointer;
         }
 
@@ -92,7 +90,7 @@
         .portfolio-menu-button:focus-visible,
         .portfolio-menu-button[aria-expanded="true"] {
             background: #212529;
-            color: white;
+            color: #fff;
         }
 
         .portfolio-dropdown {
@@ -125,12 +123,10 @@
 
         [data-bs-theme="dark"] .portfolio-dropdown .dropdown-item:hover {
             background: #343a40;
-            color: white;
+            color: #fff;
         }
 
-        /* =========================================
-           PROJECT HEADER
-        ========================================= */
+        /* PAGE HEADER */
 
         .projects-header {
             padding: 7rem 0 5rem;
@@ -174,9 +170,7 @@
             line-height: 1.7;
         }
 
-        /* =========================================
-           SEARCH AND FILTER CONTROLS
-        ========================================= */
+        /* SEARCH AND FILTERS */
 
         .project-toolbar {
             margin-bottom: 4rem;
@@ -240,7 +234,7 @@
         .filter-btn.active {
             border-color: #2563eb;
             background: #2563eb;
-            color: white;
+            color: #fff;
         }
 
         .project-toolbar-actions {
@@ -257,9 +251,7 @@
             font-size: .85rem;
         }
 
-        /* =========================================
-           PROJECT SECTIONS
-        ========================================= */
+        /* PROJECT SECTIONS */
 
         .projects-content {
             padding: 5rem 0 7rem;
@@ -314,9 +306,7 @@
             letter-spacing: -.055em;
         }
 
-        /* =========================================
-           PROJECT CARDS
-        ========================================= */
+        /* PROJECT CARDS */
 
         .academic-project-card {
             height: 100%;
@@ -335,12 +325,23 @@
             box-shadow: 0 20px 45px rgba(15, 23, 42, .1);
         }
 
+        /*
+         * IMAGE PREVIEW FIX
+         * Keep previews centered, at a stable height, and
+         * preserve the full source image without cropping.
+         */
+
         .academic-project-image {
             display: block;
             width: 100%;
             height: 240px;
+            min-height: 240px;
+            max-height: 240px;
+            flex: 0 0 240px;
             object-fit: contain;
-            background: #171717;
+            object-position: center center;
+            background: #fff;
+            border: 0;
             border-bottom: 1px solid var(--bs-border-color);
         }
 
@@ -355,6 +356,8 @@
         .project-image-placeholder {
             width: 100%;
             height: 240px;
+            min-height: 240px;
+            flex: 0 0 240px;
             display: none;
             align-items: center;
             justify-content: center;
@@ -362,6 +365,8 @@
             gap: .5rem;
             background: #171717;
             color: #94a3b8;
+            text-align: center;
+            padding: 1rem;
         }
 
         .project-image-placeholder i {
@@ -372,6 +377,7 @@
             display: flex;
             flex-direction: column;
             flex: 1;
+            min-width: 0;
             padding: 1.5rem;
         }
 
@@ -451,9 +457,7 @@
             color: var(--bs-secondary-color);
         }
 
-        /* =========================================
-           PROJECT MODAL
-        ========================================= */
+        /* PROJECT DETAILS MODAL */
 
         #projectModal .modal-content {
             border: 1px solid var(--bs-border-color);
@@ -501,9 +505,11 @@
         }
 
         #modalProjectImages img {
+            display: block;
             width: 100%;
             max-height: 300px;
             object-fit: contain;
+            object-position: center;
             border: 1px solid var(--bs-border-color);
             border-radius: 10px;
             background: #171717;
@@ -514,9 +520,11 @@
         }
 
         .brew-carousel-image {
+            display: block;
             width: 100%;
             height: 420px;
             object-fit: contain;
+            object-position: center;
             background: #171717;
         }
 
@@ -530,6 +538,8 @@
                 linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
         }
+
+        /* RESPONSIVE */
 
         @media (max-width: 767px) {
             .projects-header {
@@ -564,6 +574,9 @@
             .academic-project-image,
             .project-image-placeholder {
                 height: 220px;
+                min-height: 220px;
+                max-height: 220px;
+                flex-basis: 220px;
             }
 
             .project-toolbar {
@@ -618,9 +631,7 @@
 
 <body>
 
-    <!-- =========================================
-         NAVIGATION
-    ========================================= -->
+    <!-- NAVIGATION -->
 
     <header class="sticky-top">
         <nav class="navbar glass-nav border-bottom portfolio-navbar">
@@ -676,17 +687,13 @@
         </nav>
     </header>
 
-    <!-- =========================================
-         PAGE HEADER
-    ========================================= -->
+    <!-- PAGE HEADER -->
 
     <section class="projects-header">
         <div class="container">
             <span class="eyebrow">ACADEMIC PROJECTS</span>
 
-            <h1 class="projects-header-title">
-                My Projects
-            </h1>
+            <h1 class="projects-header-title">My Projects</h1>
 
             <p class="projects-header-description">
                 A collection of academic projects completed throughout my
@@ -695,9 +702,7 @@
         </div>
     </section>
 
-    <!-- =========================================
-         PROJECTS AND FILTERS
-    ========================================= -->
+    <!-- PROJECT SEARCH AND FILTERS -->
 
     <main class="projects-content">
         <div class="container">
@@ -761,7 +766,7 @@
 
             </section>
 
-            <!-- NO RESULTS MESSAGE -->
+            <!-- NO RESULTS -->
 
             <div id="noProjects" class="no-projects mb-5" hidden>
                 <i class="bi bi-search"></i>
@@ -776,9 +781,7 @@
                 </button>
             </div>
 
-            <!-- =========================================
-                 PRELIM
-            ========================================= -->
+            <!-- PRELIM -->
 
             <section class="semester-section" id="prelim" data-semester-section="prelim">
                 <div class="semester-header">
@@ -791,8 +794,6 @@
 
                 <div class="row g-4">
 
-                    <!-- FRUITFUL DESIGN -->
-
                     <div class="col-md-6 col-xl-4 project-item"
                          data-semester="prelim"
                          data-search="fruitful design kiwi fruit illustration prelim digital art graphics">
@@ -802,8 +803,7 @@
                                 src="assets/images/PRELIMACT1.jpg"
                                 alt="Fruitful Design kiwi illustration"
                                 class="academic-project-image"
-                                loading="lazy"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                loading="lazy">
 
                             <div class="project-image-placeholder">
                                 <i class="bi bi-image"></i>
@@ -829,17 +829,14 @@
                                     <span class="technology-tag">Graphics</span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm view-project-btn"
-                                    data-project="fruitful">
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm view-project-btn"
+                                        data-project="fruitful">
                                     View Project <i class="bi bi-arrow-right ms-1"></i>
                                 </button>
                             </div>
                         </article>
                     </div>
-
-                    <!-- BRAND DESIGN -->
 
                     <div class="col-md-6 col-xl-4 project-item"
                          data-semester="prelim"
@@ -850,8 +847,7 @@
                                 src="assets/images/PRELIMACT2.jpg"
                                 alt="Brand Design coffee logo"
                                 class="academic-project-image logo-image"
-                                loading="lazy"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                loading="lazy">
 
                             <div class="project-image-placeholder">
                                 <i class="bi bi-image"></i>
@@ -877,10 +873,9 @@
                                     <span class="technology-tag">Graphics</span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm view-project-btn"
-                                    data-project="brand">
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm view-project-btn"
+                                        data-project="brand">
                                     View Project <i class="bi bi-arrow-right ms-1"></i>
                                 </button>
                             </div>
@@ -890,9 +885,7 @@
                 </div>
             </section>
 
-            <!-- =========================================
-                 MIDTERM
-            ========================================= -->
+            <!-- MIDTERM -->
 
             <section class="semester-section" id="midterm" data-semester-section="midterm">
                 <div class="semester-header">
@@ -905,8 +898,6 @@
 
                 <div class="row g-4">
 
-                    <!-- BREW HAVEN -->
-
                     <div class="col-md-6 col-xl-4 project-item"
                          data-semester="midterm"
                          data-search="brew haven coffee shop pumpkin spice latte rainy season branding campaign logo banner landing page newsletter social media">
@@ -916,8 +907,7 @@
                                 src="assets/images/MIDTERMACT1.jpg"
                                 alt="Brew Haven Coffee Shop design"
                                 class="academic-project-image logo-image"
-                                loading="lazy"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                loading="lazy">
 
                             <div class="project-image-placeholder">
                                 <i class="bi bi-image"></i>
@@ -944,17 +934,14 @@
                                     <span class="technology-tag">Advertising</span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm view-project-btn"
-                                    data-project="brew-haven">
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm view-project-btn"
+                                        data-project="brew-haven">
                                     View Project <i class="bi bi-arrow-right ms-1"></i>
                                 </button>
                             </div>
                         </article>
                     </div>
-
-                    <!-- TYPOGRAPHY -->
 
                     <div class="col-md-6 col-xl-4 project-item"
                          data-semester="midterm"
@@ -965,8 +952,7 @@
                                 src="assets/images/MIDTERMACT2.jpg"
                                 alt="Gabi ng Lagim typography poster"
                                 class="academic-project-image poster-image"
-                                loading="lazy"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                loading="lazy">
 
                             <div class="project-image-placeholder">
                                 <i class="bi bi-image"></i>
@@ -993,10 +979,9 @@
                                     <span class="technology-tag">Graphics</span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm view-project-btn"
-                                    data-project="typography">
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm view-project-btn"
+                                        data-project="typography">
                                     View Project <i class="bi bi-arrow-right ms-1"></i>
                                 </button>
                             </div>
@@ -1006,9 +991,7 @@
                 </div>
             </section>
 
-            <!-- =========================================
-                 FINALS
-            ========================================= -->
+            <!-- FINALS -->
 
             <section class="semester-section" id="finals" data-semester-section="finals">
                 <div class="semester-header">
@@ -1021,8 +1004,6 @@
 
                 <div class="row g-4">
 
-                    <!-- WIREFRAME -->
-
                     <div class="col-md-6 col-xl-4 project-item"
                          data-semester="finals"
                          data-search="wireframe portfolio website web development html css javascript bootstrap figma ui ux finals">
@@ -1032,8 +1013,7 @@
                                 src="assets/images/FINALACT1.jpg"
                                 alt="Portfolio wireframe project"
                                 class="academic-project-image"
-                                loading="lazy"
-                                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                                loading="lazy">
 
                             <div class="project-image-placeholder">
                                 <i class="bi bi-image"></i>
@@ -1061,10 +1041,9 @@
                                     <span class="technology-tag">Bootstrap</span>
                                 </div>
 
-                                <button
-                                    type="button"
-                                    class="btn btn-outline-primary btn-sm view-project-btn"
-                                    data-project="wireframe">
+                                <button type="button"
+                                        class="btn btn-outline-primary btn-sm view-project-btn"
+                                        data-project="wireframe">
                                     View Project <i class="bi bi-arrow-right ms-1"></i>
                                 </button>
                             </div>
@@ -1077,16 +1056,13 @@
         </div>
     </main>
 
-    <!-- =========================================
-         PROJECT DETAILS MODAL
-    ========================================= -->
+    <!-- PROJECT DETAILS MODAL -->
 
-    <div
-        class="modal fade"
-        id="projectModal"
-        tabindex="-1"
-        aria-labelledby="projectModalTitle"
-        aria-hidden="true">
+    <div class="modal fade"
+         id="projectModal"
+         tabindex="-1"
+         aria-labelledby="projectModalTitle"
+         aria-hidden="true">
 
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
@@ -1099,11 +1075,10 @@
                         </h2>
                     </div>
 
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -1130,7 +1105,8 @@
                         <div id="modalProjectImages"></div>
                     </div>
 
-                    <!-- Brew Haven carousel -->
+                    <!-- BREW HAVEN CAROUSEL -->
+
                     <div id="brewHavenGallery" class="mt-4" hidden>
                         <h3 class="h6 fw-bold mb-3">Brew Haven Campaign Gallery</h3>
 
@@ -1138,62 +1114,55 @@
                             <div class="carousel-inner">
 
                                 <div class="carousel-item active">
-                                    <img
-                                        src="assets/images/MIDTERMACT1.jpg"
-                                        class="d-block brew-carousel-image"
-                                        alt="Brew Haven campaign design"
-                                        loading="lazy">
+                                    <img src="assets/images/MIDTERMACT1.jpg"
+                                         class="d-block brew-carousel-image"
+                                         alt="Brew Haven campaign design"
+                                         loading="lazy">
                                 </div>
 
                                 <div class="carousel-item">
-                                    <img
-                                        src="assets/images/BANNER AD.jpg"
-                                        class="d-block brew-carousel-image"
-                                        alt="Brew Haven banner advertisement"
-                                        loading="lazy">
+                                    <img src="assets/images/BANNER AD.jpg"
+                                         class="d-block brew-carousel-image"
+                                         alt="Brew Haven banner advertisement"
+                                         loading="lazy">
                                 </div>
 
                                 <div class="carousel-item">
-                                    <img
-                                        src="assets/images/LANDING PAGE.jpg"
-                                        class="d-block brew-carousel-image"
-                                        alt="Brew Haven landing page"
-                                        loading="lazy">
+                                    <img src="assets/images/LANDING PAGE.jpg"
+                                         class="d-block brew-carousel-image"
+                                         alt="Brew Haven landing page"
+                                         loading="lazy">
                                 </div>
 
                                 <div class="carousel-item">
-                                    <img
-                                        src="assets/images/NEWSLETTER HEADER.jpg"
-                                        class="d-block brew-carousel-image"
-                                        alt="Brew Haven newsletter header"
-                                        loading="lazy">
+                                    <img src="assets/images/NEWSLETTER HEADER.jpg"
+                                         class="d-block brew-carousel-image"
+                                         alt="Brew Haven newsletter header"
+                                         loading="lazy">
                                 </div>
 
                                 <div class="carousel-item">
-                                    <img
-                                        src="assets/images/SOCIAL MEDIA POST.jpg"
-                                        class="d-block brew-carousel-image"
-                                        alt="Brew Haven social media post"
-                                        loading="lazy">
+                                    <img src="assets/images/SOCIAL MEDIA POST.jpg"
+                                         class="d-block brew-carousel-image"
+                                         alt="Brew Haven social media post"
+                                         loading="lazy">
                                 </div>
 
                             </div>
 
-                            <button
-                                class="carousel-control-prev"
-                                type="button"
-                                data-bs-target="#brewHavenCarousel"
-                                data-bs-slide="prev"
-                                aria-label="Previous image">
+                            <button class="carousel-control-prev"
+                                    type="button"
+                                    data-bs-target="#brewHavenCarousel"
+                                    data-bs-slide="prev"
+                                    aria-label="Previous image">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             </button>
 
-                            <button
-                                class="carousel-control-next"
-                                type="button"
-                                data-bs-target="#brewHavenCarousel"
-                                data-bs-slide="next"
-                                aria-label="Next image">
+                            <button class="carousel-control-next"
+                                    type="button"
+                                    data-bs-target="#brewHavenCarousel"
+                                    data-bs-slide="next"
+                                    aria-label="Next image">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             </button>
 
@@ -1210,7 +1179,9 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal">
                         Close
                     </button>
                 </div>
@@ -1219,9 +1190,7 @@
         </div>
     </div>
 
-    <!-- =========================================
-         FOOTER
-    ========================================= -->
+    <!-- FOOTER -->
 
     <footer class="projects-footer">
         <div class="container">
@@ -1237,24 +1206,11 @@
         </div>
     </footer>
 
-    <!-- =========================================
-         BOOTSTRAP JAVASCRIPT
-         Required for dropdown, modal, and carousel
-    ========================================= -->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- =========================================
-         ALL PROJECT PAGE INTERACTIONS
-    ========================================= -->
 
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         "use strict";
-
-        /* -----------------------------------------
-           ELEMENTS
-        ----------------------------------------- */
 
         const html = document.documentElement;
         const themeToggle = document.getElementById("themeToggle");
@@ -1269,7 +1225,6 @@
         const noProjects = document.getElementById("noProjects");
 
         const modalElement = document.getElementById("projectModal");
-
         const modalTitle = document.getElementById("projectModalTitle");
         const modalCategory = document.getElementById("modalCategory");
         const modalDescription = document.getElementById("modalDescription");
@@ -1287,16 +1242,13 @@
             projectModal = bootstrap.Modal.getOrCreateInstance(modalElement);
         }
 
-        /* -----------------------------------------
-           PROJECT INFORMATION
-        ----------------------------------------- */
+        /* PROJECT INFORMATION */
 
         const projectData = {
             fruitful: {
                 title: "Fruitful Design",
                 category: "Prelim | Academic Design",
-                description:
-                    "A kiwi fruit illustration created as an academic design activity. The project focuses on the use of shape, color, texture, and composition to create an appealing visual presentation.",
+                description: "A kiwi fruit illustration created as an academic design activity. The project focuses on the use of shape, color, texture, and composition to create an appealing visual presentation.",
                 objectives: [
                     "Practice digital illustration and visual composition.",
                     "Represent the fruit through recognizable shapes, colors, and textures.",
@@ -1307,21 +1259,14 @@
                     "Use of color and contrast.",
                     "Illustration-focused visual presentation."
                 ],
-                technologies: [
-                    "Illustration",
-                    "Digital Art",
-                    "Graphic Design"
-                ],
-                images: [
-                    "assets/images/PRELIMACT1.jpg"
-                ]
+                technologies: ["Illustration", "Digital Art", "Graphic Design"],
+                images: ["assets/images/PRELIMACT1.jpg"]
             },
 
             brand: {
                 title: "Brand Design",
                 category: "Prelim | Branding",
-                description:
-                    "A coffee-inspired logo design developed to communicate a recognizable brand identity. The design explores coffee-related imagery and the relationship between visual elements and brand recognition.",
+                description: "A coffee-inspired logo design developed to communicate a recognizable brand identity. The design explores coffee-related imagery and the relationship between visual elements and brand recognition.",
                 objectives: [
                     "Create a recognizable visual identity for a coffee brand.",
                     "Use suitable visual elements to communicate the brand concept.",
@@ -1332,21 +1277,14 @@
                     "Logo-focused composition.",
                     "Brand recognition through visual elements."
                 ],
-                technologies: [
-                    "Logo Design",
-                    "Branding",
-                    "Graphic Design"
-                ],
-                images: [
-                    "assets/images/PRELIMACT2.jpg"
-                ]
+                technologies: ["Logo Design", "Branding", "Graphic Design"],
+                images: ["assets/images/PRELIMACT2.jpg"]
             },
 
             "brew-haven": {
                 title: "Brew Haven Coffee Shop",
                 category: "Midterm | Branding and Campaign Design",
-                description:
-                    "A seasonal coffee shop branding and campaign concept built around a Pumpkin Spice Latte theme. The project brings together a visual identity and promotional materials intended to communicate a cohesive campaign.",
+                description: "A seasonal coffee shop branding and campaign concept built around a Pumpkin Spice Latte theme. The project brings together a visual identity and promotional materials intended to communicate a cohesive campaign.",
                 objectives: [
                     "Develop a recognizable coffee shop identity.",
                     "Create a consistent seasonal campaign concept.",
@@ -1384,8 +1322,7 @@
             typography: {
                 title: "Typography",
                 category: "Midterm | Poster Design",
-                description:
-                    "A Filipino horror poster concept titled Gabi ng Lagim. It uses typography, contrast, and a dark visual direction to create a suspenseful atmosphere and establish the poster's mood.",
+                description: "A Filipino horror poster concept titled Gabi ng Lagim. It uses typography, contrast, and a dark visual direction to create a suspenseful atmosphere and establish the poster's mood.",
                 objectives: [
                     "Explore typography as a visual communication tool.",
                     "Create a clear visual hierarchy for the poster title.",
@@ -1403,16 +1340,13 @@
                     "Graphic Design",
                     "Visual Communication"
                 ],
-                images: [
-                    "assets/images/MIDTERMACT2.jpg"
-                ]
+                images: ["assets/images/MIDTERMACT2.jpg"]
             },
 
             wireframe: {
                 title: "Wireframe",
                 category: "Finals | Web Design",
-                description:
-                    "A personal portfolio website wireframe that organizes academic projects, technical skills, education, experience, and contact details into a clear and navigable structure.",
+                description: "A personal portfolio website wireframe that organizes academic projects, technical skills, education, experience, and contact details into a clear and navigable structure.",
                 objectives: [
                     "Plan the structure and content hierarchy of a portfolio website.",
                     "Organize information so visitors can navigate the portfolio easily.",
@@ -1434,15 +1368,31 @@
                     "JavaScript",
                     "Bootstrap"
                 ],
-                images: [
-                    "assets/images/FINALACT1.jpg"
-                ]
+                images: ["assets/images/FINALACT1.jpg"]
             }
         };
 
-        /* -----------------------------------------
-           THEME TOGGLE
-        ----------------------------------------- */
+        /* IMAGE FALLBACK */
+
+        document.querySelectorAll(".academic-project-image").forEach(function (image) {
+            function showPlaceholder() {
+                image.style.display = "none";
+
+                const placeholder = image.nextElementSibling;
+
+                if (placeholder && placeholder.classList.contains("project-image-placeholder")) {
+                    placeholder.style.display = "flex";
+                }
+            }
+
+            image.addEventListener("error", showPlaceholder, { once: true });
+
+            if (image.complete && image.naturalWidth === 0) {
+                showPlaceholder();
+            }
+        });
+
+        /* THEME TOGGLE */
 
         function updateThemeIcon() {
             if (!themeToggle) return;
@@ -1451,15 +1401,14 @@
             const isDark = html.getAttribute("data-bs-theme") === "dark";
 
             if (icon) {
-                icon.className = isDark
-                    ? "bi bi-sun"
-                    : "bi bi-moon-stars";
+                icon.className = isDark ? "bi bi-sun" : "bi bi-moon-stars";
             }
 
             themeToggle.setAttribute(
                 "aria-label",
                 isDark ? "Switch to light mode" : "Switch to dark mode"
             );
+
             themeToggle.setAttribute(
                 "title",
                 isDark ? "Switch to light mode" : "Switch to dark mode"
@@ -1473,7 +1422,7 @@
                 html.setAttribute("data-bs-theme", savedTheme);
             }
         } catch (error) {
-            /* Theme still works if browser storage is unavailable. */
+            /* Continue without saved theme. */
         }
 
         updateThemeIcon();
@@ -1488,16 +1437,14 @@
                 try {
                     localStorage.setItem("portfolio-theme", newTheme);
                 } catch (error) {
-                    /* Do not interrupt the theme toggle. */
+                    /* Theme toggle still works without storage. */
                 }
 
                 updateThemeIcon();
             });
         }
 
-        /* -----------------------------------------
-           FILTER AND SEARCH
-        ----------------------------------------- */
+        /* FILTER AND SEARCH */
 
         function updateActiveFilter(filter) {
             activeFilter = filter;
@@ -1548,6 +1495,7 @@
                 });
 
                 section.hidden = !hasVisibleItems;
+                section.classList.toggle("d-none", !hasVisibleItems);
             });
 
             if (resultCount) {
@@ -1559,13 +1507,6 @@
             if (noProjects) {
                 noProjects.hidden = visibleCount !== 0;
             }
-
-            semesterSections.forEach(function (section) {
-                section.classList.toggle(
-                    "d-none",
-                    section.hidden
-                );
-            });
         }
 
         filterButtons.forEach(function (button) {
@@ -1617,9 +1558,7 @@
             noProjectsReset.addEventListener("click", resetAllFilters);
         }
 
-        /* -----------------------------------------
-           PROJECT DETAILS MODAL
-        ----------------------------------------- */
+        /* PROJECT DETAILS MODAL */
 
         function populateList(element, values) {
             if (!element) return;
@@ -1653,6 +1592,7 @@
 
             (images || []).forEach(function (src) {
                 const image = document.createElement("img");
+
                 image.src = src;
                 image.alt = "Project image";
                 image.loading = "lazy";
@@ -1720,10 +1660,6 @@
             projectModal.show();
         }
 
-        /*
-         * Event delegation makes project buttons work even if cards
-         * are updated or re-rendered later.
-         */
         document.addEventListener("click", function (event) {
             const button = event.target.closest(".view-project-btn");
 
@@ -1733,9 +1669,7 @@
             openProject(button.dataset.project);
         });
 
-        /* -----------------------------------------
-           FOOTER YEAR
-        ----------------------------------------- */
+        /* FOOTER YEAR */
 
         const yearElement = document.getElementById("year");
 
@@ -1743,9 +1677,7 @@
             yearElement.textContent = new Date().getFullYear();
         }
 
-        /* -----------------------------------------
-           INITIALIZE
-        ----------------------------------------- */
+        /* INITIALIZE */
 
         updateActiveFilter("all");
         filterProjects();
