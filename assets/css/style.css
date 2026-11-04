@@ -1551,3 +1551,238 @@ footer {
         height: 33px;
     }
 }
+
+/* =========================================
+   EDUCATION & CERTIFICATES
+   Matches the portfolio's modern card style
+   ========================================= */
+
+#education .education-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+#education .education-heading {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 54px;
+}
+
+#education .education-heading-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(37, 99, 235, 0.25);
+    border-radius: 14px;
+    background: rgba(37, 99, 235, 0.09);
+    color: #2563eb;
+    font-size: 1.25rem;
+}
+
+#education .education-subtitle {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: #2563eb;
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+#education .education-heading-title {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    color: var(--bs-body-color);
+}
+
+/* Main cards */
+
+#education .education-fixed-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 245px;
+    height: 100%;
+    padding: 1.6rem;
+    overflow: hidden;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 18px;
+    background: var(--bs-body-bg);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.045);
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Subtle blue accent at the top */
+
+#education .education-fixed-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 1.6rem;
+    width: 56px;
+    height: 3px;
+    border-radius: 0 0 5px 5px;
+    background: #2563eb;
+}
+
+#education .education-fixed-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37, 99, 235, 0.45);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+}
+
+#education .education-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#education .education-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 12px;
+    background: rgba(37, 99, 235, 0.08);
+    color: #2563eb;
+    font-size: 1.1rem;
+}
+
+#education .education-year {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    max-width: 100%;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid rgba(37, 99, 235, 0.18);
+    border-radius: 999px;
+    background: rgba(37, 99, 235, 0.07);
+    color: #2563eb;
+    font-size: 0.73rem;
+    font-weight: 700;
+}
+
+#education .education-title {
+    margin: 0 0 0.85rem;
+    color: var(--bs-body-color);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+#education .education-school {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 0 0.65rem;
+    color: var(--bs-body-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+#education .education-school i {
+    margin-top: 0.15rem;
+    color: #2563eb;
+}
+
+#education .education-description {
+    margin: 0 0 1.5rem;
+    color: var(--bs-secondary-color);
+    font-size: 0.86rem;
+    line-height: 1.75;
+}
+
+#education .education-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bs-border-color);
+    color: var(--bs-secondary-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+#education .education-card-footer i {
+    color: #2563eb;
+}
+
+/* Dark theme */
+
+[data-bs-theme="dark"] #education .education-fixed-card {
+    background: #20252b;
+    border-color: #3b424b;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+[data-bs-theme="dark"] #education .education-fixed-card:hover {
+    border-color: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+/* Responsive layout */
+
+@media (max-width: 767px) {
+    #education .education-column {
+        gap: 1rem;
+    }
+
+    #education .education-heading {
+        gap: 0.8rem;
+    }
+
+    #education .education-heading-icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
+
+    #education .education-heading-title {
+        font-size: 1.3rem;
+    }
+
+    #education .education-fixed-card {
+        min-height: 0;
+        padding: 1.3rem;
+        border-radius: 15px;
+    }
+
+    #education .education-fixed-card::before {
+        left: 1.3rem;
+    }
+
+    #education .education-card-top {
+        margin-bottom: 1.25rem;
+    }
+
+    #education .education-title {
+        font-size: 1.05rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #education .education-fixed-card {
+        transition: none;
+    }
+
+    #education .education-fixed-card:hover {
+        transform: none;
+    }
+}
